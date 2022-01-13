@@ -160,6 +160,37 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/algorithm_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/algorithm',
+              httpsAgent: agent,
+              params: { limit: 2, page: 1, order: '-namespace,name', embedding: 'snippet' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Algorithms
@@ -172,6 +203,44 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/algorithm_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: |+
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/algorithm',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "alg_test_01",
+                type: "ruby",
+                code: "return 1 + 1",
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
   '/setup/algorithm/{id}':
     parameters:
       - $ref: '#/components/parameters/path_item_id'
@@ -191,6 +260,39 @@ paths:
           $ref: '#/components/responses/algorithm_item'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61e083815a5a2353c40082f3'
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/algorithm/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Algorithms
@@ -205,6 +307,42 @@ paths:
           $ref: '#/components/responses/algorithm_item'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61e083815a5a2353c40082f3'
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/algorithm/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                code: `return 1 + ${Date.now()}`,
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     delete:
       tags:
         - Algorithms
@@ -217,6 +355,38 @@ paths:
           $ref: '#/components/responses/item_removed_successfully'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61e083815a5a2353c40082f3'
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/algorithm/${item_id}`,
+              httpsAgent: agent,
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
   /setup/json_data_type:
     get:
       tags:
@@ -235,6 +405,31 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/json_data_type_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/json_data_type',
+              params: { limit: 2, page: 1, order: '-namespace,name', embedding: 'snippet' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Document Types
@@ -247,6 +442,49 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/json_data_type_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: |+
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/json_data_type',
+              data: {
+                namespace: "Test",
+                name: "Person4",
+                code: JSON.stringify(
+                  {
+                    type: "object",
+                    properties: {
+                      dni: {
+                        type: "string"
+                      },
+                      name: {
+                        type: "string"
+                      }
+                    }
+                  }
+                )
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
   '/setup/json_data_type/{id}':
     parameters:
       - $ref: '#/components/parameters/path_item_id'
@@ -266,6 +504,33 @@ paths:
           $ref: '#/components/responses/json_data_type_item'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61e0312b5a5a2353ad004469'
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/json_data_type/${item_id}`,
+              params: { embedding: 'snippet' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Document Types
@@ -280,6 +545,37 @@ paths:
           $ref: '#/components/responses/json_data_type_item'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61e0312b5a5a2353ad004469'
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/json_data_type/${item_id}`,
+              data: {
+                namespace: "Test",
+                name: "Person3",
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     delete:
       tags:
         - Document Types
@@ -292,6 +588,32 @@ paths:
           $ref: '#/components/responses/item_removed_successfully'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61e0312b5a5a2353ad004469'
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/json_data_type/${item_id}`,
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
 externalDocs:
   description: CenitIO-Documentation
   url: 'https://cenit-io.github.io/docs'
