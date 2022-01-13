@@ -12,3 +12,5 @@ get:
   responses:
     '200':
       $ref: '#/components/responses/json_data_type_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
