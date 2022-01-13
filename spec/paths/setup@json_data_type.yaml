@@ -15,3 +15,16 @@ get:
   responses:
     '200':
       $ref: '#/components/responses/json_data_type_items'
+
+post:
+  tags:
+    - Document Types
+  operationId: create_json_data_type
+  summary: Create a json-data-type
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/json_data_type_create'
+  responses:
+    '200':
+      $ref: '#/components/responses/json_data_type_item'
