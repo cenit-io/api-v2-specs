@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Set up author email 
-      run: git config --global user.email "yfsegredo@gmail.com"
-    - name: Set up author name 
-      run: git config --global user.name "Yaima Fernández Segredo"
+    - name: Set up author 
+      run: |
+        git config --global user.email "yfsegredo@gmail.com"
+        git config --global user.name "Yaima Fernández Segredo"
   
     - name: Set up NodeJS
       uses: actions/setup-node@v2
@@ -25,12 +25,13 @@ jobs:
         node-version: 14.x
         cache: 'npm'
         
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Build
-      run: npm run build
+    - name: Install Build
+      run: |
+        npm ci
+        npm run build
       
     - name: Deploy    
-      run: npm run gh-pages
-    
+      uses: JamesIves/github-pages-deploy-action@v4.2.2
+      with:
+        branch: gh-pages
+        folder: web_deploy
