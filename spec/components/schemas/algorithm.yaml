@@ -32,10 +32,6 @@ properties:
     type: string
     description: Code snippet in the previously selected language
     writeOnly: true
-  snippet:
-    readOnly: true
-    allOf:
-      - $ref: "#/components/schemas/snippet"
   output_datatype:
     readOnly: true
     allOf:

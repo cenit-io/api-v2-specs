@@ -1,0 +1,17 @@
+description: Success
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: object
+          properties:
+            json_data_type:
+              allOf:
+                - $ref: "#/components/schemas/json_data_type"
+                - type: object
+                  properties:
+                    snippet:
+                      readOnly: true
+                      $ref: "#/components/schemas/snippet_reference"

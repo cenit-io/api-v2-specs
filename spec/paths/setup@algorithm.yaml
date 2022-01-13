@@ -27,4 +27,4 @@ post:
     $ref: '#/components/requestBodies/algorithm_create'
   responses:
     '200':
-      $ref: '#/components/responses/algorithm_item'
+      $ref: '#/components/responses/algorithm_item_create'

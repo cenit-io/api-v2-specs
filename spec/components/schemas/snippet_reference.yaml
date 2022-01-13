@@ -1,0 +1,14 @@
+type: "object"
+properties:
+  _reference:
+    type: boolean
+    default: true
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Name without spaces or special characters

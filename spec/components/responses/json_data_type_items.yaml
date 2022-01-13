@@ -9,4 +9,6 @@ content:
             json_data_types:
               type: array
               items:
-                $ref: '#/components/schemas/json_data_type'
+                allOf:
+                  - $ref: "#/components/schemas/json_data_type"
+                  - $ref: "#/components/schemas/snippet_options"

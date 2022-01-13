@@ -1,0 +1,6 @@
+type: "object"
+properties:
+  snippet:
+    oneOf:
+      - $ref: "#/components/schemas/snippet_reference"
+      - $ref: "#/components/schemas/snippet"

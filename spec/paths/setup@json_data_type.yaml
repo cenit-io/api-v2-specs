@@ -27,4 +27,4 @@ post:
     $ref: '#/components/requestBodies/json_data_type_create'
   responses:
     '200':
-      $ref: '#/components/responses/json_data_type_item'
+      $ref: '#/components/responses/json_data_type_item_create'

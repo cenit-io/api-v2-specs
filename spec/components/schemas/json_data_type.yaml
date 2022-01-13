@@ -17,10 +17,6 @@ properties:
     type: string
     description: JSON-Schema
     writeOnly: true
-  snippet:
-    readOnly: true
-    allOf:
-      - $ref: "#/components/schemas/snippet"
   discard_additional_properties:
     type: boolean
     default: true
