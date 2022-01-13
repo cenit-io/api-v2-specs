@@ -1,3 +1,6 @@
+parameters:
+  - $ref: '#/components/parameters/path_item_id'
+
 get:
   tags:
     - Document Types
@@ -27,5 +30,18 @@ post:
   responses:
     '200':
       $ref: '#/components/responses/json_data_type_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+      
+delete:
+  tags:
+    - Document Types
+  operationId: delete_json_data_type
+  summary: Delete a json-data-type
+  description: |
+    Find and destroy the item with the given id.
+  responses:
+    '200':
+      $ref: '#/components/responses/item_removed_successfully'
     '404':
       $ref: '#/components/responses/item_not_found'
