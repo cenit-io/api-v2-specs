@@ -1,0 +1,14 @@
+get:
+  tags:
+    - Document Types
+  operationId: get_json_data_type
+  summary: Retrieve a json-data-type
+  description: |
+    Find and return the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/json_data_type_item'

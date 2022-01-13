@@ -1,7 +1,7 @@
 get:
   tags:
     - Document Types
-  operationId: get_json_data_type
+  operationId: get_json_data_types
   summary: List all json-data-types
   description: |
     Returns the list of your json-data-types.
