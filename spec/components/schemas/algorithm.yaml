@@ -1,0 +1,44 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  description:
+    type: string
+  language:
+    type: string
+    enum:
+      - ruby
+      - javascript
+  store_output:
+    type: boolean
+    default: false
+  validate_output:
+    type: boolean
+    default: false
+  parameters_size:
+    type: integer
+  parameters:
+    type: array
+    items:
+      $ref: "#/components/schemas/algorithm_parameter"
+  code:
+    type: string
+    description: Code snippet in the previously selected language
+    writeOnly: true
+  snippet:
+    readOnly: true
+    allOf:
+      - $ref: "#/components/schemas/snippet"
+  output_datatype:
+    readOnly: true
+    allOf:
+      - $ref: "#/components/schemas/json_data_type"
+
+required: [namespace,name,language,code]

@@ -1,0 +1,12 @@
+description: Success
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/pagination"
+        - type: object
+          properties:
+            algorithms:
+              type: array
+              items:
+                $ref: '#/components/schemas/algorithm'

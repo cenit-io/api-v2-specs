@@ -1,0 +1,18 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  name:
+    type: string
+  many:
+    type: boolean
+    default: false
+  required:
+    type: boolean
+    default: false
+  default:
+    type: string
+
+required: [name]

@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Algorithms
+  operationId: get_algorithms
+  summary: List all algorithms
+  description: |
+    Returns the list of your algorithms.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/algorithm_items'
+
+post:
+  tags:
+    - Algorithms
+  operationId: create_algorithm
+  summary: Create a algorithm
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/algorithm_create'
+  responses:
+    '200':
+      $ref: '#/components/responses/algorithm_item'
