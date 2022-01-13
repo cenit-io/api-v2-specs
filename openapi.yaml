@@ -171,7 +171,7 @@ paths:
         $ref: '#/components/requestBodies/algorithm_create'
       responses:
         '200':
-          $ref: '#/components/responses/algorithm_item'
+          $ref: '#/components/responses/algorithm_item_create'
   '/setup/algorithm/{id}':
     parameters:
       - $ref: '#/components/parameters/path_item_id'
@@ -246,7 +246,7 @@ paths:
         $ref: '#/components/requestBodies/json_data_type_create'
       responses:
         '200':
-          $ref: '#/components/responses/json_data_type_item'
+          $ref: '#/components/responses/json_data_type_item_create'
   '/setup/json_data_type/{id}':
     parameters:
       - $ref: '#/components/parameters/path_item_id'
@@ -351,10 +351,6 @@ components:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
-        snippet:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/snippet'
         output_datatype:
           readOnly: true
           allOf:
@@ -384,10 +380,6 @@ components:
           type: string
           description: JSON-Schema
           writeOnly: true
-        snippet:
-          readOnly: true
-          allOf:
-            - $ref: '#/components/schemas/snippet'
         discard_additional_properties:
           type: boolean
           default: true
@@ -410,6 +402,28 @@ components:
         count:
           description: Total number of items
           type: integer
+    snippet_options:
+      type: object
+      properties:
+        snippet:
+          oneOf:
+            - $ref: '#/components/schemas/snippet_reference'
+            - $ref: '#/components/schemas/snippet'
+    snippet_reference:
+      type: object
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
     snippet:
       type: object
       properties:
@@ -444,12 +458,32 @@ components:
         - ASC
         - DESC
   responses:
+    algorithm_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  json_data_type:
+                    allOf:
+                      - $ref: '#/components/schemas/algorithm'
+                      - type: object
+                        properties:
+                          snippet:
+                            readOnly: true
+                            $ref: '#/components/schemas/snippet_reference'
     algorithm_item:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/algorithm'
+            allOf:
+              - $ref: '#/components/schemas/algorithm'
+              - $ref: '#/components/schemas/snippet_options'
     algorithm_items:
       description: Success
       content:
@@ -462,7 +496,9 @@ components:
                   algorithms:
                     type: array
                     items:
-                      $ref: '#/components/schemas/algorithm'
+                      allOf:
+                        - $ref: '#/components/schemas/algorithm'
+                        - $ref: '#/components/schemas/snippet_options'
     item_not_found:
       description: Not found
       content:
@@ -483,12 +519,32 @@ components:
               status:
                 type: string
                 default: ok
+    json_data_type_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  json_data_type:
+                    allOf:
+                      - $ref: '#/components/schemas/json_data_type'
+                      - type: object
+                        properties:
+                          snippet:
+                            readOnly: true
+                            $ref: '#/components/schemas/snippet_reference'
     json_data_type_item:
       description: Success
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/json_data_type'
+            allOf:
+              - $ref: '#/components/schemas/json_data_type'
+              - $ref: '#/components/schemas/snippet_options'
     json_data_type_items:
       description: Success
       content:
@@ -501,7 +557,9 @@ components:
                   json_data_types:
                     type: array
                     items:
-                      $ref: '#/components/schemas/json_data_type'
+                      allOf:
+                        - $ref: '#/components/schemas/json_data_type'
+                        - $ref: '#/components/schemas/snippet_options'
   parameters:
     path_item_id:
       name: id
