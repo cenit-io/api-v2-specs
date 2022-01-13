@@ -1,8 +1,0 @@
-name: embedding
-in: query
-schema:
-  type: string
-  description: |
-    Comma separated set of attributes, which refer to another entities and will be included in its entirety in the response.
-
-    > By default in these attributes only a reference to the foreign items is returned.

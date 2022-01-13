@@ -429,9 +429,6 @@
         }
       }
     },
-    "examples": {},
-    "headers": {},
-    "requestBodies": {},
     "securitySchemes": {
       "X-Tenant-Access-Key": {
         "type": "apiKey",

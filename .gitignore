@@ -1,7 +1,0 @@
-# Dir for API portal deploy
-.env
-.idea
-tmp
-web_deploy
-node_modules
-*.sh

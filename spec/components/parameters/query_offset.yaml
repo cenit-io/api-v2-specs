@@ -1,7 +1,0 @@
-name: page
-in: query
-schema:
-  description: |
-    Number of the page to skip at the beginning of the list.
-  type: integer
-  example: 1

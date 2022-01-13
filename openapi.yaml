@@ -324,9 +324,6 @@ components:
 
           > To sort descendingly, the prefix sign (-) must be added.
         example: '-namespace,name'
-  examples: {}
-  headers: {}
-  requestBodies: {}
   securitySchemes:
     X-Tenant-Access-Key:
       type: apiKey

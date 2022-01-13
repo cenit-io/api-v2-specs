@@ -1,9 +1,0 @@
-name: ignore
-in: query
-schema:
-  type: string
-  description: |
-    Comma separated set of attributes that are excluded from the response.
-
-    > The id attribute always will be included.
-  example: 'namespace,name'

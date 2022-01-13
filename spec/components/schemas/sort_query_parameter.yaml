@@ -1,5 +1,0 @@
-description: Sort criterial
-type: string
-enum:
-  - ASC
-  - DESC
