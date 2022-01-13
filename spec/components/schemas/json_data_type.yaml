@@ -3,7 +3,7 @@ properties:
   id:
     type: string
     readOnly: true
-    description: Webhook identifier
+    description: Item identifier
   namespace:
     type: string
   name:
