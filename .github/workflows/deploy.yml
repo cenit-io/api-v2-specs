@@ -14,6 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Set up author email 
+      run: git config --global user.email "yfsegredo@gmail.com"
+    - name: Set up author name 
+      run: git config --global user.name "Yaima Fernández Segredo"
+  
     - name: Set up NodeJS
       uses: actions/setup-node@v2
       with:
