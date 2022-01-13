@@ -1,0 +1,9 @@
+name: order
+in: query
+schema:
+  type: string
+  description: |
+    Comma separated set of attributes to sort items list.
+
+    > To sort descendingly, the prefix sign (-) must be added.
+  example: '-namespace,name'

@@ -1,0 +1,450 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "v2",
+    "title": "CenitIO API Specifications",
+    "termsOfService": "https://cenit.io/terms",
+    "contact": {
+      "email": "support@cenit.io",
+      "url": "https://cenitio.slack.com/messages/support"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "logo.png"
+    },
+    "description": "# Introduction\n\nCenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designe to solve\nunique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple\nformats and protocols. Ready to use in our cloud or on-premises\n\nThe CenitIO APIv2 is a simple connector API for doing business and data integrations.\n\nThis API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.\n\n* It is built over REST services on HTTPS.\n\n* It has predictable resource URLs.\n\n* It returns HTTP response codes to indicate errors.\n\n* It accepts and returns JSON in the HTTP body.\n\n* You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.\n\n  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)\n"
+  },
+  "tags": [
+    {
+      "name": "Document Types",
+      "description": "...\n"
+    },
+    {
+      "name": "File Types",
+      "description": "...\n"
+    },
+    {
+      "name": "Collections",
+      "description": "...\n"
+    },
+    {
+      "name": "Shared Collections",
+      "description": "...\n"
+    },
+    {
+      "name": "Algorithms",
+      "description": "...\n"
+    },
+    {
+      "name": "Applications",
+      "description": "...\n"
+    },
+    {
+      "name": "Snippets",
+      "description": "...\n"
+    },
+    {
+      "name": "Templates",
+      "description": "...\n"
+    },
+    {
+      "name": "Parsers",
+      "description": "...\n"
+    },
+    {
+      "name": "Converters",
+      "description": "...\n"
+    },
+    {
+      "name": "Updaters",
+      "description": "...\n"
+    },
+    {
+      "name": "System Notifications",
+      "description": "...\n"
+    },
+    {
+      "name": "Tasks",
+      "description": "...\n"
+    },
+    {
+      "name": "Flows",
+      "description": "...\n"
+    },
+    {
+      "name": "Observers",
+      "description": "...\n"
+    },
+    {
+      "name": "Schedulers",
+      "description": "...\n"
+    },
+    {
+      "name": "Connections",
+      "description": "...\n"
+    },
+    {
+      "name": "Resouces",
+      "description": "...\n"
+    },
+    {
+      "name": "Authorizations Clients",
+      "description": "...\n"
+    },
+    {
+      "name": "Authorizations Providers",
+      "description": "...\n"
+    },
+    {
+      "name": "Authorizations",
+      "description": "...\n"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://cenit.io/api/v2"
+    },
+    {
+      "url": "https://server.cenit.io/api/v2"
+    }
+  ],
+  "security": [
+    {
+      "X-Tenant-Access-Key": [],
+      "X-Tenant-Access-Token": []
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "Data",
+      "tags": [
+        "Document Types",
+        "File Types"
+      ]
+    },
+    {
+      "name": "Integrations",
+      "tags": [
+        "Collections",
+        "Shared Collections"
+      ]
+    },
+    {
+      "name": "Compute",
+      "tags": [
+        "Algorithms",
+        "Applications",
+        "Snippets"
+      ]
+    },
+    {
+      "name": "Transformations",
+      "tags": [
+        "Templates",
+        "Parsers",
+        "Converters",
+        "Updaters"
+      ]
+    },
+    {
+      "name": "Workflows",
+      "tags": [
+        "Flows",
+        "Observers",
+        "Schedulers"
+      ]
+    },
+    {
+      "name": "Monitors",
+      "tags": [
+        "Tasks",
+        "System Notifications"
+      ]
+    },
+    {
+      "name": "Gateways",
+      "tags": [
+        "Connections",
+        "Resources"
+      ]
+    },
+    {
+      "name": "Security",
+      "tags": [
+        "Authorizations Clients",
+        "Authorizations Providers",
+        "Authorizations"
+      ]
+    }
+  ],
+  "paths": {
+    "/setup/json_data_type": {
+      "get": {
+        "tags": [
+          "Document Types"
+        ],
+        "operationId": "get_json_data_type",
+        "summary": "List all json-data-types",
+        "description": "Returns the list of your json-data-types.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_offset"
+          },
+          {
+            "$ref": "#/components/parameters/query_limit"
+          },
+          {
+            "$ref": "#/components/parameters/query_sort"
+          },
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/json_data_type_items"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "CenitIO-Documentation",
+    "url": "https://cenit-io.github.io/docs"
+  },
+  "components": {
+    "schemas": {
+      "created_at": {
+        "description": "Date in iso8601 when the record was created",
+        "type": "string",
+        "format": "date-time-iso8601",
+        "readOnly": true
+      },
+      "json_data_type": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Webhook identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name without spaces or special characters"
+          },
+          "title": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "description": "JSON-Schema",
+            "writeOnly": true
+          },
+          "snippet": {
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/snippet"
+              }
+            ]
+          },
+          "discard_additional_properties": {
+            "type": "boolean",
+            "default": true
+          },
+          "navigation_link": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "namespace",
+          "name",
+          "code"
+        ]
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "total_pages": {
+            "description": "Total number of pages",
+            "type": "integer"
+          },
+          "current_page": {
+            "description": "Number of the page obtained",
+            "type": "integer"
+          },
+          "count": {
+            "description": "Total number of items",
+            "type": "integer"
+          }
+        }
+      },
+      "snippet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Webhook identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name without spaces or special characters"
+          },
+          "type": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code snippet"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "navigation_link": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "namespace",
+          "name",
+          "type",
+          "code"
+        ]
+      },
+      "sort_query_parameter": {
+        "description": "Sort criterial",
+        "type": "string",
+        "enum": [
+          "ASC",
+          "DESC"
+        ]
+      },
+      "updated_at": {
+        "description": "Date in iso8601 when the record was updated",
+        "type": "string",
+        "format": "date-time-iso8601",
+        "readOnly": true
+      }
+    },
+    "responses": {
+      "json_data_type_items": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/pagination"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "json_data_types": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/json_data_type"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "query_embedding": {
+        "name": "embedding",
+        "in": "query",
+        "schema": {
+          "type": "string",
+          "description": "Comma separated set of attributes, which refer to another entities and will be included in its entirety in the response.\n\n> By default in these attributes only a reference to the foreign items is returned.\n"
+        }
+      },
+      "query_ignore": {
+        "name": "ignore",
+        "in": "query",
+        "schema": {
+          "type": "string",
+          "description": "Comma separated set of attributes that are excluded from the response.\n\n> The id attribute always will be included.\n",
+          "example": "namespace,name"
+        }
+      },
+      "query_limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "description": "The maximum number of items that can be returned. The supported values ​​are between 1 and 25.\n",
+          "type": "integer",
+          "example": 10
+        }
+      },
+      "query_offset": {
+        "name": "page",
+        "in": "query",
+        "schema": {
+          "description": "Number of the page to skip at the beginning of the list.\n",
+          "type": "integer",
+          "example": 1
+        }
+      },
+      "query_only": {
+        "name": "only",
+        "in": "query",
+        "schema": {
+          "type": "string",
+          "description": "Comma separated set of attributes that are included in the response.\n\n> The id attribute always will be included.\n",
+          "example": "namespace,name"
+        }
+      },
+      "query_sort": {
+        "name": "order",
+        "in": "query",
+        "schema": {
+          "type": "string",
+          "description": "Comma separated set of attributes to sort items list.\n\n> To sort descendingly, the prefix sign (-) must be added.\n",
+          "example": "-namespace,name"
+        }
+      }
+    },
+    "examples": {},
+    "headers": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "X-Tenant-Access-Key": {
+        "type": "apiKey",
+        "name": "X-Tenant-Access-Key",
+        "in": "header",
+        "description": "Tenant authentication key.\n\n> Each service request must include an **X-Tenant-Access-Key** header or parameter.\n"
+      },
+      "X-Tenant-Access-Token": {
+        "type": "apiKey",
+        "name": "X-Tenant-Access-Token",
+        "in": "header",
+        "description": "Tenant authentication Token.\n\n> Each service request must include an **X-Tenant-Access-Token** header or parameter.\n"
+      }
+    }
+  }
+}

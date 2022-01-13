@@ -1,0 +1,346 @@
+openapi: 3.0.0
+info:
+  version: v2
+  title: CenitIO API Specifications
+  termsOfService: 'https://cenit.io/terms'
+  contact:
+    email: support@cenit.io
+    url: 'https://cenitio.slack.com/messages/support'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: logo.png
+  description: |
+    # Introduction
+
+    CenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designe to solve
+    unique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple
+    formats and protocols. Ready to use in our cloud or on-premises
+
+    The CenitIO APIv2 is a simple connector API for doing business and data integrations.
+
+    This API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.
+
+    * It is built over REST services on HTTPS.
+
+    * It has predictable resource URLs.
+
+    * It returns HTTP response codes to indicate errors.
+
+    * It accepts and returns JSON in the HTTP body.
+
+    * You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.
+
+      [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)
+tags:
+  - name: Document Types
+    description: |
+      ...
+  - name: File Types
+    description: |
+      ...
+  - name: Collections
+    description: |
+      ...
+  - name: Shared Collections
+    description: |
+      ...
+  - name: Algorithms
+    description: |
+      ...
+  - name: Applications
+    description: |
+      ...
+  - name: Snippets
+    description: |
+      ...
+  - name: Templates
+    description: |
+      ...
+  - name: Parsers
+    description: |
+      ...
+  - name: Converters
+    description: |
+      ...
+  - name: Updaters
+    description: |
+      ...
+  - name: System Notifications
+    description: |
+      ...
+  - name: Tasks
+    description: |
+      ...
+  - name: Flows
+    description: |
+      ...
+  - name: Observers
+    description: |
+      ...
+  - name: Schedulers
+    description: |
+      ...
+  - name: Connections
+    description: |
+      ...
+  - name: Resouces
+    description: |
+      ...
+  - name: Authorizations Clients
+    description: |
+      ...
+  - name: Authorizations Providers
+    description: |
+      ...
+  - name: Authorizations
+    description: |
+      ...
+servers:
+  - url: 'https://cenit.io/api/v2'
+  - url: 'https://server.cenit.io/api/v2'
+security:
+  - X-Tenant-Access-Key: []
+    X-Tenant-Access-Token: []
+x-tagGroups:
+  - name: Data
+    tags:
+      - Document Types
+      - File Types
+  - name: Integrations
+    tags:
+      - Collections
+      - Shared Collections
+  - name: Compute
+    tags:
+      - Algorithms
+      - Applications
+      - Snippets
+  - name: Transformations
+    tags:
+      - Templates
+      - Parsers
+      - Converters
+      - Updaters
+  - name: Workflows
+    tags:
+      - Flows
+      - Observers
+      - Schedulers
+  - name: Monitors
+    tags:
+      - Tasks
+      - System Notifications
+  - name: Gateways
+    tags:
+      - Connections
+      - Resources
+  - name: Security
+    tags:
+      - Authorizations Clients
+      - Authorizations Providers
+      - Authorizations
+paths:
+  /setup/json_data_type:
+    get:
+      tags:
+        - Document Types
+      operationId: get_json_data_type
+      summary: List all json-data-types
+      description: |
+        Returns the list of your json-data-types.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/json_data_type_items'
+externalDocs:
+  description: CenitIO-Documentation
+  url: 'https://cenit-io.github.io/docs'
+components:
+  schemas:
+    created_at:
+      description: Date in iso8601 when the record was created
+      type: string
+      format: date-time-iso8601
+      readOnly: true
+    json_data_type:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Webhook identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+        title:
+          type: string
+        slug:
+          type: string
+        code:
+          type: string
+          description: JSON-Schema
+          writeOnly: true
+        snippet:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/snippet'
+        discard_additional_properties:
+          type: boolean
+          default: true
+        navigation_link:
+          type: boolean
+          default: false
+      required:
+        - namespace
+        - name
+        - code
+    pagination:
+      type: object
+      properties:
+        total_pages:
+          description: Total number of pages
+          type: integer
+        current_page:
+          description: Number of the page obtained
+          type: integer
+        count:
+          description: Total number of items
+          type: integer
+    snippet:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Webhook identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+        type:
+          type: string
+        code:
+          type: string
+          description: Code snippet
+        slug:
+          type: string
+        navigation_link:
+          type: boolean
+          default: false
+      required:
+        - namespace
+        - name
+        - type
+        - code
+    sort_query_parameter:
+      description: Sort criterial
+      type: string
+      enum:
+        - ASC
+        - DESC
+    updated_at:
+      description: Date in iso8601 when the record was updated
+      type: string
+      format: date-time-iso8601
+      readOnly: true
+  responses:
+    json_data_type_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  json_data_types:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/json_data_type'
+  parameters:
+    query_embedding:
+      name: embedding
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes, which refer to another entities and will be included in its entirety in the response.
+
+          > By default in these attributes only a reference to the foreign items is returned.
+    query_ignore:
+      name: ignore
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes that are excluded from the response.
+
+          > The id attribute always will be included.
+        example: 'namespace,name'
+    query_limit:
+      name: limit
+      in: query
+      schema:
+        description: |
+          The maximum number of items that can be returned. The supported values ​​are between 1 and 25.
+        type: integer
+        example: 10
+    query_offset:
+      name: page
+      in: query
+      schema:
+        description: |
+          Number of the page to skip at the beginning of the list.
+        type: integer
+        example: 1
+    query_only:
+      name: only
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes that are included in the response.
+
+          > The id attribute always will be included.
+        example: 'namespace,name'
+    query_sort:
+      name: order
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes to sort items list.
+
+          > To sort descendingly, the prefix sign (-) must be added.
+        example: '-namespace,name'
+  examples: {}
+  headers: {}
+  requestBodies: {}
+  securitySchemes:
+    X-Tenant-Access-Key:
+      type: apiKey
+      name: X-Tenant-Access-Key
+      in: header
+      description: |
+        Tenant authentication key.
+
+        > Each service request must include an **X-Tenant-Access-Key** header or parameter.
+    X-Tenant-Access-Token:
+      type: apiKey
+      name: X-Tenant-Access-Token
+      in: header
+      description: |
+        Tenant authentication Token.
+
+        > Each service request must include an **X-Tenant-Access-Token** header or parameter.

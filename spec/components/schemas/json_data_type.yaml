@@ -1,0 +1,30 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Webhook identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Name without spaces or special characters
+  title:
+    type: string
+  slug:
+    type: string
+  code:
+    type: string
+    description: JSON-Schema
+    writeOnly: true
+  snippet:
+    readOnly: true
+    allOf:
+      - $ref: "#/components/schemas/snippet"
+  discard_additional_properties:
+    type: boolean
+    default: true
+  navigation_link:
+    type: boolean
+    default: false
+required: [namespace,name,code]

@@ -1,0 +1,9 @@
+name: only
+in: query
+schema:
+  type: string
+  description: |
+    Comma separated set of attributes that are included in the response.
+
+    > The id attribute always will be included.
+  example: 'namespace,name'
