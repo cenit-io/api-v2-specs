@@ -14,3 +14,18 @@ get:
       $ref: '#/components/responses/json_data_type_item'
     '404':
       $ref: '#/components/responses/item_not_found'
+
+post:
+  tags:
+    - Document Types
+  operationId: update_json_data_type
+  summary: Update a json-data-type
+  description: |
+    Find and update the item with the given id.
+  requestBody:
+    $ref: '#/components/requestBodies/json_data_type_update'
+  responses:
+    '200':
+      $ref: '#/components/responses/json_data_type_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
