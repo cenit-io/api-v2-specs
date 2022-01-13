@@ -142,6 +142,81 @@ x-tagGroups:
       - Authorizations Providers
       - Authorizations
 paths:
+  /setup/algorithm:
+    get:
+      tags:
+        - Algorithms
+      operationId: get_algorithms
+      summary: List all algorithms
+      description: |
+        Returns the list of your algorithms.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_items'
+    post:
+      tags:
+        - Algorithms
+      operationId: create_algorithm
+      summary: Create a algorithm
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/algorithm_create'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_item'
+  '/setup/algorithm/{id}':
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Algorithms
+      operationId: get_algorithm
+      summary: Retrieve a algorithm
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    post:
+      tags:
+        - Algorithms
+      operationId: update_algorithm
+      summary: Update a algorithm
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/algorithm_update'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    delete:
+      tags:
+        - Algorithms
+      operationId: delete_algorithm
+      summary: Delete a algorithm
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
   /setup/json_data_type:
     get:
       tags:
@@ -222,13 +297,80 @@ externalDocs:
   url: 'https://cenit-io.github.io/docs'
 components:
   schemas:
+    algorithm_parameter:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        name:
+          type: string
+        many:
+          type: boolean
+          default: false
+        required:
+          type: boolean
+          default: false
+        default:
+          type: string
+      required:
+        - name
+    algorithm:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        description:
+          type: string
+        language:
+          type: string
+          enum:
+            - ruby
+            - javascript
+        store_output:
+          type: boolean
+          default: false
+        validate_output:
+          type: boolean
+          default: false
+        parameters_size:
+          type: integer
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/algorithm_parameter'
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+        snippet:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/snippet'
+        output_datatype:
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/json_data_type'
+      required:
+        - namespace
+        - name
+        - language
+        - code
     json_data_type:
       type: object
       properties:
         id:
           type: string
           readOnly: true
-          description: Webhook identifier
+          description: Item identifier
         namespace:
           type: string
         name:
@@ -274,7 +416,7 @@ components:
         id:
           type: string
           readOnly: true
-          description: Webhook identifier
+          description: Item identifier
         namespace:
           type: string
         name:
@@ -302,6 +444,25 @@ components:
         - ASC
         - DESC
   responses:
+    algorithm_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/algorithm'
+    algorithm_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  algorithms:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/algorithm'
     item_not_found:
       description: Not found
       content:
@@ -406,6 +567,20 @@ components:
           > To sort descendingly, the prefix sign (-) must be added.
         example: '-namespace,name'
   requestBodies:
+    algorithm_create:
+      description: The algorithm that will be created
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/algorithm'
+    algorithm_update:
+      description: The algorithm that will be updated
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/algorithm'
     json_data_type_create:
       description: The json-data-type that will be created
       required: true
