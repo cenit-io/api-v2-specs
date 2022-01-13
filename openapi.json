@@ -186,7 +186,7 @@
         "tags": [
           "Document Types"
         ],
-        "operationId": "get_json_data_type",
+        "operationId": "get_json_data_types",
         "summary": "List all json-data-types",
         "description": "Returns the list of your json-data-types.\n",
         "parameters": [
@@ -214,6 +214,91 @@
             "$ref": "#/components/responses/json_data_type_items"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Document Types"
+        ],
+        "operationId": "create_json_data_type",
+        "summary": "Create a json-data-type",
+        "description": "Add a new item.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/json_data_type_create"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/json_data_type_item"
+          }
+        }
+      }
+    },
+    "/setup/json_data_type/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/path_item_id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Document Types"
+        ],
+        "operationId": "get_json_data_type",
+        "summary": "Retrieve a json-data-type",
+        "description": "Find and return the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/json_data_type_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Document Types"
+        ],
+        "operationId": "update_json_data_type",
+        "summary": "Update a json-data-type",
+        "description": "Find and update the item with the given id.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/json_data_type_update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/json_data_type_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Document Types"
+        ],
+        "operationId": "delete_json_data_type",
+        "summary": "Delete a json-data-type",
+        "description": "Find and destroy the item with the given id.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/item_removed_successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
       }
     }
   },
@@ -223,12 +308,6 @@
   },
   "components": {
     "schemas": {
-      "created_at": {
-        "description": "Date in iso8601 when the record was created",
-        "type": "string",
-        "format": "date-time-iso8601",
-        "readOnly": true
-      },
       "json_data_type": {
         "type": "object",
         "properties": {
@@ -339,15 +418,51 @@
           "ASC",
           "DESC"
         ]
-      },
-      "updated_at": {
-        "description": "Date in iso8601 when the record was updated",
-        "type": "string",
-        "format": "date-time-iso8601",
-        "readOnly": true
       }
     },
     "responses": {
+      "item_not_found": {
+        "description": "Not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "default": "item not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "item_removed_successfully": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "default": "ok"
+                }
+              }
+            }
+          }
+        }
+      },
+      "json_data_type_item": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/json_data_type"
+            }
+          }
+        }
+      },
       "json_data_type_items": {
         "description": "Success",
         "content": {
@@ -375,6 +490,16 @@
       }
     },
     "parameters": {
+      "path_item_id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "description": "Item identifier",
+          "type": "string",
+          "example": "5d04051125d9852c71016793"
+        }
+      },
       "query_embedding": {
         "name": "embedding",
         "in": "query",
@@ -426,6 +551,30 @@
           "type": "string",
           "description": "Comma separated set of attributes to sort items list.\n\n> To sort descendingly, the prefix sign (-) must be added.\n",
           "example": "-namespace,name"
+        }
+      }
+    },
+    "requestBodies": {
+      "json_data_type_create": {
+        "description": "The json-data-type that will be created",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/json_data_type"
+            }
+          }
+        }
+      },
+      "json_data_type_update": {
+        "description": "The json-data-type that will be updated",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/json_data_type"
+            }
+          }
         }
       }
     },
