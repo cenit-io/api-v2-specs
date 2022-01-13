@@ -1,0 +1,11 @@
+menuToggle: true
+theme:
+  logo:
+    gutter: 20px 30px 14px 30px
+  colors:
+    text:
+      primary: '#333333'
+  rightPanel:
+    backgroundColor: "#263238"
+  links:
+    color: "#6CC496"

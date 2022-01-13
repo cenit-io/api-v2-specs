@@ -1,0 +1,17 @@
+get:
+  tags:
+    - Document Types
+  operationId: get_json_data_type
+  summary: List all json-data-types
+  description: |
+    Returns the list of your json-data-types.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/json_data_type_items'

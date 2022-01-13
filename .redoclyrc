@@ -1,0 +1,7 @@
+apiTitle: Cenit-APIv2
+splitSpec: true
+codeSamples: true
+swaggerUI: true
+travis: true
+repo: cenit-io/api-v2-specs
+oasVersion: 3.0.0

@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  version: v2
+  title: CenitIO API Specifications
+  termsOfService: 'https://cenit.io/terms'
+  contact:
+    email: support@cenit.io
+    url: 'https://cenitio.slack.com/messages/support'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: logo.png
+  description: |
+    # Introduction
+
+    CenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designe to solve
+    unique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple
+    formats and protocols. Ready to use in our cloud or on-premises
+
+    The CenitIO APIv2 is a simple connector API for doing business and data integrations.
+
+    This API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.
+
+    * It is built over REST services on HTTPS.
+
+    * It has predictable resource URLs.
+
+    * It returns HTTP response codes to indicate errors.
+
+    * It accepts and returns JSON in the HTTP body.
+
+    * You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.
+
+      [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)
+
+tags:
+  - name: Document Types
+    description: |
+      ...
+
+  - name: File Types
+    description: |
+      ...
+
+  - name: Collections
+    description: |
+      ...
+
+  - name: Shared Collections
+    description: |
+      ...
+
+  - name: Algorithms
+    description: |
+      ...
+
+  - name: Applications
+    description: |
+      ...
+
+  - name: Snippets
+    description: |
+      ...
+
+  - name: Templates
+    description: |
+      ...
+
+  - name: Parsers
+    description: |
+      ...
+
+  - name: Converters
+    description: |
+      ...
+
+  - name: Updaters
+    description: |
+      ...
+
+  - name: System Notifications
+    description: |
+      ...
+
+  - name: Tasks
+    description: |
+      ...
+
+  - name: Flows
+    description: |
+      ...
+
+  - name: Observers
+    description: |
+      ...
+
+  - name: Schedulers
+    description: |
+      ...
+
+  - name: Connections
+    description: |
+      ...
+
+  - name: Resouces
+    description: |
+      ...
+
+  - name: Authorizations Clients
+    description: |
+      ...
+
+  - name: Authorizations Providers
+    description: |
+      ...
+
+  - name: Authorizations
+    description: |
+      ...
+
+servers:
+  - url: 'https://cenit.io/api/v2'
+  - url: 'https://server.cenit.io/api/v2'
+
+security:
+  - X-Tenant-Access-Key: []
+    X-Tenant-Access-Token: []
+
+x-tagGroups:
+  - name: Data
+    tags:
+      - Document Types
+      - File Types
+
+  - name: Integrations
+    tags:
+      - Collections
+      - Shared Collections
+
+  - name: Compute
+    tags:
+      - Algorithms
+      - Applications
+      - Snippets
+
+  - name: Transformations
+    tags:
+      - Templates
+      - Parsers
+      - Converters
+      - Updaters
+
+  - name: Workflows
+    tags:
+      - Flows
+      - Observers
+      - Schedulers
+
+  - name: Monitors
+    tags:
+      - Tasks
+      - System Notifications
+
+  - name: Gateways
+    tags:
+      - Connections
+      - Resources
+
+  - name: Security
+    tags:
+      - Authorizations Clients
+      - Authorizations Providers
+      - Authorizations
+
+paths:
+
+externalDocs:
+  description: CenitIO-Documentation
+  url: https://cenit-io.github.io/docs

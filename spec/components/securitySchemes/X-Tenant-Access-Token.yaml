@@ -1,0 +1,7 @@
+type: apiKey
+name: X-Tenant-Access-Token
+in: header
+description: |
+  Tenant authentication Token.
+
+  > Each service request must include an **X-Tenant-Access-Token** header or parameter.
