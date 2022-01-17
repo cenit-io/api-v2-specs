@@ -229,7 +229,7 @@
         "summary": "Create a algorithm",
         "description": "Add a new item.\n",
         "requestBody": {
-          "$ref": "#/components/requestBodies/algorithm_create"
+          "$ref": "#/components/requestBodies/algorithm_data"
         },
         "responses": {
           "200": {
@@ -291,7 +291,7 @@
         "summary": "Update a algorithm",
         "description": "Find and update the item with the given id.\n",
         "requestBody": {
-          "$ref": "#/components/requestBodies/algorithm_update"
+          "$ref": "#/components/requestBodies/algorithm_data"
         },
         "responses": {
           "200": {
@@ -366,6 +366,10 @@
         },
         "x-code-samples": [
           {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=snippet"
+          },
+          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/json_data_type',\n  params: { limit: 2, page: 1, order: '-namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -379,7 +383,7 @@
         "summary": "Create a json-data-type",
         "description": "Add a new item.\n",
         "requestBody": {
-          "$ref": "#/components/requestBodies/json_data_type_create"
+          "$ref": "#/components/requestBodies/json_data_type_data"
         },
         "responses": {
           "200": {
@@ -387,6 +391,10 @@
           }
         },
         "x-code-samples": [
+          {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"Person45\",\n      \"code\": \"{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"dni\\\":{\\\"type\\\":\\\"string\\\"},\\\"name\\\":{\\\"type\\\":\\\"string\\\"}}}\"\n  }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/json_data_type',\n  data: {\n    namespace: \"Test\",\n    name: \"Person4\",\n    code: JSON.stringify(\n      {\n        type: \"object\",\n        properties: {\n          dni: {\n            type: \"string\"\n          },\n          name: {\n            type: \"string\"\n          }\n        }\n      }\n    )\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -428,6 +436,10 @@
         },
         "x-code-samples": [
           {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
+          },
+          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e0312b5a5a2353ad004469'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/json_data_type/${item_id}`,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -441,7 +453,7 @@
         "summary": "Update a json-data-type",
         "description": "Find and update the item with the given id.\n",
         "requestBody": {
-          "$ref": "#/components/requestBodies/json_data_type_update"
+          "$ref": "#/components/requestBodies/json_data_type_data"
         },
         "responses": {
           "200": {
@@ -452,6 +464,10 @@
           }
         },
         "x-code-samples": [
+          {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"Person46\"\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e0312b5a5a2353ad004469'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/json_data_type/${item_id}`,\n  data: {\n    namespace: \"Test\",\n    name: \"Person3\",\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -474,6 +490,10 @@
           }
         },
         "x-code-samples": [
+          {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
+          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e0312b5a5a2353ad004469'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/json_data_type/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -982,8 +1002,8 @@
       }
     },
     "requestBodies": {
-      "algorithm_create": {
-        "description": "The algorithm that will be created",
+      "algorithm_data": {
+        "description": "The algorithm that will be created or updated",
         "required": true,
         "content": {
           "application/json": {
@@ -993,30 +1013,8 @@
           }
         }
       },
-      "algorithm_update": {
-        "description": "The algorithm that will be updated",
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/algorithm"
-            }
-          }
-        }
-      },
-      "json_data_type_create": {
-        "description": "The json-data-type that will be created",
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/json_data_type"
-            }
-          }
-        }
-      },
-      "json_data_type_update": {
-        "description": "The json-data-type that will be updated",
+      "json_data_type_data": {
+        "description": "The json-data-type that will be created or updated",
         "required": true,
         "content": {
           "application/json": {

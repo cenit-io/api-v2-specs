@@ -199,7 +199,7 @@ paths:
       description: |
         Add a new item.
       requestBody:
-        $ref: '#/components/requestBodies/algorithm_create'
+        $ref: '#/components/requestBodies/algorithm_data'
       responses:
         '200':
           $ref: '#/components/responses/algorithm_item_create'
@@ -301,7 +301,7 @@ paths:
       description: |
         Find and update the item with the given id.
       requestBody:
-        $ref: '#/components/requestBodies/algorithm_update'
+        $ref: '#/components/requestBodies/algorithm_data'
       responses:
         '200':
           $ref: '#/components/responses/algorithm_item'
@@ -406,6 +406,20 @@ paths:
         '200':
           $ref: '#/components/responses/json_data_type_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -438,11 +452,32 @@ paths:
       description: |
         Add a new item.
       requestBody:
-        $ref: '#/components/requestBodies/json_data_type_create'
+        $ref: '#/components/requestBodies/json_data_type_data'
       responses:
         '200':
           $ref: '#/components/responses/json_data_type_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+
+            read -r -d '' data <<- EOM
+              {
+                  "namespace": "Test",
+                  "name": "Person45",
+                  "code": "{\"type\":\"object\",\"properties\":{\"dni\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}}"
+              }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -505,6 +540,17 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+            item_id="61e0312b5a5a2353ad004469"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -539,13 +585,34 @@ paths:
       description: |
         Find and update the item with the given id.
       requestBody:
-        $ref: '#/components/requestBodies/json_data_type_update'
+        $ref: '#/components/requestBodies/json_data_type_data'
       responses:
         '200':
           $ref: '#/components/responses/json_data_type_item'
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+            item_id="61e0312b5a5a2353ad004469"
+
+            read -r -d '' data <<- EOM
+              {
+                  "namespace": "Test",
+                  "name": "Person46"
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -589,6 +656,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+            item_id="61e0312b5a5a2353ad004469"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -947,29 +1026,15 @@ components:
           > To sort descendingly, the prefix sign (-) must be added.
         example: '-namespace,name'
   requestBodies:
-    algorithm_create:
-      description: The algorithm that will be created
+    algorithm_data:
+      description: The algorithm that will be created or updated
       required: true
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/algorithm'
-    algorithm_update:
-      description: The algorithm that will be updated
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/algorithm'
-    json_data_type_create:
-      description: The json-data-type that will be created
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/json_data_type'
-    json_data_type_update:
-      description: The json-data-type that will be updated
+    json_data_type_data:
+      description: The json-data-type that will be created or updated
       required: true
       content:
         application/json:
