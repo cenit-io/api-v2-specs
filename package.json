@@ -10,5 +10,9 @@
     "build": "swagger-repo build",
     "gh-pages": "swagger-repo gh-pages",
     "test": "swagger-repo validate"
+  },
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^14.1.0"
   }
 }
