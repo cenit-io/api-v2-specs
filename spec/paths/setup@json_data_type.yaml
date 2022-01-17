@@ -24,7 +24,7 @@ post:
   description: |
     Add a new item.
   requestBody:
-    $ref: '#/components/requestBodies/json_data_type_create'
+    $ref: '#/components/requestBodies/json_data_type_data'
   responses:
     '200':
       $ref: '#/components/responses/json_data_type_item_create'

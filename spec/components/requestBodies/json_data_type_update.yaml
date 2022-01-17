@@ -1,6 +1,0 @@
-description: The json-data-type that will be updated
-required: true
-content:
-  application/json:
-    schema:
-      $ref: "#/components/schemas/json_data_type"

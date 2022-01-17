@@ -26,7 +26,7 @@ post:
   description: |
     Find and update the item with the given id.
   requestBody:
-    $ref: '#/components/requestBodies/algorithm_update'
+    $ref: '#/components/requestBodies/algorithm_data'
   responses:
     '200':
       $ref: '#/components/responses/algorithm_item'

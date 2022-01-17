@@ -1,4 +1,4 @@
-description: The json-data-type that will be created
+description: The json-data-type that will be created or updated
 required: true
 content:
   application/json:

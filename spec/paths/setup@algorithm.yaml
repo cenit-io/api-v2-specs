@@ -24,7 +24,7 @@ post:
   description: |
     Add a new item.
   requestBody:
-    $ref: '#/components/requestBodies/algorithm_create'
+    $ref: '#/components/requestBodies/algorithm_data'
   responses:
     '200':
       $ref: '#/components/responses/algorithm_item_create'

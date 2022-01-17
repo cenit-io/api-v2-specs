@@ -1,4 +1,4 @@
-description: The algorithm that will be updated
+description: The algorithm that will be created or updated
 required: true
 content:
   application/json:
