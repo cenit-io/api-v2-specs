@@ -7,11 +7,11 @@ content:
         success:
           type: object
           properties:
-            json_data_type:
+            algorithm:
               allOf:
                 - $ref: "#/components/schemas/algorithm"
                 - type: object
                   properties:
                     snippet:
                       readOnly: true
-                      $ref: "#/components/schemas/snippet_reference"
+                      $ref: "#/components/schemas/default_reference"

@@ -29,7 +29,7 @@ post:
     $ref: '#/components/requestBodies/algorithm_data'
   responses:
     '200':
-      $ref: '#/components/responses/algorithm_item'
+      $ref: '#/components/responses/algorithm_item_create'
     '404':
       $ref: '#/components/responses/item_not_found'
       
