@@ -753,7 +753,7 @@ paths:
         $ref: '#/components/requestBodies/ruby_parser_data'
       responses:
         '200':
-          $ref: '#/components/responses/ruby_parser_item'
+          $ref: '#/components/responses/ruby_parser_item_create'
         '404':
           $ref: '#/components/responses/item_not_found'
     delete:
@@ -761,6 +761,81 @@ paths:
         - Parsers
       operationId: delete_ruby_parser
       summary: Delete a ruby parser transformation.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+  /setup/ruby_template:
+    get:
+      tags:
+        - Templates
+      operationId: get_ruby_templates
+      summary: List all ruby template transformations
+      description: |
+        Returns the list of your ruby template transformations.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_items'
+    post:
+      tags:
+        - Templates
+      operationId: create_ruby_template
+      summary: Create a ruby template transformations.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_template_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_item_create'
+  '/setup/ruby_template/{id}':
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Templates
+      operationId: get_ruby_template
+      summary: Retrieve a ruby template transformation.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    post:
+      tags:
+        - Templates
+      operationId: update_ruby_template
+      summary: Update a ruby template transformation.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_template_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    delete:
+      tags:
+        - Templates
+      operationId: delete_ruby_template
+      summary: Delete a ruby template transformation.
       description: |
         Find and destroy the item with the given id.
       responses:
@@ -907,20 +982,58 @@ components:
           description: Lowercase name without spaces or special characters
         type:
           type: string
+          default: Import
           readOnly: true
         code:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
-        target_data_type:
+        target_data_type_id:
           type: string
-          description: The data type selected to storage data
+          description: The identify of the target data-type
           writeOnly: true
       required:
         - namespace
         - name
         - code
-        - target_data_type
+        - target_data_type_id
+    ruby_template:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        type:
+          type: string
+          default: Export
+          readOnly: true
+        mime_type:
+          type: string
+          description: The output mime-type
+          readOnly: true
+        file_extension:
+          type: string
+          description: The extension of the output file
+          readOnly: true
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+        source_data_type_id:
+          type: string
+          description: The identify of the source data-type
+          writeOnly: true
+      required:
+        - namespace
+        - name
+        - code
+        - source_data_type_id
     snippet_options:
       type: object
       properties:
@@ -961,6 +1074,13 @@ components:
       enum:
         - ASC
         - DESC
+    source_data_type_options:
+      type: object
+      properties:
+        source_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/default_reference'
+            - $ref: '#/components/schemas/json_data_type'
     target_data_type_options:
       type: object
       properties:
@@ -1086,6 +1206,9 @@ components:
                       - $ref: '#/components/schemas/ruby_parser'
                       - type: object
                         properties:
+                          target_data_type:
+                            readOnly: true
+                            $ref: '#/components/schemas/default_reference'
                           snippet:
                             readOnly: true
                             $ref: '#/components/schemas/default_reference'
@@ -1113,6 +1236,52 @@ components:
                       allOf:
                         - $ref: '#/components/schemas/ruby_parser'
                         - $ref: '#/components/schemas/target_data_type_options'
+                        - $ref: '#/components/schemas/snippet_options'
+    ruby_template_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  ruby_template:
+                    allOf:
+                      - $ref: '#/components/schemas/ruby_template'
+                      - type: object
+                        properties:
+                          source_data_type:
+                            readOnly: true
+                            $ref: '#/components/schemas/default_reference'
+                          snippet:
+                            readOnly: true
+                            $ref: '#/components/schemas/default_reference'
+    ruby_template_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ruby_template'
+              - $ref: '#/components/schemas/source_data_type_options'
+              - $ref: '#/components/schemas/snippet_options'
+    ruby_template_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  ruby_templates:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ruby_template'
+                        - $ref: '#/components/schemas/source_data_type_options'
                         - $ref: '#/components/schemas/snippet_options'
   parameters:
     path_item_id:
@@ -1200,6 +1369,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ruby_parser'
+    ruby_template_data:
+      description: The translator that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ruby_template'
   securitySchemes:
     X-Tenant-Access-Key:
       type: apiKey
