@@ -1,0 +1,33 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  type:
+    type: string
+    default: 'Export'
+    readOnly: true
+  mime_type:
+    type: string
+    description: The output mime-type
+    readOnly: true
+  file_extension:
+    type: string
+    description: The extension of the output file
+    readOnly: true
+  code:
+    type: string
+    description: Code snippet in the previously selected language
+    writeOnly: true
+  source_data_type_id:
+    type: string
+    description: The identify of the source data-type
+    writeOnly: true
+
+required: [namespace,name,code,source_data_type_id]

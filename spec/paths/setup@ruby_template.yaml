@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Templates
+  operationId: get_ruby_templates
+  summary: List all ruby template transformations
+  description: |
+    Returns the list of your ruby template transformations.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/ruby_template_items'
+
+post:
+  tags:
+    - Templates
+  operationId: create_ruby_template
+  summary: Create a ruby template transformations.
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/ruby_template_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/ruby_template_item_create'

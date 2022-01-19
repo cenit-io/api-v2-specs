@@ -1,0 +1,20 @@
+description: Success
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: object
+          properties:
+            ruby_template:
+              allOf:
+                - $ref: "#/components/schemas/ruby_template"
+                - type: object
+                  properties:
+                    source_data_type:
+                      readOnly: true
+                      $ref: "#/components/schemas/default_reference"
+                    snippet:
+                      readOnly: true
+                      $ref: "#/components/schemas/default_reference"

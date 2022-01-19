@@ -1,0 +1,8 @@
+description: Success
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/ruby_template"
+        - $ref: "#/components/schemas/source_data_type_options"
+        - $ref: "#/components/schemas/snippet_options"
