@@ -1,0 +1,47 @@
+parameters:
+  - $ref: '#/components/parameters/path_item_id'
+
+get:
+  tags:
+    - Parsers
+  operationId: get_ruby_parser
+  summary: Retrieve a ruby parser transformation.
+  description: |
+    Find and return the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/ruby_parser_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+
+post:
+  tags:
+    - Parsers
+  operationId: update_ruby_parser
+  summary: Update a ruby parser transformation.
+  description: |
+    Find and update the item with the given id.
+  requestBody:
+    $ref: '#/components/requestBodies/ruby_parser_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/ruby_parser_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+      
+delete:
+  tags:
+    - Parsers
+  operationId: delete_ruby_parser
+  summary: Delete a ruby parser transformation.
+  description: |
+    Find and destroy the item with the given id.
+  responses:
+    '200':
+      $ref: '#/components/responses/item_removed_successfully'
+    '404':
+      $ref: '#/components/responses/item_not_found'

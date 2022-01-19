@@ -1,0 +1,17 @@
+description: Success
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: object
+          properties:
+            ruby_parser:
+              allOf:
+                - $ref: "#/components/schemas/ruby_parser"
+                - type: object
+                  properties:
+                    snippet:
+                      readOnly: true
+                      $ref: "#/components/schemas/default_reference"

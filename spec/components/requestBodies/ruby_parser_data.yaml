@@ -1,0 +1,6 @@
+description: The translator that will be created or updated
+required: true
+content:
+  application/json:
+    schema:
+      $ref: "#/components/schemas/ruby_parser"

@@ -1,0 +1,24 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  type:
+    type: string
+    readOnly: true
+  code:
+    type: string
+    description: Code snippet in the previously selected language
+    writeOnly: true
+  target_data_type:
+    type: string
+    description: The data type selected to storage data
+    writeOnly: true
+
+required: [namespace,name,code,target_data_type]
