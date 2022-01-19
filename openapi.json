@@ -295,7 +295,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/algorithm_item"
+            "$ref": "#/components/responses/algorithm_item_create"
           },
           "404": {
             "$ref": "#/components/responses/item_not_found"
@@ -457,7 +457,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/json_data_type_item"
+            "$ref": "#/components/responses/json_data_type_item_create"
           },
           "404": {
             "$ref": "#/components/responses/item_not_found"
@@ -499,6 +499,126 @@
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e0312b5a5a2353ad004469'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/json_data_type/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
         ]
+      }
+    },
+    "/setup/ruby_parser": {
+      "get": {
+        "tags": [
+          "Parsers"
+        ],
+        "operationId": "get_ruby_parsers",
+        "summary": "List all ruby parser transformations",
+        "description": "Returns the list of your ruby parser transformations.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_offset"
+          },
+          {
+            "$ref": "#/components/parameters/query_limit"
+          },
+          {
+            "$ref": "#/components/parameters/query_sort"
+          },
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_parser_items"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parsers"
+        ],
+        "operationId": "create_ruby_parser",
+        "summary": "Create a ruby parser transformations.",
+        "description": "Add a new item.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ruby_parser_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_parser_item_create"
+          }
+        }
+      }
+    },
+    "/setup/ruby_parser/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/path_item_id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Parsers"
+        ],
+        "operationId": "get_ruby_parser",
+        "summary": "Retrieve a ruby parser transformation.",
+        "description": "Find and return the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_parser_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parsers"
+        ],
+        "operationId": "update_ruby_parser",
+        "summary": "Update a ruby parser transformation.",
+        "description": "Find and update the item with the given id.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ruby_parser_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_parser_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Parsers"
+        ],
+        "operationId": "delete_ruby_parser",
+        "summary": "Delete a ruby parser transformation.",
+        "description": "Find and destroy the item with the given id.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/item_removed_successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
       }
     }
   },
@@ -598,6 +718,27 @@
           "code"
         ]
       },
+      "default_reference": {
+        "type": "object",
+        "properties": {
+          "_reference": {
+            "type": "boolean",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Item identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name without spaces or special characters"
+          }
+        }
+      },
       "json_data_type": {
         "type": "object",
         "properties": {
@@ -656,28 +797,9 @@
           }
         }
       },
-      "snippet_options": {
+      "ruby_parser": {
         "type": "object",
         "properties": {
-          "snippet": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/snippet_reference"
-              },
-              {
-                "$ref": "#/components/schemas/snippet"
-              }
-            ]
-          }
-        }
-      },
-      "snippet_reference": {
-        "type": "object",
-        "properties": {
-          "_reference": {
-            "type": "boolean",
-            "default": true
-          },
           "id": {
             "type": "string",
             "readOnly": true,
@@ -688,7 +810,42 @@
           },
           "name": {
             "type": "string",
-            "description": "Name without spaces or special characters"
+            "description": "Lowercase name without spaces or special characters"
+          },
+          "type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "code": {
+            "type": "string",
+            "description": "Code snippet in the previously selected language",
+            "writeOnly": true
+          },
+          "target_data_type": {
+            "type": "string",
+            "description": "The data type selected to storage data",
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "namespace",
+          "name",
+          "code",
+          "target_data_type"
+        ]
+      },
+      "snippet_options": {
+        "type": "object",
+        "properties": {
+          "snippet": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/default_reference"
+              },
+              {
+                "$ref": "#/components/schemas/snippet"
+              }
+            ]
           }
         }
       },
@@ -736,6 +893,21 @@
           "ASC",
           "DESC"
         ]
+      },
+      "target_data_type_options": {
+        "type": "object",
+        "properties": {
+          "target_data_type": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/default_reference"
+              },
+              {
+                "$ref": "#/components/schemas/json_data_type"
+              }
+            ]
+          }
+        }
       }
     },
     "responses": {
@@ -749,7 +921,7 @@
                 "success": {
                   "type": "object",
                   "properties": {
-                    "json_data_type": {
+                    "algorithm": {
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/algorithm"
@@ -759,7 +931,7 @@
                           "properties": {
                             "snippet": {
                               "readOnly": true,
-                              "$ref": "#/components/schemas/snippet_reference"
+                              "$ref": "#/components/schemas/default_reference"
                             }
                           }
                         }
@@ -873,7 +1045,7 @@
                           "properties": {
                             "snippet": {
                               "readOnly": true,
-                              "$ref": "#/components/schemas/snippet_reference"
+                              "$ref": "#/components/schemas/default_reference"
                             }
                           }
                         }
@@ -921,6 +1093,94 @@
                         "allOf": [
                           {
                             "$ref": "#/components/schemas/json_data_type"
+                          },
+                          {
+                            "$ref": "#/components/schemas/snippet_options"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ruby_parser_item_create": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "ruby_parser": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ruby_parser"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "snippet": {
+                              "readOnly": true,
+                              "$ref": "#/components/schemas/default_reference"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ruby_parser_item": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ruby_parser"
+                },
+                {
+                  "$ref": "#/components/schemas/target_data_type_options"
+                },
+                {
+                  "$ref": "#/components/schemas/snippet_options"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ruby_parser_items": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/pagination"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "ruby_parsers": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/ruby_parser"
+                          },
+                          {
+                            "$ref": "#/components/schemas/target_data_type_options"
                           },
                           {
                             "$ref": "#/components/schemas/snippet_options"
@@ -1020,6 +1280,17 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/json_data_type"
+            }
+          }
+        }
+      },
+      "ruby_parser_data": {
+        "description": "The translator that will be created or updated",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ruby_parser"
             }
           }
         }

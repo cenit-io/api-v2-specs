@@ -304,7 +304,7 @@ paths:
         $ref: '#/components/requestBodies/algorithm_data'
       responses:
         '200':
-          $ref: '#/components/responses/algorithm_item'
+          $ref: '#/components/responses/algorithm_item_create'
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
@@ -588,7 +588,7 @@ paths:
         $ref: '#/components/requestBodies/json_data_type_data'
       responses:
         '200':
-          $ref: '#/components/responses/json_data_type_item'
+          $ref: '#/components/responses/json_data_type_item_create'
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
@@ -693,6 +693,81 @@ paths:
               // Do something with the error
               console.error(JSON.stringify(error.response.data, null, 2));
             });
+  /setup/ruby_parser:
+    get:
+      tags:
+        - Parsers
+      operationId: get_ruby_parsers
+      summary: List all ruby parser transformations
+      description: |
+        Returns the list of your ruby parser transformations.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_items'
+    post:
+      tags:
+        - Parsers
+      operationId: create_ruby_parser
+      summary: Create a ruby parser transformations.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_parser_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_item_create'
+  '/setup/ruby_parser/{id}':
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Parsers
+      operationId: get_ruby_parser
+      summary: Retrieve a ruby parser transformation.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    post:
+      tags:
+        - Parsers
+      operationId: update_ruby_parser
+      summary: Update a ruby parser transformation.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_parser_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    delete:
+      tags:
+        - Parsers
+      operationId: delete_ruby_parser
+      summary: Delete a ruby parser transformation.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
 externalDocs:
   description: CenitIO-Documentation
   url: 'https://cenit-io.github.io/docs'
@@ -761,6 +836,21 @@ components:
         - name
         - language
         - code
+    default_reference:
+      type: object
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
     json_data_type:
       type: object
       properties:
@@ -803,19 +893,9 @@ components:
         count:
           description: Total number of items
           type: integer
-    snippet_options:
+    ruby_parser:
       type: object
       properties:
-        snippet:
-          oneOf:
-            - $ref: '#/components/schemas/snippet_reference'
-            - $ref: '#/components/schemas/snippet'
-    snippet_reference:
-      type: object
-      properties:
-        _reference:
-          type: boolean
-          default: true
         id:
           type: string
           readOnly: true
@@ -824,7 +904,30 @@ components:
           type: string
         name:
           type: string
-          description: Name without spaces or special characters
+          description: Lowercase name without spaces or special characters
+        type:
+          type: string
+          readOnly: true
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+        target_data_type:
+          type: string
+          description: The data type selected to storage data
+          writeOnly: true
+      required:
+        - namespace
+        - name
+        - code
+        - target_data_type
+    snippet_options:
+      type: object
+      properties:
+        snippet:
+          oneOf:
+            - $ref: '#/components/schemas/default_reference'
+            - $ref: '#/components/schemas/snippet'
     snippet:
       type: object
       properties:
@@ -858,6 +961,13 @@ components:
       enum:
         - ASC
         - DESC
+    target_data_type_options:
+      type: object
+      properties:
+        target_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/default_reference'
+            - $ref: '#/components/schemas/json_data_type'
   responses:
     algorithm_item_create:
       description: Success
@@ -869,14 +979,14 @@ components:
               success:
                 type: object
                 properties:
-                  json_data_type:
+                  algorithm:
                     allOf:
                       - $ref: '#/components/schemas/algorithm'
                       - type: object
                         properties:
                           snippet:
                             readOnly: true
-                            $ref: '#/components/schemas/snippet_reference'
+                            $ref: '#/components/schemas/default_reference'
     algorithm_item:
       description: Success
       content:
@@ -937,7 +1047,7 @@ components:
                         properties:
                           snippet:
                             readOnly: true
-                            $ref: '#/components/schemas/snippet_reference'
+                            $ref: '#/components/schemas/default_reference'
     json_data_type_item:
       description: Success
       content:
@@ -960,6 +1070,49 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/json_data_type'
+                        - $ref: '#/components/schemas/snippet_options'
+    ruby_parser_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  ruby_parser:
+                    allOf:
+                      - $ref: '#/components/schemas/ruby_parser'
+                      - type: object
+                        properties:
+                          snippet:
+                            readOnly: true
+                            $ref: '#/components/schemas/default_reference'
+    ruby_parser_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ruby_parser'
+              - $ref: '#/components/schemas/target_data_type_options'
+              - $ref: '#/components/schemas/snippet_options'
+    ruby_parser_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  ruby_parsers:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ruby_parser'
+                        - $ref: '#/components/schemas/target_data_type_options'
                         - $ref: '#/components/schemas/snippet_options'
   parameters:
     path_item_id:
@@ -1040,6 +1193,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/json_data_type'
+    ruby_parser_data:
+      description: The translator that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ruby_parser'
   securitySchemes:
     X-Tenant-Access-Key:
       type: apiKey
