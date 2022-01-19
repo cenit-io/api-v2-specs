@@ -29,7 +29,7 @@ post:
     $ref: '#/components/requestBodies/ruby_parser_data'
   responses:
     '200':
-      $ref: '#/components/responses/ruby_parser_item'
+      $ref: '#/components/responses/ruby_parser_item_create'
     '404':
       $ref: '#/components/responses/item_not_found'
       
