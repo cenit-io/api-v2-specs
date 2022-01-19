@@ -12,6 +12,9 @@ content:
                 - $ref: "#/components/schemas/ruby_parser"
                 - type: object
                   properties:
+                    target_data_type:
+                      readOnly: true
+                      $ref: "#/components/schemas/default_reference"
                     snippet:
                       readOnly: true
                       $ref: "#/components/schemas/default_reference"
