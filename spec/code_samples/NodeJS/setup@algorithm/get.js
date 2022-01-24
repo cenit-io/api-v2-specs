@@ -16,7 +16,7 @@ const request = axios({
   method: 'GET',
   url: 'setup/algorithm',
   httpsAgent: agent,
-  params: { limit: 2, page: 1, order: '-namespace,name', embedding: 'snippet' }
+  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }
 });
 
 request.then((response) => {

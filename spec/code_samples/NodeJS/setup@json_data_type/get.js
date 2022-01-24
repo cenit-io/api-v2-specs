@@ -10,7 +10,7 @@ axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_A
 const request = axios({
   method: 'GET',
   url: 'setup/json_data_type',
-  params: { limit: 2, page: 1, order: '-namespace,name', embedding: 'snippet' }
+  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }
 });
 
 request.then((response) => {
