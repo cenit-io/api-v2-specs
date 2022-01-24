@@ -926,6 +926,15 @@ components:
         name:
           type: string
           description: Name without spaces or special characters
+    identify_reference:
+      type: object
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          description: Item identifier
     json_data_type:
       type: object
       properties:
@@ -988,15 +997,6 @@ components:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
-        target_data_type_id:
-          type: string
-          description: The identify of the target data-type
-          writeOnly: true
-      required:
-        - namespace
-        - name
-        - code
-        - target_data_type_id
     ruby_template:
       type: object
       properties:
@@ -1088,6 +1088,13 @@ components:
           oneOf:
             - $ref: '#/components/schemas/default_reference'
             - $ref: '#/components/schemas/json_data_type'
+    target_data_type_request:
+      type: object
+      properties:
+        target_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/default_reference'
+            - $ref: '#/components/schemas/identify_reference'
   responses:
     algorithm_item_create:
       description: Success
@@ -1368,7 +1375,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ruby_parser'
+            allOf:
+              - $ref: '#/components/schemas/ruby_parser'
+              - $ref: '#/components/schemas/target_data_type_request'
+            required:
+              - namespace
+              - name
+              - code
+              - target_data_type
     ruby_template_data:
       description: The translator that will be created or updated
       required: true

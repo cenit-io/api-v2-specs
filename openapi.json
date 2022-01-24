@@ -859,6 +859,19 @@
           }
         }
       },
+      "identify_reference": {
+        "type": "object",
+        "properties": {
+          "_reference": {
+            "type": "boolean",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "description": "Item identifier"
+          }
+        }
+      },
       "json_data_type": {
         "type": "object",
         "properties": {
@@ -941,19 +954,8 @@
             "type": "string",
             "description": "Code snippet in the previously selected language",
             "writeOnly": true
-          },
-          "target_data_type_id": {
-            "type": "string",
-            "description": "The identify of the target data-type",
-            "writeOnly": true
           }
-        },
-        "required": [
-          "namespace",
-          "name",
-          "code",
-          "target_data_type_id"
-        ]
+        }
       },
       "ruby_template": {
         "type": "object",
@@ -1088,6 +1090,21 @@
               },
               {
                 "$ref": "#/components/schemas/json_data_type"
+              }
+            ]
+          }
+        }
+      },
+      "target_data_type_request": {
+        "type": "object",
+        "properties": {
+          "target_data_type": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/default_reference"
+              },
+              {
+                "$ref": "#/components/schemas/identify_reference"
               }
             ]
           }
@@ -1570,7 +1587,20 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ruby_parser"
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ruby_parser"
+                },
+                {
+                  "$ref": "#/components/schemas/target_data_type_request"
+                }
+              ],
+              "required": [
+                "namespace",
+                "name",
+                "code",
+                "target_data_type"
+              ]
             }
           }
         }
