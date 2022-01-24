@@ -1,0 +1,9 @@
+type: "object"
+properties:
+  _reference:
+    type: boolean
+    default: true
+  id:
+    type: string
+    description: Item identifier
+

@@ -17,9 +17,3 @@ properties:
     type: string
     description: Code snippet in the previously selected language
     writeOnly: true
-  target_data_type_id:
-    type: string
-    description: The identify of the target data-type
-    writeOnly: true
-
-required: [namespace,name,code,target_data_type_id]
