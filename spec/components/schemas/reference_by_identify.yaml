@@ -1,4 +1,5 @@
 type: "object"
+title: "reference by id"
 properties:
   _reference:
     type: boolean

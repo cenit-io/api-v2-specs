@@ -25,9 +25,3 @@ properties:
     type: string
     description: Code snippet in the previously selected language
     writeOnly: true
-  source_data_type_id:
-    type: string
-    description: The identify of the source data-type
-    writeOnly: true
-
-required: [namespace,name,code,source_data_type_id]

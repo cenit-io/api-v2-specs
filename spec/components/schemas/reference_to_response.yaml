@@ -1,5 +1,9 @@
 type: "object"
+title: "reference"
 properties:
+  _reference:
+    type: boolean
+    default: true
   id:
     type: string
     readOnly: true
@@ -9,13 +13,3 @@ properties:
   name:
     type: string
     description: Name without spaces or special characters
-  type:
-    type: string
-  code:
-    type: string
-    description: Code snippet
-  slug:
-    type: string
-  navigation_link:
-    type: boolean
-    default: false

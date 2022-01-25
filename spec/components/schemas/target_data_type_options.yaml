@@ -1,6 +1,0 @@
-type: "object"
-properties:
-  target_data_type:
-    oneOf:
-      - $ref: "#/components/schemas/default_reference"
-      - $ref: "#/components/schemas/json_data_type"

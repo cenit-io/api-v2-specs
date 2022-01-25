@@ -1,6 +1,7 @@
 type: "object"
 properties:
   snippet:
+    readOnly: true
     oneOf:
-      - $ref: "#/components/schemas/default_reference"
+      - $ref: "#/components/schemas/reference_to_response"
       - $ref: "#/components/schemas/snippet"

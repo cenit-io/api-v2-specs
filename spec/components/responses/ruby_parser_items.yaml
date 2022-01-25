@@ -11,5 +11,5 @@ content:
               items:
                 allOf:
                   - $ref: "#/components/schemas/ruby_parser"
-                  - $ref: "#/components/schemas/target_data_type_options"
-                  - $ref: "#/components/schemas/snippet_options"
+                  - $ref: "#/components/schemas/target_data_type_response"
+                  - $ref: "#/components/schemas/snippet_response"

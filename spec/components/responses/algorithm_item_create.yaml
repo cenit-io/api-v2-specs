@@ -13,5 +13,4 @@ content:
                 - type: object
                   properties:
                     snippet:
-                      readOnly: true
-                      $ref: "#/components/schemas/default_reference"
+                      $ref: "#/components/schemas/reference_to_response"

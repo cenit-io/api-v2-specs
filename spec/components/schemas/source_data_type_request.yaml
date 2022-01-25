@@ -1,6 +1,6 @@
 type: "object"
 properties:
-  target_data_type:
+  source_data_type:
     oneOf:
       - $ref: "#/components/schemas/reference_by_names"
       - $ref: "#/components/schemas/reference_by_identify"

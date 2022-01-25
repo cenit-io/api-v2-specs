@@ -4,4 +4,4 @@ content:
     schema:
       allOf:
         - $ref: "#/components/schemas/algorithm"
-        - $ref: "#/components/schemas/snippet_options"
+        - $ref: "#/components/schemas/snippet_response"
