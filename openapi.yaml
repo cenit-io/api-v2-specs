@@ -1039,8 +1039,6 @@ components:
           default: false
         default:
           type: string
-      required:
-        - name
     algorithm:
       type: object
       properties:
@@ -1080,11 +1078,6 @@ components:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/json_data_type'
-      required:
-        - namespace
-        - name
-        - language
-        - code
     default_reference:
       type: object
       properties:
@@ -1135,10 +1128,6 @@ components:
         navigation_link:
           type: boolean
           default: false
-      required:
-        - namespace
-        - name
-        - code
     pagination:
       type: object
       properties:
@@ -1535,14 +1524,31 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/algorithm'
+            required:
+              - namespace
+              - name
+              - language
+              - code
+            allOf:
+              - $ref: '#/components/schemas/algorithm'
+              - properties:
+                  parameters:
+                    type: array
+                    items:
+                      required:
+                        - name
     json_data_type_data:
       description: The json-data-type that will be created or updated
       required: true
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/json_data_type'
+            allOf:
+              - $ref: '#/components/schemas/json_data_type'
+            required:
+              - namespace
+              - name
+              - code
     ruby_parser_data:
       description: The translator that will be created or updated
       required: true
