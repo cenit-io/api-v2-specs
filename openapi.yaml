@@ -1078,30 +1078,17 @@ components:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/json_data_type'
-    default_reference:
+    json_data_type_response:
       type: object
-      properties:
-        _reference:
-          type: boolean
-          default: true
-        id:
-          type: string
-          readOnly: true
-          description: Item identifier
-        namespace:
-          type: string
-        name:
-          type: string
-          description: Name without spaces or special characters
-    identify_reference:
-      type: object
-      properties:
-        _reference:
-          type: boolean
-          default: true
-        id:
-          type: string
-          description: Item identifier
+      title: json_data_type
+      allOf:
+        - $ref: '#/components/schemas/json_data_type'
+        - type: object
+          properties:
+            snippet:
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/snippet'
     json_data_type:
       type: object
       properties:
@@ -1140,6 +1127,48 @@ components:
         count:
           description: Total number of items
           type: integer
+    reference_by_identify:
+      type: object
+      title: reference by id
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          description: Item identifier
+    reference_by_names:
+      type: object
+      title: reference by names
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+    reference_to_response:
+      type: object
+      title: reference
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
     ruby_parser:
       type: object
       properties:
@@ -1188,21 +1217,13 @@ components:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
-        source_data_type_id:
-          type: string
-          description: The identify of the source data-type
-          writeOnly: true
-      required:
-        - namespace
-        - name
-        - code
-        - source_data_type_id
-    snippet_options:
+    snippet_response:
       type: object
       properties:
         snippet:
+          readOnly: true
           oneOf:
-            - $ref: '#/components/schemas/default_reference'
+            - $ref: '#/components/schemas/reference_to_response'
             - $ref: '#/components/schemas/snippet'
     snippet:
       type: object
@@ -1226,38 +1247,40 @@ components:
         navigation_link:
           type: boolean
           default: false
-      required:
-        - namespace
-        - name
-        - type
-        - code
     sort_query_parameter:
       description: Sort criterial
       type: string
       enum:
         - ASC
         - DESC
-    source_data_type_options:
+    source_data_type_request:
       type: object
       properties:
         source_data_type:
           oneOf:
-            - $ref: '#/components/schemas/default_reference'
-            - $ref: '#/components/schemas/json_data_type'
-    target_data_type_options:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    source_data_type_response:
       type: object
       properties:
-        target_data_type:
+        source_data_type:
           oneOf:
-            - $ref: '#/components/schemas/default_reference'
-            - $ref: '#/components/schemas/json_data_type'
+            - $ref: '#/components/schemas/reference_to_response'
+            - $ref: '#/components/schemas/json_data_type_response'
     target_data_type_request:
       type: object
       properties:
         target_data_type:
           oneOf:
-            - $ref: '#/components/schemas/default_reference'
-            - $ref: '#/components/schemas/identify_reference'
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    target_data_type_response:
+      type: object
+      properties:
+        target_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/reference_to_response'
+            - $ref: '#/components/schemas/json_data_type_response'
   responses:
     algorithm_item_create:
       description: Success
@@ -1275,8 +1298,7 @@ components:
                       - type: object
                         properties:
                           snippet:
-                            readOnly: true
-                            $ref: '#/components/schemas/default_reference'
+                            $ref: '#/components/schemas/reference_to_response'
     algorithm_item:
       description: Success
       content:
@@ -1284,7 +1306,7 @@ components:
           schema:
             allOf:
               - $ref: '#/components/schemas/algorithm'
-              - $ref: '#/components/schemas/snippet_options'
+              - $ref: '#/components/schemas/snippet_response'
     algorithm_items:
       description: Success
       content:
@@ -1299,7 +1321,7 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/algorithm'
-                        - $ref: '#/components/schemas/snippet_options'
+                        - $ref: '#/components/schemas/snippet_response'
     item_not_found:
       description: Not found
       content:
@@ -1337,7 +1359,7 @@ components:
                         properties:
                           snippet:
                             readOnly: true
-                            $ref: '#/components/schemas/default_reference'
+                            $ref: '#/components/schemas/reference_to_response'
     json_data_type_item:
       description: Success
       content:
@@ -1345,7 +1367,7 @@ components:
           schema:
             allOf:
               - $ref: '#/components/schemas/json_data_type'
-              - $ref: '#/components/schemas/snippet_options'
+              - $ref: '#/components/schemas/snippet_response'
     json_data_type_items:
       description: Success
       content:
@@ -1360,7 +1382,7 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/json_data_type'
-                        - $ref: '#/components/schemas/snippet_options'
+                        - $ref: '#/components/schemas/snippet_response'
     ruby_parser_item_create:
       description: Success
       content:
@@ -1378,10 +1400,10 @@ components:
                         properties:
                           target_data_type:
                             readOnly: true
-                            $ref: '#/components/schemas/default_reference'
+                            $ref: '#/components/schemas/reference_to_response'
                           snippet:
                             readOnly: true
-                            $ref: '#/components/schemas/default_reference'
+                            $ref: '#/components/schemas/reference_to_response'
     ruby_parser_item:
       description: Success
       content:
@@ -1389,8 +1411,8 @@ components:
           schema:
             allOf:
               - $ref: '#/components/schemas/ruby_parser'
-              - $ref: '#/components/schemas/target_data_type_options'
-              - $ref: '#/components/schemas/snippet_options'
+              - $ref: '#/components/schemas/target_data_type_response'
+              - $ref: '#/components/schemas/snippet_response'
     ruby_parser_items:
       description: Success
       content:
@@ -1405,8 +1427,8 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/ruby_parser'
-                        - $ref: '#/components/schemas/target_data_type_options'
-                        - $ref: '#/components/schemas/snippet_options'
+                        - $ref: '#/components/schemas/target_data_type_response'
+                        - $ref: '#/components/schemas/snippet_response'
     ruby_template_item_create:
       description: Success
       content:
@@ -1423,11 +1445,13 @@ components:
                       - type: object
                         properties:
                           source_data_type:
-                            readOnly: true
-                            $ref: '#/components/schemas/default_reference'
+                            title: data_type reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
                           snippet:
-                            readOnly: true
-                            $ref: '#/components/schemas/default_reference'
+                            title: snippet reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
     ruby_template_item:
       description: Success
       content:
@@ -1435,8 +1459,8 @@ components:
           schema:
             allOf:
               - $ref: '#/components/schemas/ruby_template'
-              - $ref: '#/components/schemas/source_data_type_options'
-              - $ref: '#/components/schemas/snippet_options'
+              - $ref: '#/components/schemas/source_data_type_response'
+              - $ref: '#/components/schemas/snippet_response'
     ruby_template_items:
       description: Success
       content:
@@ -1451,8 +1475,8 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/ruby_template'
-                        - $ref: '#/components/schemas/source_data_type_options'
-                        - $ref: '#/components/schemas/snippet_options'
+                        - $ref: '#/components/schemas/source_data_type_response'
+                        - $ref: '#/components/schemas/snippet_response'
   parameters:
     path_item_id:
       name: id
@@ -1569,7 +1593,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ruby_template'
+            allOf:
+              - $ref: '#/components/schemas/ruby_template'
+              - $ref: '#/components/schemas/source_data_type_request'
+            required:
+              - namespace
+              - name
+              - code
+              - source_data_type
   securitySchemes:
     X-Tenant-Access-Key:
       type: apiKey
