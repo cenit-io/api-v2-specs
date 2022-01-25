@@ -3,4 +3,6 @@ required: true
 content:
   application/json:
     schema:
-      $ref: "#/components/schemas/json_data_type"
+      allOf:
+        - $ref: "#/components/schemas/json_data_type"
+      required: [namespace,name,code]

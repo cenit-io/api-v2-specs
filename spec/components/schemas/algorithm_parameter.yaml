@@ -14,5 +14,3 @@ properties:
     default: false
   default:
     type: string
-
-required: [name]

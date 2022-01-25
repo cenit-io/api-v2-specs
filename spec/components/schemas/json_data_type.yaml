@@ -23,4 +23,3 @@ properties:
   navigation_link:
     type: boolean
     default: false
-required: [namespace,name,code]

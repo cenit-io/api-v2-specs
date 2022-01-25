@@ -3,4 +3,11 @@ required: true
 content:
   application/json:
     schema:
-      $ref: "#/components/schemas/algorithm"
+      required: [namespace,name,language,code]
+      allOf:
+        - $ref: "#/components/schemas/algorithm"
+        - properties:
+            parameters:
+              type: array
+              items:
+                required: [name]
