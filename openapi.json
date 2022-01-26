@@ -683,7 +683,13 @@
           "200": {
             "$ref": "#/components/responses/ruby_template_items"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/ruby_template',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -699,7 +705,13 @@
           "200": {
             "$ref": "#/components/responses/ruby_template_item_create"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/ruby_template',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"template_test_01\",\n    mime_type: 'application/json',\n    file_extension: 'json',\n    bulk_source: false,\n    source_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person\"\n    },\n    code: 'source.to_json',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          }
+        ]
       }
     },
     "/setup/ruby_template/{id}": {
@@ -733,7 +745,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -752,7 +770,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    mime_type: 'application/json',\n    file_extension: 'json',\n    bulk_source: true,\n    code: 'sources.to_json',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -768,7 +792,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeb7f5a5a234adc00ab2b'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       }
     }
   },
@@ -1050,6 +1080,11 @@
             "type": "string",
             "description": "The extension of the output file",
             "readOnly": true
+          },
+          "bulk_source": {
+            "type": "boolean",
+            "description": "When the value is true, the **sources** parameter is received with multiple records, otherwise a single record is received in the **source** parameter.",
+            "default": false
           },
           "code": {
             "type": "string",

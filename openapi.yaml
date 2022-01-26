@@ -960,6 +960,37 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ruby_template_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/ruby_template',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Templates
@@ -972,6 +1003,51 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ruby_template_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: |+
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/ruby_template',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "template_test_01",
+                mime_type: 'application/json',
+                file_extension: 'json',
+                bulk_source: false,
+                source_data_type: {
+                  _reference: true,
+                  namespace: "Test",
+                  name: "Person"
+                },
+                code: 'source.to_json',
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
   '/setup/ruby_template/{id}':
     parameters:
       - $ref: '#/components/parameters/path_item_id'
@@ -991,6 +1067,39 @@ paths:
           $ref: '#/components/responses/ruby_template_item'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61f1597a5a5a2353be026f14'
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/ruby_template/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Templates
@@ -1005,6 +1114,45 @@ paths:
           $ref: '#/components/responses/ruby_template_item_create'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61f1597a5a5a2353be026f14'
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/ruby_template/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                mime_type: 'application/json',
+                file_extension: 'json',
+                bulk_source: true,
+                code: 'sources.to_json',
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     delete:
       tags:
         - Templates
@@ -1017,6 +1165,38 @@ paths:
           $ref: '#/components/responses/item_removed_successfully'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '61eeeb7f5a5a234adc00ab2b'
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/ruby_template/${item_id}`,
+              httpsAgent: agent,
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
 externalDocs:
   description: CenitIO-Documentation
   url: 'https://cenit-io.github.io/docs'
@@ -1213,6 +1393,10 @@ components:
           type: string
           description: The extension of the output file
           readOnly: true
+        bulk_source:
+          type: boolean
+          description: 'When the value is true, the **sources** parameter is received with multiple records, otherwise a single record is received in the **source** parameter.'
+          default: false
         code:
           type: string
           description: Code snippet in the previously selected language
