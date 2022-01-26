@@ -1725,6 +1725,8 @@ components:
 
           > To sort descendingly, the prefix sign (-) must be added.
         example: '-namespace,name'
+  examples: {}
+  headers: {}
   requestBodies:
     algorithm_data:
       description: The algorithm that will be created or updated
