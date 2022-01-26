@@ -1073,11 +1073,13 @@
           },
           "mime_type": {
             "type": "string",
-            "description": "The output mime-type"
+            "description": "The output mime-type",
+            "readOnly": true
           },
           "file_extension": {
             "type": "string",
-            "description": "The extension of the output file"
+            "description": "The extension of the output file",
+            "readOnly": true
           },
           "bulk_source": {
             "type": "boolean",
@@ -1661,8 +1663,6 @@
         }
       }
     },
-    "examples": {},
-    "headers": {},
     "requestBodies": {
       "algorithm_data": {
         "description": "The algorithm that will be created or updated",
