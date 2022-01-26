@@ -1388,11 +1388,9 @@ components:
         mime_type:
           type: string
           description: The output mime-type
-          readOnly: true
         file_extension:
           type: string
           description: The extension of the output file
-          readOnly: true
         bulk_source:
           type: boolean
           description: 'When the value is true, the **sources** parameter is received with multiple records, otherwise a single record is received in the **source** parameter.'
@@ -1725,6 +1723,8 @@ components:
 
           > To sort descendingly, the prefix sign (-) must be added.
         example: '-namespace,name'
+  examples: {}
+  headers: {}
   requestBodies:
     algorithm_data:
       description: The algorithm that will be created or updated
