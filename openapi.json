@@ -1073,13 +1073,11 @@
           },
           "mime_type": {
             "type": "string",
-            "description": "The output mime-type",
-            "readOnly": true
+            "description": "The output mime-type"
           },
           "file_extension": {
             "type": "string",
-            "description": "The extension of the output file",
-            "readOnly": true
+            "description": "The extension of the output file"
           },
           "bulk_source": {
             "type": "boolean",
