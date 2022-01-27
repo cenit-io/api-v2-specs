@@ -1,0 +1,10 @@
+description: The translator that will be created or updated
+required: true
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/ruby_converter"
+        - $ref: "#/components/schemas/source_data_type_request"
+        - $ref: "#/components/schemas/target_data_type_request"
+      required: [namespace,name,code,source_data_type,target_data_type]

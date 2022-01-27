@@ -1,0 +1,26 @@
+description: Success
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: object
+          properties:
+            ruby_converter:
+              allOf:
+                - $ref: "#/components/schemas/ruby_converter"
+                - type: object
+                  properties:
+                    source_data_type:
+                      title: "data_type reference"
+                      allOf:
+                        - $ref: "#/components/schemas/reference_to_response"
+                    target_data_type:
+                      title: "data_type reference"
+                      allOf:
+                        - $ref: "#/components/schemas/reference_to_response"
+                    snippet:
+                      title: "snippet reference"
+                      allOf:
+                        - $ref: "#/components/schemas/reference_to_response"

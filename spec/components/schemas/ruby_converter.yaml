@@ -1,0 +1,32 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  type:
+    type: string
+    default: 'Conversion'
+    readOnly: true
+  source_handler:
+    type: boolean
+    default: false
+    description: |
+      When the value is false:
+        * The target_data_type is required.
+        * A **target** parameter is received with a new record of the target_data_type.
+        * A single record is received in the **source** parameter to be process.
+        * At the end of the process this record will be persisted automatically.
+
+      When the value is true:
+        * The **sources** parameter is received with multiple records to be process.
+        * It is the developer's responsibility to create and persist the target record.
+  code:
+    type: string
+    description: Code snippet in the previously selected language
+    writeOnly: true

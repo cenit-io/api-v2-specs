@@ -1,0 +1,16 @@
+description: Success
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/pagination"
+        - type: object
+          properties:
+            ruby_converters:
+              type: array
+              items:
+                allOf:
+                  - $ref: "#/components/schemas/ruby_converter"
+                  - $ref: "#/components/schemas/source_data_type_response"
+                  - $ref: "#/components/schemas/target_data_type_response"
+                  - $ref: "#/components/schemas/snippet_response"

@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Converters
+  operationId: get_ruby_converters
+  summary: List all ruby converter transformations
+  description: |
+    Returns the list of your ruby converter transformations.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/ruby_converter_items'
+
+post:
+  tags:
+    - Converters
+  operationId: create_ruby_converter
+  summary: Create a ruby converter transformations.
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/ruby_converter_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/ruby_converter_item_create'
