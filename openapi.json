@@ -501,6 +501,126 @@
         ]
       }
     },
+    "/setup/ruby_converter": {
+      "get": {
+        "tags": [
+          "Converters"
+        ],
+        "operationId": "get_ruby_converters",
+        "summary": "List all ruby converter transformations",
+        "description": "Returns the list of your ruby converter transformations.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_offset"
+          },
+          {
+            "$ref": "#/components/parameters/query_limit"
+          },
+          {
+            "$ref": "#/components/parameters/query_sort"
+          },
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_converter_items"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Converters"
+        ],
+        "operationId": "create_ruby_converter",
+        "summary": "Create a ruby converter transformations.",
+        "description": "Add a new item.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ruby_converter_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_converter_item_create"
+          }
+        }
+      }
+    },
+    "/setup/ruby_converter/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/path_item_id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Converters"
+        ],
+        "operationId": "get_ruby_converter",
+        "summary": "Retrieve a ruby converter transformation.",
+        "description": "Find and return the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_converter_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Converters"
+        ],
+        "operationId": "update_ruby_converter",
+        "summary": "Update a ruby converter transformation.",
+        "description": "Find and update the item with the given id.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ruby_converter_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ruby_converter_item_create"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Converters"
+        ],
+        "operationId": "delete_ruby_converter",
+        "summary": "Delete a ruby converter transformation.",
+        "description": "Find and destroy the item with the given id.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/item_removed_successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      }
+    },
     "/setup/ruby_parser": {
       "get": {
         "tags": [
@@ -796,7 +916,7 @@
         "x-code-samples": [
           {
             "lang": "NodeJS",
-            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeb7f5a5a234adc00ab2b'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
         ]
       }
@@ -1021,6 +1141,38 @@
           "name": {
             "type": "string",
             "description": "Name without spaces or special characters"
+          }
+        }
+      },
+      "ruby_converter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Item identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Lowercase name without spaces or special characters"
+          },
+          "type": {
+            "type": "string",
+            "default": "Conversion",
+            "readOnly": true
+          },
+          "source_handler": {
+            "type": "boolean",
+            "default": false,
+            "description": "When the value is false:\n  * The target_data_type is required.\n  * A **target** parameter is received with a new record of the target_data_type.\n  * A single record is received in the **source** parameter to be process.\n  * At the end of the process this record will be persisted automatically.\n\nWhen the value is true:\n  * The **sources** parameter is received with multiple records to be process.\n  * It is the developer's responsibility to create and persist the target record.\n"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code snippet in the previously selected language",
+            "writeOnly": true
           }
         }
       },
@@ -1403,6 +1555,120 @@
           }
         }
       },
+      "ruby_converter_item_create": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "ruby_converter": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ruby_converter"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "source_data_type": {
+                              "title": "data_type reference",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/reference_to_response"
+                                }
+                              ]
+                            },
+                            "target_data_type": {
+                              "title": "data_type reference",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/reference_to_response"
+                                }
+                              ]
+                            },
+                            "snippet": {
+                              "title": "snippet reference",
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/reference_to_response"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ruby_converter_item": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ruby_converter"
+                },
+                {
+                  "$ref": "#/components/schemas/source_data_type_response"
+                },
+                {
+                  "$ref": "#/components/schemas/target_data_type_response"
+                },
+                {
+                  "$ref": "#/components/schemas/snippet_response"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "ruby_converter_items": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/pagination"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "ruby_converters": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/ruby_converter"
+                          },
+                          {
+                            "$ref": "#/components/schemas/source_data_type_response"
+                          },
+                          {
+                            "$ref": "#/components/schemas/target_data_type_response"
+                          },
+                          {
+                            "$ref": "#/components/schemas/snippet_response"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
       "ruby_parser_item_create": {
         "description": "Success",
         "content": {
@@ -1712,6 +1978,34 @@
                 "namespace",
                 "name",
                 "code"
+              ]
+            }
+          }
+        }
+      },
+      "ruby_converter_data": {
+        "description": "The translator that will be created or updated",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ruby_converter"
+                },
+                {
+                  "$ref": "#/components/schemas/source_data_type_request"
+                },
+                {
+                  "$ref": "#/components/schemas/target_data_type_request"
+                }
+              ],
+              "required": [
+                "namespace",
+                "name",
+                "code",
+                "source_data_type",
+                "target_data_type"
               ]
             }
           }
