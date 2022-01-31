@@ -1,0 +1,6 @@
+type: "object"
+title: "ruby_parser"
+allOf:
+  - $ref: "#/components/schemas/ruby_parser"
+  - $ref: "#/components/schemas/target_data_type_response"
+  - $ref: "#/components/schemas/snippet_response"

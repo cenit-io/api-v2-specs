@@ -1,0 +1,5 @@
+type: "object"
+title: "algorithm"
+allOf:
+  - $ref: "#/components/schemas/algorithm"
+  - $ref: "#/components/schemas/snippet_response"

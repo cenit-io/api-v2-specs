@@ -2,6 +2,4 @@ description: Success
 content:
   application/json:
     schema:
-      allOf:
-        - $ref: "#/components/schemas/algorithm"
-        - $ref: "#/components/schemas/snippet_response"
+      $ref: "#/components/schemas/algorithm_response_get"
