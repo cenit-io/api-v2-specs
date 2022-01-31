@@ -387,6 +387,81 @@ paths:
               // Do something with the error
               console.error(JSON.stringify(error.response.data, null, 2));
             });
+  /setup/flow:
+    get:
+      tags:
+        - Flows
+      operationId: get_flows
+      summary: List all flows
+      description: |
+        Returns the list of your flows.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_items'
+    post:
+      tags:
+        - Flows
+      operationId: create_flow
+      summary: Create a flows.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/flow_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_item_create'
+  '/setup/flow/{id}':
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Flows
+      operationId: get_flow
+      summary: Retrieve a flow.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    post:
+      tags:
+        - Flows
+      operationId: update_flow
+      summary: Update a flow.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/flow_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    delete:
+      tags:
+        - Flows
+      operationId: delete_flow
+      summary: Delete a flow.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
   /setup/json_data_type:
     get:
       tags:
@@ -1294,6 +1369,12 @@ components:
           default: false
         default:
           type: string
+    algorithm_response_get:
+      type: object
+      title: algorithm
+      allOf:
+        - $ref: '#/components/schemas/algorithm'
+        - $ref: '#/components/schemas/snippet_response'
     algorithm:
       type: object
       properties:
@@ -1333,6 +1414,342 @@ components:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/json_data_type'
+    flow_convert_request:
+      type: object
+      title: flow-convert
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - $ref: '#/components/schemas/flow_field_translator_request'
+        - $ref: '#/components/schemas/flow_field_event_request'
+        - $ref: '#/components/schemas/flow_field_after_process_callbacks_request'
+    flow_convert_response_get:
+      type: object
+      title: flow-convert
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+    flow_convert_response_post:
+      type: object
+      title: flow-convert
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+    flow_export_request:
+      type: object
+      title: flow-export
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - $ref: '#/components/schemas/flow_field_translator_request'
+        - $ref: '#/components/schemas/flow_field_event_request'
+        - $ref: '#/components/schemas/flow_field_webhook_request'
+        - $ref: '#/components/schemas/flow_field_authorization_request'
+        - $ref: '#/components/schemas/flow_field_connection_role_request'
+        - $ref: '#/components/schemas/flow_field_before_submit_request'
+        - $ref: '#/components/schemas/flow_field_after_process_callbacks_request'
+        - $ref: '#/components/schemas/flow_field_response_translator_request'
+    flow_export_response_get:
+      type: object
+      title: flow-export
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            connection_role:
+              title: connection-role reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            before_submit:
+              title: algorithm reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+            response_translator:
+              title: response-translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+    flow_export_response_post:
+      type: object
+      title: flow-export
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            connection_role:
+              title: connection-role reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            before_submit:
+              title: algorithm reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+            response_translator:
+              title: response-translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+    flow_field_after_process_callbacks_request:
+      type: object
+      properties:
+        after_process_callbacks:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/reference_by_names'
+              - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_authorization_request:
+      type: object
+      properties:
+        authorization:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_before_submit_request:
+      type: object
+      properties:
+        before_submit:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_connection_role_request:
+      type: object
+      properties:
+        connection_role:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_data_type_scope:
+      type: object
+      properties:
+        data_type_scope:
+          type: string
+          enum:
+            - Event source
+            - Filter
+            - Evaluator
+            - All
+    flow_field_event_request:
+      type: object
+      properties:
+        event:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_response_translator_request:
+      type: object
+      properties:
+        response_translator:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_translator_request:
+      type: object
+      properties:
+        translator:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_webhook_request:
+      type: object
+      properties:
+        webhook:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_import_request:
+      type: object
+      title: flow-import
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_translator_request'
+        - $ref: '#/components/schemas/flow_field_event_request'
+        - $ref: '#/components/schemas/flow_field_webhook_request'
+        - $ref: '#/components/schemas/flow_field_authorization_request'
+        - $ref: '#/components/schemas/flow_field_connection_role_request'
+        - $ref: '#/components/schemas/flow_field_before_submit_request'
+        - $ref: '#/components/schemas/flow_field_after_process_callbacks_request'
+    flow_import_response_get:
+      type: object
+      title: flow-import
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_parser_response_get'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            connection_role:
+              title: connection-role reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            before_submit:
+              title: algorithm reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/algorithm_response_get'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/algorithm_response_get'
+    flow_import_response_post:
+      type: object
+      title: flow-import
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            connection_role:
+              title: connection-role reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            before_submit:
+              title: algorithm reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+    flow:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        description:
+          type: string
+          description: The flow description
+        active:
+          type: boolean
+          description: The flow status
+          default: false
+        notify_request:
+          type: boolean
+          default: false
+        notify_response:
+          type: boolean
+          default: false
+        discard_events:
+          type: boolean
+          default: false
+        auto_retry:
+          type: string
+          enum:
+            - manually
+            - automatic
     json_data_type_response:
       type: object
       title: json_data_type
@@ -1392,6 +1809,9 @@ components:
         id:
           type: string
           description: Item identifier
+      required:
+        - _reference
+        - id
     reference_by_names:
       type: object
       title: reference by names
@@ -1399,15 +1819,15 @@ components:
         _reference:
           type: boolean
           default: true
-        id:
-          type: string
-          readOnly: true
-          description: Item identifier
         namespace:
           type: string
         name:
           type: string
           description: Name without spaces or special characters
+      required:
+        - _reference
+        - namespace
+        - name
     reference_to_response:
       type: object
       title: reference
@@ -1417,7 +1837,6 @@ components:
           default: true
         id:
           type: string
-          readOnly: true
           description: Item identifier
         namespace:
           type: string
@@ -1457,6 +1876,13 @@ components:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
+    ruby_parser_response_get:
+      type: object
+      title: ruby_parser
+      allOf:
+        - $ref: '#/components/schemas/ruby_parser'
+        - $ref: '#/components/schemas/target_data_type_response'
+        - $ref: '#/components/schemas/snippet_response'
     ruby_parser:
       type: object
       properties:
@@ -1594,9 +2020,7 @@ components:
       content:
         application/json:
           schema:
-            allOf:
-              - $ref: '#/components/schemas/algorithm'
-              - $ref: '#/components/schemas/snippet_response'
+            $ref: '#/components/schemas/algorithm_response_get'
     algorithm_items:
       description: Success
       content:
@@ -1612,6 +2036,44 @@ components:
                       allOf:
                         - $ref: '#/components/schemas/algorithm'
                         - $ref: '#/components/schemas/snippet_response'
+    flow_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  flow:
+                    oneOf:
+                      - $ref: '#/components/schemas/flow_import_response_post'
+                      - $ref: '#/components/schemas/flow_export_response_post'
+                      - $ref: '#/components/schemas/flow_convert_response_post'
+    flow_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/flow_import_response_get'
+              - $ref: '#/components/schemas/flow_export_response_get'
+              - $ref: '#/components/schemas/flow_convert_response_get'
+    flow_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  flows:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/flow'
     item_not_found:
       description: Not found
       content:
@@ -1753,10 +2215,7 @@ components:
       content:
         application/json:
           schema:
-            allOf:
-              - $ref: '#/components/schemas/ruby_parser'
-              - $ref: '#/components/schemas/target_data_type_response'
-              - $ref: '#/components/schemas/snippet_response'
+            $ref: '#/components/schemas/ruby_parser_response_get'
     ruby_parser_items:
       description: Success
       content:
@@ -1885,8 +2344,6 @@ components:
 
           > To sort descendingly, the prefix sign (-) must be added.
         example: '-namespace,name'
-  examples: {}
-  headers: {}
   requestBodies:
     algorithm_data:
       description: The algorithm that will be created or updated
@@ -1907,6 +2364,21 @@ components:
                     items:
                       required:
                         - name
+    flow_data:
+      description: The flow that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/flow_import_request'
+              - $ref: '#/components/schemas/flow_export_request'
+              - $ref: '#/components/schemas/flow_convert_request'
+            required:
+              - namespace
+              - name
+              - translator
+              - webhook
     json_data_type_data:
       description: The json-data-type that will be created or updated
       required: true
