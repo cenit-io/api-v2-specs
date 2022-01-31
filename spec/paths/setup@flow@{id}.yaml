@@ -1,0 +1,47 @@
+parameters:
+  - $ref: '#/components/parameters/path_item_id'
+
+get:
+  tags:
+    - Flows
+  operationId: get_flow
+  summary: Retrieve a flow.
+  description: |
+    Find and return the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/flow_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+
+post:
+  tags:
+    - Flows
+  operationId: update_flow
+  summary: Update a flow.
+  description: |
+    Find and update the item with the given id.
+  requestBody:
+    $ref: '#/components/requestBodies/flow_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/flow_item_create'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+      
+delete:
+  tags:
+    - Flows
+  operationId: delete_flow
+  summary: Delete a flow.
+  description: |
+    Find and destroy the item with the given id.
+  responses:
+    '200':
+      $ref: '#/components/responses/item_removed_successfully'
+    '404':
+      $ref: '#/components/responses/item_not_found'

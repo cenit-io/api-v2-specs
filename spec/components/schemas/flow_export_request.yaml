@@ -1,0 +1,13 @@
+type: "object"
+title: "flow-export"
+allOf:
+  - $ref: "#/components/schemas/flow"
+  - $ref: "#/components/schemas/flow_field_data_type_scope"
+  - $ref: "#/components/schemas/flow_field_translator_request"
+  - $ref: "#/components/schemas/flow_field_event_request"
+  - $ref: "#/components/schemas/flow_field_webhook_request"
+  - $ref: "#/components/schemas/flow_field_authorization_request"
+  - $ref: "#/components/schemas/flow_field_connection_role_request"
+  - $ref: "#/components/schemas/flow_field_before_submit_request"
+  - $ref: "#/components/schemas/flow_field_after_process_callbacks_request"
+  - $ref: "#/components/schemas/flow_field_response_translator_request"

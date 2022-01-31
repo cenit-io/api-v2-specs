@@ -1,0 +1,20 @@
+type: "object"
+title: "flow-convert"
+allOf:
+  - $ref: "#/components/schemas/flow"
+  - $ref: "#/components/schemas/flow_field_data_type_scope"
+  - type: object
+    properties:
+      translator:
+        title: "translator reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      event:
+        title: "event reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      after_process_callbacks:
+        title: "algorithms reference"
+        type: "array"
+        items:
+          $ref: "#/components/schemas/reference_to_response"

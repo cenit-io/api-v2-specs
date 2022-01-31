@@ -1,0 +1,10 @@
+description: The flow that will be created or updated
+required: true
+content:
+  application/json:
+    schema:
+      oneOf:
+        - $ref: "#/components/schemas/flow_import_request"
+        - $ref: "#/components/schemas/flow_export_request"
+        - $ref: "#/components/schemas/flow_convert_request"
+      required: [namespace,name,translator,webhook]

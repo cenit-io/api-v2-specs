@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Flows
+  operationId: get_flows
+  summary: List all flows
+  description: |
+    Returns the list of your flows.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/flow_items'
+
+post:
+  tags:
+    - Flows
+  operationId: create_flow
+  summary: Create a flows.
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/flow_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/flow_item_create'

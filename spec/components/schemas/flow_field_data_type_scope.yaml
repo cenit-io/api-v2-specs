@@ -1,0 +1,9 @@
+type: "object"
+properties:
+  data_type_scope:
+    type: string
+    enum:
+      - Event source
+      - Filter
+      - Evaluator
+      - All

@@ -1,0 +1,8 @@
+description: Success
+content:
+  application/json:
+    schema:
+      oneOf:
+        - $ref: "#/components/schemas/flow_import_response_get"
+        - $ref: "#/components/schemas/flow_export_response_get"
+        - $ref: "#/components/schemas/flow_convert_response_get"

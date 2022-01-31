@@ -1,0 +1,32 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  description:
+    type: string
+    description: The flow description
+  active:
+    type: boolean
+    description: The flow status
+    default: false
+  notify_request:
+    type: boolean
+    default: false
+  notify_response:
+    type: boolean
+    default: false
+  discard_events:
+    type: boolean
+    default: false
+  auto_retry:
+    type: string
+    enum:
+      - manually
+      - automatic

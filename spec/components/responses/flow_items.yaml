@@ -1,0 +1,13 @@
+description: Success
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/pagination"
+        - type: object
+          properties:
+            flows:
+              type: array
+              items:
+                allOf:
+                  - $ref: "#/components/schemas/flow"

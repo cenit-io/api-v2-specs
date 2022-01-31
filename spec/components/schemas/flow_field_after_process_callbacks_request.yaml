@@ -1,0 +1,8 @@
+type: "object"
+properties:
+  after_process_callbacks:
+    type: "array"
+    items:
+      oneOf:
+        - $ref: "#/components/schemas/reference_by_names"
+        - $ref: "#/components/schemas/reference_by_identify"

@@ -1,0 +1,35 @@
+type: "object"
+title: "flow-import"
+allOf:
+  - $ref: "#/components/schemas/flow"
+  - type: object
+    properties:
+      translator:
+        title: "translator reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      event:
+        title: "event reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      webhook:
+        title: "webhook reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      authorization:
+        title: "authorization reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      connection_role:
+        title: "connection-role reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      before_submit:
+        title: "algorithm reference"
+        allOf:
+          - $ref: "#/components/schemas/reference_to_response"
+      after_process_callbacks:
+        title: "algorithms reference"
+        type: "array"
+        items:
+          $ref: "#/components/schemas/reference_to_response"
