@@ -1177,9 +1177,12 @@
             "properties": {
               "translator": {
                 "title": "translator reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ruby_converter_response_get"
                   }
                 ]
               },
@@ -1195,7 +1198,14 @@
                 "title": "algorithms reference",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/reference_to_response"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/reference_to_response"
+                    },
+                    {
+                      "$ref": "#/components/schemas/algorithm_response_get"
+                    }
+                  ]
                 }
               }
             }
@@ -1293,9 +1303,12 @@
             "properties": {
               "translator": {
                 "title": "translator reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ruby_template_response_get"
                   }
                 ]
               },
@@ -1333,9 +1346,12 @@
               },
               "before_submit": {
                 "title": "algorithm reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/algorithm_response_get"
                   }
                 ]
               },
@@ -1343,14 +1359,24 @@
                 "title": "algorithms reference",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/reference_to_response"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/reference_to_response"
+                    },
+                    {
+                      "$ref": "#/components/schemas/algorithm_response_get"
+                    }
+                  ]
                 }
               },
               "response_translator": {
                 "title": "response-translator reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ruby_parser_response_get"
                   }
                 ]
               }
@@ -1939,6 +1965,24 @@
           }
         }
       },
+      "ruby_converter_response_get": {
+        "type": "object",
+        "title": "ruby_converter",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ruby_template"
+          },
+          {
+            "$ref": "#/components/schemas/source_data_type_response"
+          },
+          {
+            "$ref": "#/components/schemas/target_data_type_response"
+          },
+          {
+            "$ref": "#/components/schemas/snippet_response"
+          }
+        ]
+      },
       "ruby_converter": {
         "type": "object",
         "properties": {
@@ -2012,6 +2056,21 @@
             "writeOnly": true
           }
         }
+      },
+      "ruby_template_response_get": {
+        "type": "object",
+        "title": "ruby_template",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ruby_template"
+          },
+          {
+            "$ref": "#/components/schemas/source_data_type_response"
+          },
+          {
+            "$ref": "#/components/schemas/snippet_response"
+          }
+        ]
       },
       "ruby_template": {
         "type": "object",
@@ -2229,10 +2288,7 @@
                       "items": {
                         "allOf": [
                           {
-                            "$ref": "#/components/schemas/algorithm"
-                          },
-                          {
-                            "$ref": "#/components/schemas/snippet_response"
+                            "$ref": "#/components/schemas/algorithm_response_get"
                           }
                         ]
                       }
@@ -2309,9 +2365,15 @@
                     "flows": {
                       "type": "array",
                       "items": {
-                        "allOf": [
+                        "oneOf": [
                           {
-                            "$ref": "#/components/schemas/flow"
+                            "$ref": "#/components/schemas/flow_import_response_get"
+                          },
+                          {
+                            "$ref": "#/components/schemas/flow_export_response_get"
+                          },
+                          {
+                            "$ref": "#/components/schemas/flow_convert_response_get"
                           }
                         ]
                       }
@@ -2495,20 +2557,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ruby_converter"
-                },
-                {
-                  "$ref": "#/components/schemas/source_data_type_response"
-                },
-                {
-                  "$ref": "#/components/schemas/target_data_type_response"
-                },
-                {
-                  "$ref": "#/components/schemas/snippet_response"
-                }
-              ]
+              "$ref": "#/components/schemas/ruby_converter_response_get"
             }
           }
         }
@@ -2530,16 +2579,7 @@
                       "items": {
                         "allOf": [
                           {
-                            "$ref": "#/components/schemas/ruby_converter"
-                          },
-                          {
-                            "$ref": "#/components/schemas/source_data_type_response"
-                          },
-                          {
-                            "$ref": "#/components/schemas/target_data_type_response"
-                          },
-                          {
-                            "$ref": "#/components/schemas/snippet_response"
+                            "$ref": "#/components/schemas/ruby_converter_response_get"
                           }
                         ]
                       }
@@ -2615,13 +2655,7 @@
                       "items": {
                         "allOf": [
                           {
-                            "$ref": "#/components/schemas/ruby_parser"
-                          },
-                          {
-                            "$ref": "#/components/schemas/target_data_type_response"
-                          },
-                          {
-                            "$ref": "#/components/schemas/snippet_response"
+                            "$ref": "#/components/schemas/ruby_parser_response_get"
                           }
                         ]
                       }
@@ -2683,17 +2717,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ruby_template"
-                },
-                {
-                  "$ref": "#/components/schemas/source_data_type_response"
-                },
-                {
-                  "$ref": "#/components/schemas/snippet_response"
-                }
-              ]
+              "$ref": "#/components/schemas/ruby_template_response_get"
             }
           }
         }
@@ -2715,13 +2739,7 @@
                       "items": {
                         "allOf": [
                           {
-                            "$ref": "#/components/schemas/ruby_template"
-                          },
-                          {
-                            "$ref": "#/components/schemas/source_data_type_response"
-                          },
-                          {
-                            "$ref": "#/components/schemas/snippet_response"
+                            "$ref": "#/components/schemas/ruby_template_response_get"
                           }
                         ]
                       }

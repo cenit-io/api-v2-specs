@@ -1433,8 +1433,9 @@ components:
           properties:
             translator:
               title: translator reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_converter_response_get'
             event:
               title: event reference
               allOf:
@@ -1443,7 +1444,9 @@ components:
               title: algorithms reference
               type: array
               items:
-                $ref: '#/components/schemas/reference_to_response'
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/algorithm_response_get'
     flow_convert_response_post:
       type: object
       title: flow-convert
@@ -1489,8 +1492,9 @@ components:
           properties:
             translator:
               title: translator reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_template_response_get'
             event:
               title: event reference
               allOf:
@@ -1509,17 +1513,21 @@ components:
                 - $ref: '#/components/schemas/reference_to_response'
             before_submit:
               title: algorithm reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/algorithm_response_get'
             after_process_callbacks:
               title: algorithms reference
               type: array
               items:
-                $ref: '#/components/schemas/reference_to_response'
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/algorithm_response_get'
             response_translator:
               title: response-translator reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_parser_response_get'
     flow_export_response_post:
       type: object
       title: flow-export
@@ -1843,6 +1851,14 @@ components:
         name:
           type: string
           description: Name without spaces or special characters
+    ruby_converter_response_get:
+      type: object
+      title: ruby_converter
+      allOf:
+        - $ref: '#/components/schemas/ruby_template'
+        - $ref: '#/components/schemas/source_data_type_response'
+        - $ref: '#/components/schemas/target_data_type_response'
+        - $ref: '#/components/schemas/snippet_response'
     ruby_converter:
       type: object
       properties:
@@ -1903,6 +1919,13 @@ components:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
+    ruby_template_response_get:
+      type: object
+      title: ruby_template
+      allOf:
+        - $ref: '#/components/schemas/ruby_template'
+        - $ref: '#/components/schemas/source_data_type_response'
+        - $ref: '#/components/schemas/snippet_response'
     ruby_template:
       type: object
       properties:
@@ -2034,8 +2057,7 @@ components:
                     type: array
                     items:
                       allOf:
-                        - $ref: '#/components/schemas/algorithm'
-                        - $ref: '#/components/schemas/snippet_response'
+                        - $ref: '#/components/schemas/algorithm_response_get'
     flow_item_create:
       description: Success
       content:
@@ -2072,8 +2094,10 @@ components:
                   flows:
                     type: array
                     items:
-                      allOf:
-                        - $ref: '#/components/schemas/flow'
+                      oneOf:
+                        - $ref: '#/components/schemas/flow_import_response_get'
+                        - $ref: '#/components/schemas/flow_export_response_get'
+                        - $ref: '#/components/schemas/flow_convert_response_get'
     item_not_found:
       description: Not found
       content:
@@ -2167,11 +2191,7 @@ components:
       content:
         application/json:
           schema:
-            allOf:
-              - $ref: '#/components/schemas/ruby_converter'
-              - $ref: '#/components/schemas/source_data_type_response'
-              - $ref: '#/components/schemas/target_data_type_response'
-              - $ref: '#/components/schemas/snippet_response'
+            $ref: '#/components/schemas/ruby_converter_response_get'
     ruby_converter_items:
       description: Success
       content:
@@ -2185,10 +2205,7 @@ components:
                     type: array
                     items:
                       allOf:
-                        - $ref: '#/components/schemas/ruby_converter'
-                        - $ref: '#/components/schemas/source_data_type_response'
-                        - $ref: '#/components/schemas/target_data_type_response'
-                        - $ref: '#/components/schemas/snippet_response'
+                        - $ref: '#/components/schemas/ruby_converter_response_get'
     ruby_parser_item_create:
       description: Success
       content:
@@ -2229,9 +2246,7 @@ components:
                     type: array
                     items:
                       allOf:
-                        - $ref: '#/components/schemas/ruby_parser'
-                        - $ref: '#/components/schemas/target_data_type_response'
-                        - $ref: '#/components/schemas/snippet_response'
+                        - $ref: '#/components/schemas/ruby_parser_response_get'
     ruby_template_item_create:
       description: Success
       content:
@@ -2260,10 +2275,7 @@ components:
       content:
         application/json:
           schema:
-            allOf:
-              - $ref: '#/components/schemas/ruby_template'
-              - $ref: '#/components/schemas/source_data_type_response'
-              - $ref: '#/components/schemas/snippet_response'
+            $ref: '#/components/schemas/ruby_template_response_get'
     ruby_template_items:
       description: Success
       content:
@@ -2277,9 +2289,7 @@ components:
                     type: array
                     items:
                       allOf:
-                        - $ref: '#/components/schemas/ruby_template'
-                        - $ref: '#/components/schemas/source_data_type_response'
-                        - $ref: '#/components/schemas/snippet_response'
+                        - $ref: '#/components/schemas/ruby_template_response_get'
   parameters:
     path_item_id:
       name: id
