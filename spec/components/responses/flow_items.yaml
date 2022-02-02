@@ -9,5 +9,7 @@ content:
             flows:
               type: array
               items:
-                allOf:
-                  - $ref: "#/components/schemas/flow"
+                oneOf:
+                  - $ref: "#/components/schemas/flow_import_response_get"
+                  - $ref: "#/components/schemas/flow_export_response_get"
+                  - $ref: "#/components/schemas/flow_convert_response_get"

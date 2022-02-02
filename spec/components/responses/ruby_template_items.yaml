@@ -10,6 +10,4 @@ content:
               type: array
               items:
                 allOf:
-                  - $ref: "#/components/schemas/ruby_template"
-                  - $ref: "#/components/schemas/source_data_type_response"
-                  - $ref: "#/components/schemas/snippet_response"
+                  - $ref: "#/components/schemas/ruby_template_response_get"

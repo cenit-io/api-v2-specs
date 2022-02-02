@@ -7,8 +7,9 @@ allOf:
     properties:
       translator:
         title: "translator reference"
-        allOf:
+        oneOf:
           - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/ruby_template_response_get"
       event:
         title: "event reference"
         allOf:
@@ -27,14 +28,18 @@ allOf:
           - $ref: "#/components/schemas/reference_to_response"
       before_submit:
         title: "algorithm reference"
-        allOf:
+        oneOf:
           - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/algorithm_response_get"
       after_process_callbacks:
         title: "algorithms reference"
         type: "array"
         items:
-          $ref: "#/components/schemas/reference_to_response"
+          oneOf:
+            - $ref: "#/components/schemas/reference_to_response"
+            - $ref: "#/components/schemas/algorithm_response_get"
       response_translator:
         title: "response-translator reference"
-        allOf:
+        oneOf:
           - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/ruby_parser_response_get"

@@ -1,0 +1,7 @@
+type: "object"
+title: "ruby_converter"
+allOf:
+  - $ref: "#/components/schemas/ruby_template"
+  - $ref: "#/components/schemas/source_data_type_response"
+  - $ref: "#/components/schemas/target_data_type_response"
+  - $ref: "#/components/schemas/snippet_response"
