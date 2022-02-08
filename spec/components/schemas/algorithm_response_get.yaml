@@ -3,3 +3,9 @@ title: "algorithm"
 allOf:
   - $ref: "#/components/schemas/algorithm"
   - $ref: "#/components/schemas/snippet_response"
+  - type: object
+    properties:
+      output_datatype:
+        oneOf:
+          - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/json_data_type_response"

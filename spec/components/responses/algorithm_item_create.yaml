@@ -2,15 +2,4 @@ description: Success
 content:
   application/json:
     schema:
-      type: object
-      properties:
-        success:
-          type: object
-          properties:
-            algorithm:
-              allOf:
-                - $ref: "#/components/schemas/algorithm"
-                - type: object
-                  properties:
-                    snippet:
-                      $ref: "#/components/schemas/reference_to_response"
+      $ref: "#/components/schemas/algorithm_response_post"

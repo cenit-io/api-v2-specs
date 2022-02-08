@@ -32,7 +32,4 @@ properties:
     type: string
     description: Code snippet in the previously selected language
     writeOnly: true
-  output_datatype:
-    readOnly: true
-    allOf:
-      - $ref: "#/components/schemas/json_data_type"
+
