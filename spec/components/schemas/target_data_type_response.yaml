@@ -3,4 +3,4 @@ properties:
   target_data_type:
     oneOf:
       - $ref: "#/components/schemas/reference_to_response"
-      - $ref: "#/components/schemas/json_data_type_response"
+      - $ref: "#/components/schemas/json_data_type_response_get"
