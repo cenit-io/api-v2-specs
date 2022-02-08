@@ -6,7 +6,5 @@ allOf:
     properties:
       snippet:
          $ref: "#/components/schemas/reference_to_response"
-  - type: object
-    properties:
       output_datatype:
           $ref: "#/components/schemas/reference_to_response"

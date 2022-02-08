@@ -9,9 +9,4 @@ content:
           properties:
             json_data_type:
               allOf:
-                - $ref: "#/components/schemas/json_data_type"
-                - type: object
-                  properties:
-                    snippet:
-                      readOnly: true
-                      $ref: "#/components/schemas/reference_to_response"
+                - $ref: "#/components/schemas/algorithm_response_post"

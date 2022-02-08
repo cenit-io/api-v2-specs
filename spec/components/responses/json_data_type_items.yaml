@@ -10,5 +10,4 @@ content:
               type: array
               items:
                 allOf:
-                  - $ref: "#/components/schemas/json_data_type"
-                  - $ref: "#/components/schemas/snippet_response"
+                  - $ref: "#/components/schemas/json_data_type_response_get"

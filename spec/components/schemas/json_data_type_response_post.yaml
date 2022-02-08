@@ -1,0 +1,8 @@
+type: "object"
+title: "json_data_type"
+allOf:
+  - $ref: "#/components/schemas/json_data_type"
+  - type: "object"
+    properties:
+      snippet:
+        $ref: "#/components/schemas/reference_to_response"
