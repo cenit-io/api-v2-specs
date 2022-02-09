@@ -12,7 +12,7 @@ axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
 axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
 axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-const item_id = '61f1597a5a5a2353be026f14'
+const item_id = '6203c5dd5a5a233de3027b96'
 
 const request = axios({
   method: 'DELETE',
