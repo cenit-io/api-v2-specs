@@ -1,0 +1,10 @@
+description: The plain-webhook that will be created or updated
+required: true
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/plain_webhook"
+#        - $ref: "#/components/schemas/connection_request"
+#        - $ref: "#/components/schemas/authorization_request"
+      required: [namespace,name]

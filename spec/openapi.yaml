@@ -166,6 +166,7 @@ x-tagGroups:
     tags:
       - Connections
       - Resources
+      - Webhooks
 
   - name: Security
     tags:

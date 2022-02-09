@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Webhooks
+  operationId: get_plain_webhooks
+  summary: List all plain-webhooks
+  description: |
+    Returns the list of your plain-webhooks.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/plain_webhook_items'
+
+post:
+  tags:
+    - Webhooks
+  operationId: create_plain_webhook
+  summary: Create a plain-webhook
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/plain_webhook_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/plain_webhook_item_create'

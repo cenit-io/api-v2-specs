@@ -1,0 +1,47 @@
+parameters:
+  - $ref: '#/components/parameters/path_item_id'
+
+get:
+  tags:
+    - Webhooks
+  operationId: get_plain_webhook
+  summary: Retrieve a plain-webhook
+  description: |
+    Find and return the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/plain_webhook_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+
+post:
+  tags:
+    - Webhooks
+  operationId: update_plain_webhook
+  summary: Update a plain-webhook
+  description: |
+    Find and update the item with the given id.
+  requestBody:
+    $ref: '#/components/requestBodies/plain_webhook_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/plain_webhook_item_create'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+      
+delete:
+  tags:
+    - Webhooks
+  operationId: delete_plain_webhook
+  summary: Delete a plain-webhook
+  description: |
+    Find and destroy the item with the given id.
+  responses:
+    '200':
+      $ref: '#/components/responses/item_removed_successfully'
+    '404':
+      $ref: '#/components/responses/item_not_found'

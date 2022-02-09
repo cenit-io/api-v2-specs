@@ -9,4 +9,4 @@ content:
           properties:
             json_data_type:
               allOf:
-                - $ref: "#/components/schemas/json_data_type_response_post"
+                - $ref: "#/components/schemas/plain_webhook_response_post"
