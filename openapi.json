@@ -1081,6 +1081,41 @@
           },
           {
             "$ref": "#/components/schemas/snippet_response"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "output_datatype": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/json_data_type_response_get"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "algorithm_response_post": {
+        "type": "object",
+        "title": "algorithm",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/algorithm"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "snippet": {
+                "$ref": "#/components/schemas/reference_to_response"
+              },
+              "output_datatype": {
+                "$ref": "#/components/schemas/reference_to_response"
+              }
+            }
           }
         ]
       },
@@ -1130,14 +1165,6 @@
             "type": "string",
             "description": "Code snippet in the previously selected language",
             "writeOnly": true
-          },
-          "output_datatype": {
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/json_data_type"
-              }
-            ]
           }
         }
       },
@@ -1827,7 +1854,22 @@
           }
         }
       },
-      "json_data_type_response": {
+      "json_data_type_request": {
+        "type": "object",
+        "properties": {
+          "json_data_type": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/reference_by_names"
+              },
+              {
+                "$ref": "#/components/schemas/reference_by_identify"
+              }
+            ]
+          }
+        }
+      },
+      "json_data_type_response_get": {
         "type": "object",
         "title": "json_data_type",
         "allOf": [
@@ -1846,6 +1888,23 @@
                     "$ref": "#/components/schemas/snippet"
                   }
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "json_data_type_response_post": {
+        "type": "object",
+        "title": "json_data_type",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/json_data_type"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "snippet": {
+                "$ref": "#/components/schemas/reference_to_response"
               }
             }
           }
@@ -2191,7 +2250,7 @@
                 "$ref": "#/components/schemas/reference_to_response"
               },
               {
-                "$ref": "#/components/schemas/json_data_type_response"
+                "$ref": "#/components/schemas/json_data_type_response_get"
               }
             ]
           }
@@ -2221,7 +2280,7 @@
                 "$ref": "#/components/schemas/reference_to_response"
               },
               {
-                "$ref": "#/components/schemas/json_data_type_response"
+                "$ref": "#/components/schemas/json_data_type_response_get"
               }
             ]
           }
@@ -2242,15 +2301,7 @@
                     "algorithm": {
                       "allOf": [
                         {
-                          "$ref": "#/components/schemas/algorithm"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "snippet": {
-                              "$ref": "#/components/schemas/reference_to_response"
-                            }
-                          }
+                          "$ref": "#/components/schemas/algorithm_response_post"
                         }
                       ]
                     }
@@ -2430,16 +2481,7 @@
                     "json_data_type": {
                       "allOf": [
                         {
-                          "$ref": "#/components/schemas/json_data_type"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "snippet": {
-                              "readOnly": true,
-                              "$ref": "#/components/schemas/reference_to_response"
-                            }
-                          }
+                          "$ref": "#/components/schemas/algorithm_response_post"
                         }
                       ]
                     }
@@ -2455,14 +2497,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/json_data_type"
-                },
-                {
-                  "$ref": "#/components/schemas/snippet_response"
-                }
-              ]
+              "$ref": "#/components/schemas/json_data_type_response_get"
             }
           }
         }
@@ -2484,10 +2519,7 @@
                       "items": {
                         "allOf": [
                           {
-                            "$ref": "#/components/schemas/json_data_type"
-                          },
-                          {
-                            "$ref": "#/components/schemas/snippet_response"
+                            "$ref": "#/components/schemas/json_data_type_response_get"
                           }
                         ]
                       }
