@@ -168,7 +168,8 @@
       "name": "Gateways",
       "tags": [
         "Connections",
-        "Resources"
+        "Resources",
+        "Webhooks"
       ]
     },
     {
@@ -363,7 +364,13 @@
           "200": {
             "$ref": "#/components/responses/flow_items"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -379,7 +386,21 @@
           "200": {
             "$ref": "#/components/responses/flow_item_create"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "Convert",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"flow_convert_test_01\",\n    notify_request: true,\n    notify_response: true,\n    translator: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'converter_test_01',\n    },\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          },
+          {
+            "lang": "Export",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"flow_export_test_01\",\n    notify_request: true,\n    notify_response: true,\n    translator: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'template_test_01',\n    },\n    webhook: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'webhook_test_01',\n    },\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          },
+          {
+            "lang": "Import",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"flow_import_test_01\",\n    notify_request: true,\n    notify_response: true,\n    translator: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'parser_test_01',\n    },\n    webhook: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'webhook_test_01',\n    },\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          }
+        ]
       }
     },
     "/setup/flow/{id}": {
@@ -413,7 +434,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e083815a5a2353c40082f3'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/flow/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -432,7 +459,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620364d55a5a236eda02cfb0'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/flow/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    active: true,\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -448,7 +481,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e083815a5a2353c40082f3'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/flow/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       }
     },
     "/setup/json_data_type": {
@@ -621,6 +660,138 @@
         ]
       }
     },
+    "/setup/plain_webhook": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "get_plain_webhooks",
+        "summary": "List all plain-webhooks",
+        "description": "Returns the list of your plain-webhooks.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_offset"
+          },
+          {
+            "$ref": "#/components/parameters/query_limit"
+          },
+          {
+            "$ref": "#/components/parameters/query_sort"
+          },
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/plain_webhook_items"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "create_plain_webhook",
+        "summary": "Create a plain-webhook",
+        "description": "Add a new item.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/plain_webhook_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/plain_webhook_item_create"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"webhook_test_01\",\n    method: \"get\",\n    path: \"api/v2/test_01\",\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          }
+        ]
+      }
+    },
+    "/setup/plain_webhook/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/path_item_id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "get_plain_webhook",
+        "summary": "Retrieve a plain-webhook",
+        "description": "Find and return the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/plain_webhook_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "update_plain_webhook",
+        "summary": "Update a plain-webhook",
+        "description": "Find and update the item with the given id.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/plain_webhook_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/plain_webhook_item_create"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "delete_plain_webhook",
+        "summary": "Delete a plain-webhook",
+        "description": "Find and destroy the item with the given id.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/item_removed_successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      }
+    },
     "/setup/ruby_converter": {
       "get": {
         "tags": [
@@ -653,7 +824,13 @@
           "200": {
             "$ref": "#/components/responses/ruby_converter_items"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/ruby_converter',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -669,7 +846,13 @@
           "200": {
             "$ref": "#/components/responses/ruby_converter_item_create"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/ruby_converter',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"converter_test_01\",\n    source_handler: false,\n    source_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person\"\n    },\n    target_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person2\"\n    },\n    code: 'target.name = source.name.downcase',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          }
+        ]
       }
     },
     "/setup/ruby_converter/{id}": {
@@ -703,7 +886,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/ruby_converter/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -722,7 +911,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/ruby_converter/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    source_handler: true,\n    code: 'sources.each {|s| target_data_type.create_from_json!(name: s.name.downcase, primary_field: %i[name]) }',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -738,7 +933,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_converter/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       }
     },
     "/setup/ruby_parser": {
@@ -1963,6 +2164,80 @@
           }
         }
       },
+      "plain_webhook_response_get": {
+        "type": "object",
+        "title": "plain-webhook",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/plain_webhook"
+          }
+        ]
+      },
+      "plain_webhook_response_post": {
+        "type": "object",
+        "title": "plain-webhook",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/plain_webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "connection": {
+                "title": "connection reference",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_to_response"
+                  }
+                ]
+              },
+              "authorization": {
+                "title": "authorization reference",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_to_response"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "plain_webhook": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Item identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Lowercase name without spaces or special characters"
+          },
+          "description": {
+            "type": "string",
+            "description": "The plain-webhook description"
+          },
+          "path": {
+            "type": "string",
+            "description": "The plain-webhook path"
+          },
+          "method": {
+            "type": "string",
+            "description": "The http method",
+            "enum": [
+              "get",
+              "post",
+              "put",
+              "delete"
+            ]
+          }
+        }
+      },
       "reference_by_identify": {
         "type": "object",
         "title": "reference by id",
@@ -2481,7 +2756,7 @@
                     "json_data_type": {
                       "allOf": [
                         {
-                          "$ref": "#/components/schemas/algorithm_response_post"
+                          "$ref": "#/components/schemas/json_data_type_response_post"
                         }
                       ]
                     }
@@ -2520,6 +2795,69 @@
                         "allOf": [
                           {
                             "$ref": "#/components/schemas/json_data_type_response_get"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "plain_webhook_item_create": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "json_data_type": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/plain_webhook_response_post"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "plain_webhook_item": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/plain_webhook_response_get"
+            }
+          }
+        }
+      },
+      "plain_webhook_items": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/pagination"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "plain_webhooks": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/plain_webhook_response_get"
                           }
                         ]
                       }
@@ -2925,6 +3263,25 @@
                 "namespace",
                 "name",
                 "code"
+              ]
+            }
+          }
+        }
+      },
+      "plain_webhook_data": {
+        "description": "The plain-webhook that will be created or updated",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/plain_webhook"
+                }
+              ],
+              "required": [
+                "namespace",
+                "name"
               ]
             }
           }
