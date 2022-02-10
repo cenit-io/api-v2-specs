@@ -2186,12 +2186,97 @@
           }
         }
       },
+      "plain_webhook_request": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/plain_webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/parameter"
+                    }
+                  ],
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              "headers": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/parameter"
+                    }
+                  ],
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              "template_parameters": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/parameter"
+                    }
+                  ],
+                  "required": [
+                    "name"
+                  ]
+                }
+              },
+              "authorization": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_by_names"
+                  },
+                  {
+                    "$ref": "#/components/schemas/reference_by_identify"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
       "plain_webhook_response_get": {
         "type": "object",
         "title": "plain-webhook",
         "allOf": [
           {
             "$ref": "#/components/schemas/plain_webhook"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "headers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "template_parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              }
+            }
           }
         ]
       },
@@ -2205,6 +2290,24 @@
           {
             "type": "object",
             "properties": {
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "headers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "template_parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
               "authorization": {
                 "title": "authorization reference",
                 "allOf": [
@@ -2252,24 +2355,6 @@
           },
           "metadata": {
             "type": "string"
-          },
-          "parameters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/parameter"
-            }
-          },
-          "headers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/parameter"
-            }
-          },
-          "template_parameters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/parameter"
-            }
           },
           "authorization_handler": {
             "type": "boolean",
@@ -3320,43 +3405,7 @@
               ],
               "allOf": [
                 {
-                  "$ref": "#/components/schemas/plain_webhook"
-                },
-                {
-                  "properties": {
-                    "parameters": {
-                      "type": "array",
-                      "items": {
-                        "required": [
-                          "name"
-                        ]
-                      }
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "headers": {
-                      "type": "array",
-                      "items": {
-                        "required": [
-                          "name"
-                        ]
-                      }
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "template_parameters": {
-                      "type": "array",
-                      "items": {
-                        "required": [
-                          "name"
-                        ]
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/plain_webhook_request"
                 }
               ]
             }
