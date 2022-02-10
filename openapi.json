@@ -2164,6 +2164,28 @@
           }
         }
       },
+      "parameter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Item identifier"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "string"
+          }
+        }
+      },
       "plain_webhook_response_get": {
         "type": "object",
         "title": "plain-webhook",
@@ -2183,14 +2205,6 @@
           {
             "type": "object",
             "properties": {
-              "connection": {
-                "title": "connection reference",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/reference_to_response"
-                  }
-                ]
-              },
               "authorization": {
                 "title": "authorization reference",
                 "allOf": [
@@ -2235,6 +2249,31 @@
               "put",
               "delete"
             ]
+          },
+          "metadata": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/parameter"
+            }
+          },
+          "headers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/parameter"
+            }
+          },
+          "template_parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/parameter"
+            }
+          },
+          "authorization_handler": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -2816,7 +2855,7 @@
                 "success": {
                   "type": "object",
                   "properties": {
-                    "json_data_type": {
+                    "plain_webhook": {
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/plain_webhook_response_post"
@@ -3274,14 +3313,51 @@
         "content": {
           "application/json": {
             "schema": {
+              "required": [
+                "namespace",
+                "name",
+                "path"
+              ],
               "allOf": [
                 {
                   "$ref": "#/components/schemas/plain_webhook"
+                },
+                {
+                  "properties": {
+                    "parameters": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "name"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "headers": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "name"
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "template_parameters": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "name"
+                        ]
+                      }
+                    }
+                  }
                 }
-              ],
-              "required": [
-                "namespace",
-                "name"
               ]
             }
           }
