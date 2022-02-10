@@ -2,4 +2,20 @@ type: "object"
 title: "plain-webhook"
 allOf:
   - $ref: "#/components/schemas/plain_webhook"
-#  - $ref: "#/components/schemas/authorization_response"
+  - type: object
+    properties:
+      parameters:
+        type: array
+        items:
+          $ref: "#/components/schemas/parameter"
+      headers:
+        type: array
+        items:
+          $ref: "#/components/schemas/parameter"
+      template_parameters:
+        type: array
+        items:
+          $ref: "#/components/schemas/parameter"
+#      authorization:
+#        allOf:
+##          - $ref: "#/components/schemas/authorization_response"
