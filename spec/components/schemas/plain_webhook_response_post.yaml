@@ -4,10 +4,6 @@ allOf:
   - $ref: "#/components/schemas/plain_webhook"
   - type: object
     properties:
-      connection:
-        title: "connection reference"
-        allOf:
-          - $ref: "#/components/schemas/reference_to_response"
       authorization:
         title: "authorization reference"
         allOf:

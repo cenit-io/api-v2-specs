@@ -23,3 +23,20 @@ properties:
       - post
       - put
       - delete
+  metadata:
+    type: string
+  parameters:
+    type: array
+    items:
+      $ref: "#/components/schemas/parameter"
+  headers:
+    type: array
+    items:
+      $ref: "#/components/schemas/parameter"
+  template_parameters:
+    type: array
+    items:
+      $ref: "#/components/schemas/parameter"
+  authorization_handler:
+    type: boolean
+    default: false

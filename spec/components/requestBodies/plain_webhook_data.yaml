@@ -3,8 +3,22 @@ required: true
 content:
   application/json:
     schema:
+      required: [namespace,name,path]
       allOf:
         - $ref: "#/components/schemas/plain_webhook"
-#        - $ref: "#/components/schemas/connection_request"
 #        - $ref: "#/components/schemas/authorization_request"
-      required: [namespace,name]
+        - properties:
+            parameters:
+              type: array
+              items:
+                required: [name]
+        - properties:
+            headers:
+              type: array
+              items:
+                required: [name]
+        - properties:
+            template_parameters:
+              type: array
+              items:
+                required: [name]

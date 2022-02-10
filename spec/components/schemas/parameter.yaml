@@ -1,0 +1,14 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  name:
+    type: string
+  value:
+    type: string
+  description:
+    type: string
+  metadata:
+    type: string

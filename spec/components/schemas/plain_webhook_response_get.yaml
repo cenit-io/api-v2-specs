@@ -2,5 +2,4 @@ type: "object"
 title: "plain-webhook"
 allOf:
   - $ref: "#/components/schemas/plain_webhook"
-#  - $ref: "#/components/schemas/connection_response"
 #  - $ref: "#/components/schemas/authorization_response"

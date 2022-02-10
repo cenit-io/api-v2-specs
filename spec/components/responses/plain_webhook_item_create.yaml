@@ -7,6 +7,6 @@ content:
         success:
           type: object
           properties:
-            json_data_type:
+            plain_webhook:
               allOf:
                 - $ref: "#/components/schemas/plain_webhook_response_post"
