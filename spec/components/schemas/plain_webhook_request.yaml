@@ -1,0 +1,52 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  description:
+    type: string
+    description: The plain-webhook description
+  path:
+    type: string
+    description: The plain-webhook path
+  method:
+    type: string
+    description: The http method
+    enum:
+      - get
+      - post
+      - put
+      - delete
+  metadata:
+    type: string
+  parameters:
+    type: array
+    items:
+      allOf:
+        - $ref: "#/components/schemas/parameter"
+      required: [name]
+  headers:
+    type: array
+    items:
+      allOf:
+        - $ref: "#/components/schemas/parameter"
+      required: [name]
+  template_parameters:
+    type: array
+    items:
+      allOf:
+        - $ref: "#/components/schemas/parameter"
+      required: [name]
+  authorization_handler:
+    type: boolean
+    default: false
+  authorization:
+    oneOf:
+      - $ref: "#/components/schemas/reference_by_names"
+      - $ref: "#/components/schemas/reference_by_identify"

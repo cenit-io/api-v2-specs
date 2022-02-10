@@ -5,20 +5,4 @@ content:
     schema:
       required: [namespace,name,path]
       allOf:
-        - $ref: "#/components/schemas/plain_webhook"
-#        - $ref: "#/components/schemas/authorization_request"
-        - properties:
-            parameters:
-              type: array
-              items:
-                required: [name]
-        - properties:
-            headers:
-              type: array
-              items:
-                required: [name]
-        - properties:
-            template_parameters:
-              type: array
-              items:
-                required: [name]
+        - $ref: "#/components/schemas/plain_webhook_request"
