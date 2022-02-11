@@ -94,7 +94,7 @@ tags:
   - name: Authorizations Providers
     description: |
       ...
-  - name: Authorizations
+  - name: Authorizations Basic
     description: |
       ...
 servers:
@@ -141,7 +141,7 @@ x-tagGroups:
     tags:
       - Authorizations Clients
       - Authorizations Providers
-      - Authorizations
+      - Authorizations Basic
 paths:
   /setup/algorithm:
     get:
@@ -388,6 +388,81 @@ paths:
               // Do something with the error
               console.error(JSON.stringify(error.response.data, null, 2));
             });
+  /setup/basic_authorization:
+    get:
+      tags:
+        - Authorizations Basic
+      operationId: get_basic_authorizations
+      summary: List all basic-authorizations
+      description: |
+        Returns the list of your basic-authorizations.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_items'
+    post:
+      tags:
+        - Authorizations Basic
+      operationId: create_basic_authorization
+      summary: Create a basic-authorization
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/basic_authorization_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_item_create'
+  '/setup/basic_authorization/{id}':
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Authorizations Basic
+      operationId: get_basic_authorization
+      summary: Retrieve a basic-authorization
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    post:
+      tags:
+        - Authorizations Basic
+      operationId: update_basic_authorization
+      summary: Update a basic-authorization
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/basic_authorization_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    delete:
+      tags:
+        - Authorizations Basic
+      operationId: delete_basic_authorization
+      summary: Delete a basic-authorization
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
   /setup/flow:
     get:
       tags:
@@ -2118,6 +2193,34 @@ components:
           type: string
           description: Code snippet in the previously selected language
           writeOnly: true
+    authorization_basic:
+      type: object
+      title: basic_authorization
+      allOf:
+        - $ref: '#/components/schemas/authorization_common'
+        - type: object
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+    authorization_common:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+    authorization_response:
+      type: object
+      title: authorization
+      oneOf:
+        - $ref: '#/components/schemas/authorization_basic'
     flow_convert_request:
       type: object
       title: flow-convert
@@ -2205,12 +2308,14 @@ components:
                 - $ref: '#/components/schemas/reference_to_response'
             webhook:
               title: webhook reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/plain_webhook_response_get'
             authorization:
               title: authorization reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
             connection_role:
               title: connection-role reference
               allOf:
@@ -2371,12 +2476,14 @@ components:
                 - $ref: '#/components/schemas/reference_to_response'
             webhook:
               title: webhook reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/plain_webhook_response_get'
             authorization:
               title: authorization reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
             connection_role:
               title: connection-role reference
               allOf:
@@ -2592,6 +2699,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/parameter'
+            authorization:
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
     plain_webhook_response_post:
       type: object
       title: plain-webhook
@@ -2893,6 +3004,39 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/algorithm_response_get'
+    basic_authorization_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  basic_authorization:
+                    allOf:
+                      - $ref: '#/components/schemas/authorization_basic'
+    basic_authorization_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/authorization_basic'
+    basic_authorization_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  basic_authorizations:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/authorization_basic'
     flow_item_create:
       description: Success
       content:
@@ -3234,6 +3378,17 @@ components:
                     items:
                       required:
                         - name
+    basic_authorization_data:
+      description: The basic-authorization that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+            allOf:
+              - $ref: '#/components/schemas/authorization_basic'
     flow_data:
       description: The flow that will be created or updated
       required: true

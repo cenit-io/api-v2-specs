@@ -99,7 +99,7 @@
       "description": "...\n"
     },
     {
-      "name": "Authorizations",
+      "name": "Authorizations Basic",
       "description": "...\n"
     }
   ],
@@ -177,7 +177,7 @@
       "tags": [
         "Authorizations Clients",
         "Authorizations Providers",
-        "Authorizations"
+        "Authorizations Basic"
       ]
     }
   ],
@@ -330,6 +330,126 @@
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e083815a5a2353c40082f3'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/algorithm/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
         ]
+      }
+    },
+    "/setup/basic_authorization": {
+      "get": {
+        "tags": [
+          "Authorizations Basic"
+        ],
+        "operationId": "get_basic_authorizations",
+        "summary": "List all basic-authorizations",
+        "description": "Returns the list of your basic-authorizations.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_offset"
+          },
+          {
+            "$ref": "#/components/parameters/query_limit"
+          },
+          {
+            "$ref": "#/components/parameters/query_sort"
+          },
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/basic_authorization_items"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authorizations Basic"
+        ],
+        "operationId": "create_basic_authorization",
+        "summary": "Create a basic-authorization",
+        "description": "Add a new item.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/basic_authorization_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/basic_authorization_item_create"
+          }
+        }
+      }
+    },
+    "/setup/basic_authorization/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/path_item_id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Authorizations Basic"
+        ],
+        "operationId": "get_basic_authorization",
+        "summary": "Retrieve a basic-authorization",
+        "description": "Find and return the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/basic_authorization_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authorizations Basic"
+        ],
+        "operationId": "update_basic_authorization",
+        "summary": "Update a basic-authorization",
+        "description": "Find and update the item with the given id.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/basic_authorization_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/basic_authorization_item_create"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authorizations Basic"
+        ],
+        "operationId": "delete_basic_authorization",
+        "summary": "Delete a basic-authorization",
+        "description": "Find and destroy the item with the given id.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/item_removed_successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        }
       }
     },
     "/setup/flow": {
@@ -1387,6 +1507,52 @@
           }
         }
       },
+      "authorization_basic": {
+        "type": "object",
+        "title": "basic_authorization",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/authorization_common"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "username": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "authorization_common": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Item identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Lowercase name without spaces or special characters"
+          }
+        }
+      },
+      "authorization_response": {
+        "type": "object",
+        "title": "authorization",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/authorization_basic"
+          }
+        ]
+      },
       "flow_convert_request": {
         "type": "object",
         "title": "flow-convert",
@@ -1568,17 +1734,23 @@
               },
               "webhook": {
                 "title": "webhook reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/plain_webhook_response_get"
                   }
                 ]
               },
               "authorization": {
                 "title": "authorization reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/authorization_response"
                   }
                 ]
               },
@@ -1908,17 +2080,23 @@
               },
               "webhook": {
                 "title": "webhook reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/plain_webhook_response_get"
                   }
                 ]
               },
               "authorization": {
                 "title": "authorization reference",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/authorization_response"
                   }
                 ]
               },
@@ -2293,6 +2471,16 @@
                 "items": {
                   "$ref": "#/components/schemas/parameter"
                 }
+              },
+              "authorization": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/authorization_response"
+                  }
+                ]
               }
             }
           }
@@ -2757,6 +2945,69 @@
                         "allOf": [
                           {
                             "$ref": "#/components/schemas/algorithm_response_get"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "basic_authorization_item_create": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "basic_authorization": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/authorization_basic"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "basic_authorization_item": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/authorization_basic"
+            }
+          }
+        }
+      },
+      "basic_authorization_items": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/pagination"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "basic_authorizations": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/authorization_basic"
                           }
                         ]
                       }
@@ -3357,6 +3608,25 @@
                       }
                     }
                   }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "basic_authorization_data": {
+        "description": "The basic-authorization that will be created or updated",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "namespace",
+                "name"
+              ],
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/authorization_basic"
                 }
               ]
             }
