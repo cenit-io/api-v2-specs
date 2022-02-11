@@ -2554,21 +2554,21 @@ components:
                 allOf:
                   - $ref: '#/components/schemas/parameter'
                 required:
-                  - name
+                  - key
             headers:
               type: array
               items:
                 allOf:
                   - $ref: '#/components/schemas/parameter'
                 required:
-                  - name
+                  - key
             template_parameters:
               type: array
               items:
                 allOf:
                   - $ref: '#/components/schemas/parameter'
                 required:
-                  - name
+                  - key
             authorization:
               oneOf:
                 - $ref: '#/components/schemas/reference_by_names'
