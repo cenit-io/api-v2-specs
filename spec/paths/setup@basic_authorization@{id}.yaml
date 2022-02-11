@@ -1,0 +1,47 @@
+parameters:
+  - $ref: '#/components/parameters/path_item_id'
+
+get:
+  tags:
+    - Authorizations Basic
+  operationId: get_basic_authorization
+  summary: Retrieve a basic-authorization
+  description: |
+    Find and return the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/basic_authorization_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+
+post:
+  tags:
+    - Authorizations Basic
+  operationId: update_basic_authorization
+  summary: Update a basic-authorization
+  description: |
+    Find and update the item with the given id.
+  requestBody:
+    $ref: '#/components/requestBodies/basic_authorization_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/basic_authorization_item_create'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+      
+delete:
+  tags:
+    - Authorizations Basic
+  operationId: delete_basic_authorization
+  summary: Delete a basic-authorization
+  description: |
+    Find and destroy the item with the given id.
+  responses:
+    '200':
+      $ref: '#/components/responses/item_removed_successfully'
+    '404':
+      $ref: '#/components/responses/item_not_found'

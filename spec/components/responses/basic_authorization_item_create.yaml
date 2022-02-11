@@ -1,0 +1,12 @@
+description: Success
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: object
+          properties:
+            basic_authorization:
+              allOf:
+                - $ref: "#/components/schemas/authorization_basic"

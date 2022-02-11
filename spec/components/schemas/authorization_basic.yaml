@@ -1,0 +1,10 @@
+type: "object"
+title: "basic_authorization"
+allOf:
+  - $ref: "#/components/schemas/authorization_common"
+  - type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string

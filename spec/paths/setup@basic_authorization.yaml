@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Authorizations Basic
+  operationId: get_basic_authorizations
+  summary: List all basic-authorizations
+  description: |
+    Returns the list of your basic-authorizations.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/basic_authorization_items'
+
+post:
+  tags:
+    - Authorizations Basic
+  operationId: create_basic_authorization
+  summary: Create a basic-authorization
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/basic_authorization_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/basic_authorization_item_create'

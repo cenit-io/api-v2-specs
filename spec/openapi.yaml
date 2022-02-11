@@ -115,7 +115,7 @@ tags:
     description: |
       ...
 
-  - name: Authorizations
+  - name: Authorizations Basic
     description: |
       ...
 
@@ -172,7 +172,7 @@ x-tagGroups:
     tags:
       - Authorizations Clients
       - Authorizations Providers
-      - Authorizations
+      - Authorizations Basic
 
 paths:
 
