@@ -1,10 +1,5 @@
 const dotenv = require('dotenv')
 const axios = require('axios');
-const https = require('https');
-
-const agent = new https.Agent({
-  rejectUnauthorized: false
-});
 
 dotenv.config();
 
@@ -12,11 +7,12 @@ axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
 axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
 axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
+const item_id = '6205b5995a5a233dd9039b8a'
+
 const request = axios({
   method: 'GET',
-  url: 'setup/plain_webhook',
-  httpsAgent: agent,
-  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization' }
+  url: `setup/plain_webhook/${item_id}`,
+  params: { embedding: 'authorization' }
 });
 
 request.then((response) => {

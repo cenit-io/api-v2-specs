@@ -22,6 +22,12 @@ const request = axios({
     name: "webhook_test_01",
     method: "get",
     path: "api/v2/test_01",
+    parameters: [
+      {
+        key: "limit",
+        value: "50",
+      }
+    ],
   }
 });
 

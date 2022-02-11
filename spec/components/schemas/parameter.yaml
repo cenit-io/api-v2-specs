@@ -4,7 +4,7 @@ properties:
     type: string
     readOnly: true
     description: Item identifier
-  name:
+  key:
     type: string
   value:
     type: string
