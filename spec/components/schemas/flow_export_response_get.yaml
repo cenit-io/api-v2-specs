@@ -16,8 +16,9 @@ allOf:
           - $ref: "#/components/schemas/reference_to_response"
       webhook:
         title: "webhook reference"
-        allOf:
+        oneOf:
           - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/plain_webhook_response_get"
       authorization:
         title: "authorization reference"
         allOf:
