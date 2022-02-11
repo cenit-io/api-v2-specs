@@ -696,7 +696,7 @@
         "x-code-samples": [
           {
             "lang": "NodeJS",
-            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
         ]
       },
@@ -718,7 +718,7 @@
         "x-code-samples": [
           {
             "lang": "NodeJS",
-            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"webhook_test_01\",\n    method: \"get\",\n    path: \"api/v2/test_01\",\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"webhook_test_01\",\n    method: \"get\",\n    path: \"api/v2/test_01\",\n    parameters: [\n      {\n        key: \"limit\",\n        value: \"50\",\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
           }
         ]
       }
@@ -754,7 +754,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6205b5995a5a233dd9039b8a'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/plain_webhook/${item_id}`,\n  params: { embedding: 'authorization' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -773,7 +779,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6205b5995a5a233dd9039b8a'\nconst param_id = '6205b5995a5a233dd9039b8b'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/plain_webhook/${item_id}`,\n  data: {\n    parameters: [\n      {\n        id: `${param_id}`,\n        key: \"limit\",\n        value: \"100\",\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -789,7 +801,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6205b5995a5a233dd9039b8a'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/plain_webhook/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       }
     },
     "/setup/ruby_converter": {
@@ -2172,7 +2190,7 @@
             "readOnly": true,
             "description": "Item identifier"
           },
-          "name": {
+          "key": {
             "type": "string"
           },
           "value": {
