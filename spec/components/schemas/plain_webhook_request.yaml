@@ -8,19 +8,19 @@ allOf:
         items:
           allOf:
             - $ref: "#/components/schemas/parameter"
-          required: [name]
+          required: [key]
       headers:
         type: array
         items:
           allOf:
             - $ref: "#/components/schemas/parameter"
-          required: [name]
+          required: [key]
       template_parameters:
         type: array
         items:
           allOf:
             - $ref: "#/components/schemas/parameter"
-          required: [name]
+          required: [key]
       authorization:
         oneOf:
           - $ref: "#/components/schemas/reference_by_names"
