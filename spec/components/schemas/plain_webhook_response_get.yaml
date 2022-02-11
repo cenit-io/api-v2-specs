@@ -16,6 +16,7 @@ allOf:
         type: array
         items:
           $ref: "#/components/schemas/parameter"
-#      authorization:
-#        allOf:
-##          - $ref: "#/components/schemas/authorization_response"
+      authorization:
+        oneOf:
+          - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/authorization_response"

@@ -20,8 +20,9 @@ allOf:
           - $ref: "#/components/schemas/plain_webhook_response_get"
       authorization:
         title: "authorization reference"
-        allOf:
+        oneOf:
           - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/authorization_response"
       connection_role:
         title: "connection-role reference"
         allOf:

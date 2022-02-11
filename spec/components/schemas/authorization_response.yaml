@@ -1,0 +1,4 @@
+type: "object"
+title: "authorization"
+oneOf:
+  - $ref: "#/components/schemas/authorization_basic"
