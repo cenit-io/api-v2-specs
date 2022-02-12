@@ -7,11 +7,10 @@ axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
 axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
 axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-const item_id = '62069b095a5a2330d0038cdc'
-
 const request = axios({
   method: 'GET',
-  url: `setup/basic_authorization/${item_id}`,
+  url: 'setup/basic_authorization',
+  params: { limit: 5, page: 1, order: '-namespace,name', ignore: 'password'}
 });
 
 request.then((response) => {
