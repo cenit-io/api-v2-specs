@@ -85,6 +85,9 @@ tags:
   - name: Connections
     description: |
       ...
+  - name: Connection Roles
+    description: |
+      ...
   - name: Resouces
     description: |
       ...
@@ -135,6 +138,7 @@ x-tagGroups:
   - name: Gateways
     tags:
       - Connections
+      - Connection Roles
       - Resources
       - Webhooks
   - name: Security
@@ -601,6 +605,81 @@ paths:
               // Do something with the error
               console.error(JSON.stringify(error.response.data, null, 2));
             });
+  /setup/connection_role:
+    get:
+      tags:
+        - Connection Roles
+      operationId: get_connection_roles
+      summary: List all connection-roles
+      description: |
+        Returns the list of your connection-roles.
+      parameters:
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_items'
+    post:
+      tags:
+        - Connection Roles
+      operationId: create_connection_role
+      summary: Create a connection-role
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/connection_role_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_item_create'
+  '/setup/connection_role/{id}':
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Connection Roles
+      operationId: get_connection_role
+      summary: Retrieve a connection-role
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    post:
+      tags:
+        - Connection Roles
+      operationId: update_connection_role
+      summary: Update a connection-role
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/connection_role_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+    delete:
+      tags:
+        - Connection Roles
+      operationId: delete_connection_role
+      summary: Delete a connection-role
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
   /setup/connection:
     get:
       tags:
@@ -678,7 +757,8 @@ paths:
                 url: "http://localhost/api/v2/connection_test",
                 authorization: {
                   _reference: true,
-                  id:"62069b095a5a2330d0038cdc"
+                  namespace: "Test",
+                  name: "auth-basic"
                 },
                 headers:[
                   {
@@ -2665,6 +2745,76 @@ components:
               title: authorization reference
               allOf:
                 - $ref: '#/components/schemas/reference_to_response'
+    connection_role_request:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/connection_role'
+        - type: object
+          properties:
+            webhooks:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_by_names'
+                  - $ref: '#/components/schemas/reference_by_identify'
+            connections:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_by_names'
+                  - $ref: '#/components/schemas/reference_by_identify'
+    connection_role_response_get:
+      type: object
+      title: connection-role
+      allOf:
+        - $ref: '#/components/schemas/connection_role'
+        - type: object
+          properties:
+            webhooks:
+              type: array
+              items:
+                title: plain_webhook reference
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/plain_webhook_response_get'
+            connections:
+              type: array
+              items:
+                title: connection reference
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/connection_response_get'
+    connection_role_response_post:
+      type: object
+      title: connection-role
+      allOf:
+        - $ref: '#/components/schemas/connection_role'
+        - type: object
+          properties:
+            webhooks:
+              type: array
+              items:
+                title: plain_webhook reference
+                allOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+            connections:
+              type: array
+              items:
+                title: connection reference
+                allOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+    connection_role:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
     connection:
       type: object
       properties:
@@ -2784,8 +2934,9 @@ components:
                 - $ref: '#/components/schemas/authorization_response'
             connection_role:
               title: connection-role reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/connection_role_response_get'
             before_submit:
               title: algorithm reference
               oneOf:
@@ -2952,8 +3103,9 @@ components:
                 - $ref: '#/components/schemas/authorization_response'
             connection_role:
               title: connection-role reference
-              allOf:
+              oneOf:
                 - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/connection_role_response_get'
             before_submit:
               title: algorithm reference
               oneOf:
@@ -3536,6 +3688,39 @@ components:
                     items:
                       allOf:
                         - $ref: '#/components/schemas/connection_response_get'
+    connection_role_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  connection_role:
+                    allOf:
+                      - $ref: '#/components/schemas/connection_role_response_post'
+    connection_role_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/connection_role_response_get'
+    connection_role_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  connection_roles:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/connection_role_response_get'
     flow_item_create:
       description: Success
       content:
@@ -3900,6 +4085,17 @@ components:
               - url
             allOf:
               - $ref: '#/components/schemas/connection_request'
+    connection_role_data:
+      description: The connection-role that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+            allOf:
+              - $ref: '#/components/schemas/connection_role_request'
     flow_data:
       description: The flow that will be created or updated
       required: true
