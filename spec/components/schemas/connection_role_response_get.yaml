@@ -1,0 +1,20 @@
+type: "object"
+title: "connection-role"
+allOf:
+  - $ref: "#/components/schemas/connection_role"
+  - type: object
+    properties:
+      webhooks:
+        type: array
+        items:
+          title: "plain_webhook reference"
+          oneOf:
+            - $ref: "#/components/schemas/reference_to_response"
+            - $ref: "#/components/schemas/plain_webhook_response_get"
+      connections:
+        type: array
+        items:
+          title: "connection reference"
+          oneOf:
+            - $ref: "#/components/schemas/reference_to_response"
+            - $ref: "#/components/schemas/connection_response_get"

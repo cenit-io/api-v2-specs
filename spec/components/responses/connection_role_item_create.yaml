@@ -1,0 +1,12 @@
+description: Success
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        success:
+          type: object
+          properties:
+            connection_role:
+              allOf:
+                - $ref: "#/components/schemas/connection_role_response_post"

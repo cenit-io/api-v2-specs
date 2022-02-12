@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Connection Roles
+  operationId: get_connection_roles
+  summary: List all connection-roles
+  description: |
+    Returns the list of your connection-roles.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/connection_role_items'
+
+post:
+  tags:
+    - Connection Roles
+  operationId: create_connection_role
+  summary: Create a connection-role
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/connection_role_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/connection_role_item_create'

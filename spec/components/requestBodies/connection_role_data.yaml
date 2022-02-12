@@ -1,0 +1,8 @@
+description: The connection-role that will be created or updated
+required: true
+content:
+  application/json:
+    schema:
+      required: [namespace,name]
+      allOf:
+        - $ref: "#/components/schemas/connection_role_request"

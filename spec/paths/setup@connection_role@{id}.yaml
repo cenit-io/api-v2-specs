@@ -1,0 +1,47 @@
+parameters:
+  - $ref: '#/components/parameters/path_item_id'
+
+get:
+  tags:
+    - Connection Roles
+  operationId: get_connection_role
+  summary: Retrieve a connection-role
+  description: |
+    Find and return the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/connection_role_item'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+
+post:
+  tags:
+    - Connection Roles
+  operationId: update_connection_role
+  summary: Update a connection-role
+  description: |
+    Find and update the item with the given id.
+  requestBody:
+    $ref: '#/components/requestBodies/connection_role_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/connection_role_item_create'
+    '404':
+      $ref: '#/components/responses/item_not_found'
+      
+delete:
+  tags:
+    - Connection Roles
+  operationId: delete_connection_role
+  summary: Delete a connection-role
+  description: |
+    Find and destroy the item with the given id.
+  responses:
+    '200':
+      $ref: '#/components/responses/item_removed_successfully'
+    '404':
+      $ref: '#/components/responses/item_not_found'

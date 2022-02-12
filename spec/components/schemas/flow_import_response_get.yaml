@@ -25,8 +25,9 @@ allOf:
           - $ref: "#/components/schemas/authorization_response"
       connection_role:
         title: "connection-role reference"
-        allOf:
+        oneOf:
           - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/connection_role_response_get"
       before_submit:
         title: "algorithm reference"
         oneOf:

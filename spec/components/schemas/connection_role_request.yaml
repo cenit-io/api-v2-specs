@@ -1,0 +1,17 @@
+type: "object"
+allOf:
+  - $ref: "#/components/schemas/connection_role"
+  - type: object
+    properties:
+      webhooks:
+        type: array
+        items:
+          oneOf:
+            - $ref: "#/components/schemas/reference_by_names"
+            - $ref: "#/components/schemas/reference_by_identify"
+      connections:
+        type: array
+        items:
+          oneOf:
+            - $ref: "#/components/schemas/reference_by_names"
+            - $ref: "#/components/schemas/reference_by_identify"

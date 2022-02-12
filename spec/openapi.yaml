@@ -103,6 +103,10 @@ tags:
     description: |
       ...
 
+  - name: Connection Roles
+    description: |
+      ...
+
   - name: Resouces
     description: |
       ...
@@ -165,6 +169,7 @@ x-tagGroups:
   - name: Gateways
     tags:
       - Connections
+      - Connection Roles
       - Resources
       - Webhooks
 
