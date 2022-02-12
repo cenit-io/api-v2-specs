@@ -1,0 +1,21 @@
+type: "object"
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: Item identifier
+  namespace:
+    type: string
+  name:
+    type: string
+    description: Lowercase name without spaces or special characters
+  url:
+    type: string
+    description: The connection url
+  authorization_handler:
+    type: boolean
+    default: false
+  number:
+    type: string
+  token:
+    type: string

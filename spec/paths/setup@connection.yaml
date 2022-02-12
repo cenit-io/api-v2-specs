@@ -1,0 +1,30 @@
+get:
+  tags:
+    - Connections
+  operationId: get_connections
+  summary: List all connections
+  description: |
+    Returns the list of your connections.
+  parameters:
+    - $ref: '#/components/parameters/query_offset'
+    - $ref: '#/components/parameters/query_limit'
+    - $ref: '#/components/parameters/query_sort'
+    - $ref: '#/components/parameters/query_only'
+    - $ref: '#/components/parameters/query_ignore'
+    - $ref: '#/components/parameters/query_embedding'
+  responses:
+    '200':
+      $ref: '#/components/responses/connection_items'
+
+post:
+  tags:
+    - Connections
+  operationId: create_connection
+  summary: Create a connection
+  description: |
+    Add a new item.
+  requestBody:
+    $ref: '#/components/requestBodies/connection_data'
+  responses:
+    '200':
+      $ref: '#/components/responses/connection_item_create'

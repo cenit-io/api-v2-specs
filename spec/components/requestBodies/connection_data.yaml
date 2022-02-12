@@ -1,0 +1,8 @@
+description: The connection that will be created or updated
+required: true
+content:
+  application/json:
+    schema:
+      required: [namespace,name,url]
+      allOf:
+        - $ref: "#/components/schemas/connection_request"

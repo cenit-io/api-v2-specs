@@ -1,0 +1,22 @@
+type: "object"
+title: "connection"
+allOf:
+  - $ref: "#/components/schemas/connection"
+  - type: object
+    properties:
+      parameters:
+        type: array
+        items:
+          $ref: "#/components/schemas/parameter"
+      headers:
+        type: array
+        items:
+          $ref: "#/components/schemas/parameter"
+      template_parameters:
+        type: array
+        items:
+          $ref: "#/components/schemas/parameter"
+      authorization:
+        oneOf:
+          - $ref: "#/components/schemas/reference_to_response"
+          - $ref: "#/components/schemas/authorization_response"

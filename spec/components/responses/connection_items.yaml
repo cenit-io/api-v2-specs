@@ -1,0 +1,13 @@
+description: Success
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: "#/components/schemas/pagination"
+        - type: object
+          properties:
+            connections:
+              type: array
+              items:
+                allOf:
+                  - $ref: "#/components/schemas/connection_response_get"
