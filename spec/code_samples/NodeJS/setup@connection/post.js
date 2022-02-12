@@ -17,7 +17,8 @@ const request = axios({
     url: "http://localhost/api/v2/connection_test",
     authorization: {
       _reference: true,
-      id:"62069b095a5a2330d0038cdc"
+      namespace: "Test",
+      name: "auth-basic"
     },
     headers:[
       {
