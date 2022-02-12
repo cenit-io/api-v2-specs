@@ -355,16 +355,19 @@
           },
           {
             "$ref": "#/components/parameters/query_ignore"
-          },
-          {
-            "$ref": "#/components/parameters/query_embedding"
           }
         ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/basic_authorization_items"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/basic_authorization',\n  params: { limit: 5, page: 1, order: '-namespace,name', ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -380,7 +383,13 @@
           "200": {
             "$ref": "#/components/responses/basic_authorization_item_create"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/basic_authorization',\n  data: {\n    namespace: \"Test\",\n    name: \"auth-basic\",\n    username: \"test_auth_basic\",\n    password: \"test_auth_basic\"\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          }
+        ]
       }
     },
     "/setup/basic_authorization/{id}": {
@@ -402,9 +411,6 @@
           },
           {
             "$ref": "#/components/parameters/query_ignore"
-          },
-          {
-            "$ref": "#/components/parameters/query_embedding"
           }
         ],
         "responses": {
@@ -414,7 +420,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62069b095a5a2330d0038cdc'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/basic_authorization/${item_id}`,\n  params: { ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -433,7 +445,13 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
-        }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62069b095a5a2330d0038cdc'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/basic_authorization/${item_id}`,\n  data: {\n    username: \"test_auth_basic@api_v2\"\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -449,7 +467,163 @@
           "404": {
             "$ref": "#/components/responses/item_not_found"
           }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62069b095a5a2330d0038cdc'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/basic_authorization/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
+      }
+    },
+    "/setup/connection": {
+      "get": {
+        "tags": [
+          "Connections"
+        ],
+        "operationId": "get_connections",
+        "summary": "List all connections",
+        "description": "Returns the list of your connections.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_offset"
+          },
+          {
+            "$ref": "#/components/parameters/query_limit"
+          },
+          {
+            "$ref": "#/components/parameters/query_sort"
+          },
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/connection_items"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/connection',\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization', ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Connections"
+        ],
+        "operationId": "create_connection",
+        "summary": "Create a connection",
+        "description": "Add a new item.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/connection_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/connection_item_create"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/connection',\n  data: {\n    namespace: \"Test\",\n    name: \"connection-test\",\n    url: \"http://localhost/api/v2/connection_test\",\n    authorization: {\n      _reference: true,\n      id:\"62069b095a5a2330d0038cdc\"\n    },\n    headers:[\n      {\n        key: \"Content-Type\",\n        value: \"text/xml\"\n      }\n    ]\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+          }
+        ]
+      }
+    },
+    "/setup/connection/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/path_item_id"
         }
+      ],
+      "get": {
+        "tags": [
+          "Connections"
+        ],
+        "operationId": "get_connection",
+        "summary": "Retrieve a connection",
+        "description": "Find and return the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query_only"
+          },
+          {
+            "$ref": "#/components/parameters/query_ignore"
+          },
+          {
+            "$ref": "#/components/parameters/query_embedding"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/connection_item"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62070ef05a5a23307d038a63'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/connection/${item_id}`,\n  params: { embedding: 'authorization', ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Connections"
+        ],
+        "operationId": "update_connection",
+        "summary": "Update a connection",
+        "description": "Find and update the item with the given id.\n",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/connection_data"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/connection_item_create"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62070ef05a5a23307d038a63'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/connection/${item_id}`,\n  data: {\n    url: \"{{domain}}/api/v2/connection_test\",\n    template_parameters:[\n      {\n        key: \"domain\"\n      }\n    ]\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Connections"
+        ],
+        "operationId": "delete_connection",
+        "summary": "Delete a connection",
+        "description": "Find and destroy the item with the given id.\n",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/item_removed_successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/item_not_found"
+          }
+        },
+        "x-code-samples": [
+          {
+            "lang": "NodeJS",
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62070ef05a5a23307d038a63'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/connection/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+          }
+        ]
       }
     },
     "/setup/flow": {
@@ -1552,6 +1726,181 @@
             "$ref": "#/components/schemas/authorization_basic"
           }
         ]
+      },
+      "connection_request": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/connection"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/parameter"
+                    }
+                  ],
+                  "required": [
+                    "key"
+                  ]
+                }
+              },
+              "headers": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/parameter"
+                    }
+                  ],
+                  "required": [
+                    "key"
+                  ]
+                }
+              },
+              "template_parameters": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/parameter"
+                    }
+                  ],
+                  "required": [
+                    "key"
+                  ]
+                }
+              },
+              "authorization": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_by_names"
+                  },
+                  {
+                    "$ref": "#/components/schemas/reference_by_identify"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "connection_response_get": {
+        "type": "object",
+        "title": "connection",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/connection"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "headers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "template_parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "authorization": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_to_response"
+                  },
+                  {
+                    "$ref": "#/components/schemas/authorization_response"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "connection_response_post": {
+        "type": "object",
+        "title": "connection",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/connection"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "headers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "template_parameters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/parameter"
+                }
+              },
+              "authorization": {
+                "title": "authorization reference",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/reference_to_response"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "connection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Item identifier"
+          },
+          "namespace": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "Lowercase name without spaces or special characters"
+          },
+          "url": {
+            "type": "string",
+            "description": "The connection url"
+          },
+          "authorization_handler": {
+            "type": "boolean",
+            "default": false
+          },
+          "number": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
       },
       "flow_convert_request": {
         "type": "object",
@@ -3019,6 +3368,69 @@
           }
         }
       },
+      "connection_item_create": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "connection": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/connection_response_post"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "connection_item": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/connection_response_get"
+            }
+          }
+        }
+      },
+      "connection_items": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/pagination"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "connections": {
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/connection_response_get"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
       "flow_item_create": {
         "description": "Success",
         "content": {
@@ -3627,6 +4039,26 @@
               "allOf": [
                 {
                   "$ref": "#/components/schemas/authorization_basic"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "connection_data": {
+        "description": "The connection that will be created or updated",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "namespace",
+                "name",
+                "url"
+              ],
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/connection_request"
                 }
               ]
             }
