@@ -282,7 +282,7 @@ paths:
             axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
             axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-            const item_id = '61e083815a5a2353c40082f3'
+            const item_id = '61eeeea05a5a2353a401b2c6'
 
             const request = axios({
               method: 'GET',
@@ -330,7 +330,7 @@ paths:
             axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
             axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-            const item_id = '61e083815a5a2353c40082f3'
+            const item_id = '61eeeea05a5a2353a401b2c6'
 
             let request = axios({
               method: 'POST',
@@ -377,7 +377,7 @@ paths:
             axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
             axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-            const item_id = '61e083815a5a2353c40082f3'
+            const item_id = '61eeeea05a5a2353a401b2c6'
 
             const request = axios({
               method: 'DELETE',
@@ -464,7 +464,7 @@ paths:
               url: 'setup/basic_authorization',
               data: {
                 namespace: "Test",
-                name: "auth-basic",
+                name: "auth_basic",
                 username: "test_auth_basic",
                 password: "test_auth_basic"
               }
@@ -623,6 +623,37 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/connection_role_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/connection_role',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'webhooks,connections' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Connection Roles
@@ -635,6 +666,56 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/connection_role_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: |+
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+            const https = require('https');
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/connection_role',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "connection_role_test_01",
+                webhooks: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "webhook_test_01"
+                  }
+                ],
+                connections: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "connection_test_01"
+                  }
+                ],
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
   '/setup/connection_role/{id}':
     parameters:
       - $ref: '#/components/parameters/path_item_id'
@@ -654,6 +735,33 @@ paths:
           $ref: '#/components/responses/connection_role_item'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '620951d95a5a233eb9043557'
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/connection_role/${item_id}`,
+              params: { embedding: 'webhooks,connections' }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     post:
       tags:
         - Connection Roles
@@ -668,6 +776,42 @@ paths:
           $ref: '#/components/responses/connection_role_item_create'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '620951d95a5a233eb9043557'
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/connection_role/${item_id}`,
+              data: {
+                webhooks: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "webhook_test_02"
+                  }
+                ],
+              }
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
     delete:
       tags:
         - Connection Roles
@@ -680,6 +824,32 @@ paths:
           $ref: '#/components/responses/item_removed_successfully'
         '404':
           $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: |-
+            const dotenv = require('dotenv')
+            const axios = require('axios');
+
+            dotenv.config();
+
+            axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
+            axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
+            axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
+
+            const item_id = '620951d95a5a233eb9043557'
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/connection_role/${item_id}`,
+            });
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
   /setup/connection:
     get:
       tags:
@@ -753,12 +923,12 @@ paths:
               url: 'setup/connection',
               data: {
                 namespace: "Test",
-                name: "connection-test",
+                name: "connection_test_01",
                 url: "http://localhost/api/v2/connection_test",
                 authorization: {
                   _reference: true,
                   namespace: "Test",
-                  name: "auth-basic"
+                  name: "auth_basic"
                 },
                 headers:[
                   {
