@@ -13,14 +13,27 @@ axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
 axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-const item_id = '61eeeea05a5a2353a401b2c6'
-
-let request = axios({
+const request = axios({
   method: 'POST',
-  url: `setup/algorithm/${item_id}`,
+  url: 'setup/connection_role',
   httpsAgent: agent,
   data: {
-    code: `return 1 + ${Date.now()}`,
+    namespace: "Test",
+    name: "connection_role_test_01",
+    webhooks: [
+      {
+        _reference: true,
+        namespace: "Test",
+        name: "webhook_test_01"
+      }
+    ],
+    connections: [
+      {
+        _reference: true,
+        namespace: "Test",
+        name: "connection_test_01"
+      }
+    ],
   }
 });
 
@@ -31,3 +44,4 @@ request.then((response) => {
   // Do something with the error
   console.error(JSON.stringify(error.response.data, null, 2));
 });
+

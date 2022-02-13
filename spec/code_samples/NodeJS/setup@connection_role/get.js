@@ -9,19 +9,14 @@ const agent = new https.Agent({
 dotenv.config();
 
 axios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';
-axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
 axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-const item_id = '61eeeea05a5a2353a401b2c6'
-
-let request = axios({
-  method: 'POST',
-  url: `setup/algorithm/${item_id}`,
+const request = axios({
+  method: 'GET',
+  url: 'setup/connection_role',
   httpsAgent: agent,
-  data: {
-    code: `return 1 + ${Date.now()}`,
-  }
+  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'webhooks,connections' }
 });
 
 request.then((response) => {

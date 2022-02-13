@@ -1,10 +1,5 @@
 const dotenv = require('dotenv')
 const axios = require('axios');
-const https = require('https');
-
-const agent = new https.Agent({
-  rejectUnauthorized: false
-});
 
 dotenv.config();
 
@@ -13,14 +8,19 @@ axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']
 axios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']
 
-const item_id = '61eeeea05a5a2353a401b2c6'
+const item_id = '620951d95a5a233eb9043557'
 
 let request = axios({
   method: 'POST',
-  url: `setup/algorithm/${item_id}`,
-  httpsAgent: agent,
+  url: `setup/connection_role/${item_id}`,
   data: {
-    code: `return 1 + ${Date.now()}`,
+    webhooks: [
+      {
+        _reference: true,
+        namespace: "Test",
+        name: "webhook_test_02"
+      }
+    ],
   }
 });
 
