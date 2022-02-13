@@ -13,12 +13,12 @@ const request = axios({
   url: 'setup/connection',
   data: {
     namespace: "Test",
-    name: "connection-test",
+    name: "connection_test_01",
     url: "http://localhost/api/v2/connection_test",
     authorization: {
       _reference: true,
       namespace: "Test",
-      name: "auth-basic"
+      name: "auth_basic"
     },
     headers:[
       {

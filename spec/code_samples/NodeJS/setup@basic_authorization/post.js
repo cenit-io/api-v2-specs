@@ -13,7 +13,7 @@ const request = axios({
   url: 'setup/basic_authorization',
   data: {
     namespace: "Test",
-    name: "auth-basic",
+    name: "auth_basic",
     username: "test_auth_basic",
     password: "test_auth_basic"
   }
