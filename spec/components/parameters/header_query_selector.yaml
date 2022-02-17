@@ -1,0 +1,11 @@
+name: X-Query-Selector
+in: headers
+schema:
+  type: object
+  description: |
+    Hash used to select the query response.
+  example: |
+     {
+        namespace: 'Test',
+        name: 'alg_test_02'
+     }
