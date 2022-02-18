@@ -197,6 +197,9 @@
         "description": "Returns the list of your algorithms.\n",
         "parameters": [
           {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
+          {
             "$ref": "#/components/parameters/query_offset"
           },
           {
@@ -347,6 +350,9 @@
         "description": "Returns the list of your basic-authorizations.\n",
         "parameters": [
           {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
+          {
             "$ref": "#/components/parameters/query_offset"
           },
           {
@@ -490,6 +496,9 @@
         "summary": "List all connection-roles",
         "description": "Returns the list of your connection-roles.\n",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
           {
             "$ref": "#/components/parameters/query_offset"
           },
@@ -641,6 +650,9 @@
         "description": "Returns the list of your connections.\n",
         "parameters": [
           {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
+          {
             "$ref": "#/components/parameters/query_offset"
           },
           {
@@ -790,6 +802,9 @@
         "summary": "List all flows",
         "description": "Returns the list of your flows.\n",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
           {
             "$ref": "#/components/parameters/query_offset"
           },
@@ -948,6 +963,9 @@
         "summary": "List all json-data-types",
         "description": "Returns the list of your json-data-types.\n",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
           {
             "$ref": "#/components/parameters/query_offset"
           },
@@ -1119,6 +1137,9 @@
         "description": "Returns the list of your plain-webhooks.\n",
         "parameters": [
           {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
+          {
             "$ref": "#/components/parameters/query_offset"
           },
           {
@@ -1268,6 +1289,9 @@
         "summary": "List all ruby converter transformations",
         "description": "Returns the list of your ruby converter transformations.\n",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
           {
             "$ref": "#/components/parameters/query_offset"
           },
@@ -1419,6 +1443,9 @@
         "description": "Returns the list of your ruby parser transformations.\n",
         "parameters": [
           {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
+          {
             "$ref": "#/components/parameters/query_offset"
           },
           {
@@ -1568,6 +1595,9 @@
         "summary": "List all ruby template transformations",
         "description": "Returns the list of your ruby template transformations.\n",
         "parameters": [
+          {
+            "$ref": "#/components/parameters/header_query_selector"
+          },
           {
             "$ref": "#/components/parameters/query_offset"
           },
@@ -4286,13 +4316,22 @@
       }
     },
     "parameters": {
+      "header_query_selector": {
+        "name": "X-Query-Selector",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "description": "JSON stringify with the query criteria.\n",
+          "example": "{\"$or\":[{\"namespace\":\"Test\"},{\"namespace\":\"Test_02\"}]}"
+        }
+      },
       "path_item_id": {
         "name": "id",
         "in": "path",
         "required": true,
         "schema": {
-          "description": "Item identifier",
           "type": "string",
+          "description": "Item identifier",
           "example": "5d04051125d9852c71016793"
         }
       },
@@ -4317,8 +4356,8 @@
         "name": "limit",
         "in": "query",
         "schema": {
-          "description": "The maximum number of items that can be returned. The supported values ​​are between 1 and 25.\n",
           "type": "integer",
+          "description": "The maximum number of items that can be returned. The supported values ​​are between 1 and 25.\n",
           "example": 10
         }
       },
@@ -4326,8 +4365,8 @@
         "name": "page",
         "in": "query",
         "schema": {
-          "description": "Number of the page to skip at the beginning of the list.\n",
           "type": "integer",
+          "description": "Number of the page to skip at the beginning of the list.\n",
           "example": 1
         }
       },

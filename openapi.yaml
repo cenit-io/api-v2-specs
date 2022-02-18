@@ -156,6 +156,7 @@ paths:
       description: |
         Returns the list of your algorithms.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -401,6 +402,7 @@ paths:
       description: |
         Returns the list of your basic-authorizations.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -614,6 +616,7 @@ paths:
       description: |
         Returns the list of your connection-roles.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -859,6 +862,7 @@ paths:
       description: |
         Returns the list of your connections.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -1089,6 +1093,7 @@ paths:
       description: |
         Returns the list of your flows.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -1433,6 +1438,7 @@ paths:
       description: |
         Returns the list of your json-data-types.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -1739,6 +1745,7 @@ paths:
       description: |
         Returns the list of your plain-webhooks.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -1979,6 +1986,7 @@ paths:
       description: |
         Returns the list of your ruby converter transformations.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -2235,6 +2243,7 @@ paths:
       description: |
         Returns the list of your ruby parser transformations.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -2484,6 +2493,7 @@ paths:
       description: |
         Returns the list of your ruby template transformations.
       parameters:
+        - $ref: '#/components/parameters/header_query_selector'
         - $ref: '#/components/parameters/query_offset'
         - $ref: '#/components/parameters/query_limit'
         - $ref: '#/components/parameters/query_sort'
@@ -4149,13 +4159,21 @@ components:
                       allOf:
                         - $ref: '#/components/schemas/ruby_template_response_get'
   parameters:
+    header_query_selector:
+      name: X-Query-Selector
+      in: header
+      schema:
+        type: string
+        description: |
+          JSON stringify with the query criteria.
+        example: '{"$or":[{"namespace":"Test"},{"namespace":"Test_02"}]}'
     path_item_id:
       name: id
       in: path
       required: true
       schema:
-        description: Item identifier
         type: string
+        description: Item identifier
         example: 5d04051125d9852c71016793
     query_embedding:
       name: embedding
@@ -4180,17 +4198,17 @@ components:
       name: limit
       in: query
       schema:
+        type: integer
         description: |
           The maximum number of items that can be returned. The supported values ​​are between 1 and 25.
-        type: integer
         example: 10
     query_offset:
       name: page
       in: query
       schema:
+        type: integer
         description: |
           Number of the page to skip at the beginning of the list.
-        type: integer
         example: 1
     query_only:
       name: only
