@@ -1,11 +1,11 @@
 name: X-Query-Selector
-in: headers
+in: header
 schema:
-  type: object
+  type: string
   description: |
-    Hash used to select the query response.
+    JSON stringify with the query criteria.
   example: |
      {
-        namespace: 'Test',
-        name: 'alg_test_02'
+        "namespace": "Test",
+        "name": "resource_test"
      }

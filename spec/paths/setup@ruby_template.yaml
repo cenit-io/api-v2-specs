@@ -6,6 +6,7 @@ get:
   description: |
     Returns the list of your ruby template transformations.
   parameters:
+    - $ref: '#/components/parameters/header_query_selector'
     - $ref: '#/components/parameters/query_offset'
     - $ref: '#/components/parameters/query_limit'
     - $ref: '#/components/parameters/query_sort'
