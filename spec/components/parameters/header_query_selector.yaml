@@ -4,8 +4,4 @@ schema:
   type: string
   description: |
     JSON stringify with the query criteria.
-  example: |
-     {
-        "namespace": "Test",
-        "name": "resource_test"
-     }
+  example: '{"$or":[{"namespace":"Test"},{"namespace":"Test_02"}]}'
