@@ -13,8 +13,6 @@ content:
                 - type: object
                   properties:
                     target_data_type:
-                      readOnly: true
                       $ref: "#/components/schemas/reference_to_response"
                     snippet:
-                      readOnly: true
                       $ref: "#/components/schemas/reference_to_response"
