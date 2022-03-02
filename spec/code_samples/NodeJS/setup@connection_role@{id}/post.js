@@ -13,12 +13,26 @@ const item_id = '620951d95a5a233eb9043557'
 let request = axios({
   method: 'POST',
   url: `setup/connection_role/${item_id}`,
+  headers: {
+    'X-Parser-Options': JSON.stringify({
+      primary_fields: ['namespace','name'],
+      // reset: ['webhooks','connections']
+      add_only: false
+    })
+  },
   data: {
     webhooks: [
       {
         _reference: true,
         namespace: "Test",
-        name: "webhook_test_02"
+        name: "webhook_test_01"
+      }
+    ],
+    connections: [
+      {
+        _reference: true,
+        namespace: "Test",
+        name: "connection_test_01"
       }
     ],
   }

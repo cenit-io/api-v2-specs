@@ -17,21 +17,32 @@ const request = axios({
   method: 'POST',
   url: 'setup/flow',
   httpsAgent: agent,
+  headers: {
+    'X-Parser-Options': JSON.stringify({
+      primary_fields: ['namespace','name'],
+      // reset: [],
+     ignore: ['translator','webhook'],
+      add_only: false
+    })
+  },
   data: {
     namespace: "Test",
     name: "flow_import_test_01",
-    notify_request: true,
-    notify_response: true,
-    translator: {
-      _reference: true,
-      namespace: 'Test',
-      name: 'parser_test_01',
-    },
-    webhook: {
-      _reference: true,
-      namespace: 'Test',
-      name: 'webhook_test_01',
-    },
+    active: false,
+    // notify_response: true,
+    // translator: {
+    //   _reference: true,
+    //   namespace: 'Test',
+    //   name: 'parser_test_01',
+    // },
+    // webhook: {
+    //   _reference: true,
+    //   namespace: 'Test',
+    //   name: 'webhook_test_01',
+    // },
+    after_process_callbacks: [
+      { _reference: true, namespace: 'Test', name: 'alg_test_01' },
+    ],
   }
 });
 
