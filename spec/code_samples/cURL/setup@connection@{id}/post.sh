@@ -9,7 +9,7 @@ read -r -d '' data <<- EOM
       "url": "{{domain}}/api/v2/connection_test",
       "template_parameters":[
         {
-          key: "domain"
+          "key": "domain"
         }
       ]
   }
