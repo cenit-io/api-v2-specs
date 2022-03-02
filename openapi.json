@@ -613,7 +613,7 @@
         "x-code-samples": [
           {
             "lang": "NodeJS",
-            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620951d95a5a233eb9043557'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/connection_role/${item_id}`,\n  data: {\n    webhooks: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"webhook_test_02\"\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620951d95a5a233eb9043557'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/connection_role/${item_id}`,\n  headers: {\n    'X-Parser-Options': JSON.stringify({\n      primary_fields: ['namespace','name'],\n      // reset: ['webhooks','connections']\n      add_only: false\n    })\n  },\n  data: {\n    webhooks: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"webhook_test_01\"\n      }\n    ],\n    connections: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"connection_test_01\"\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
         ]
       },
@@ -678,6 +678,10 @@
         },
         "x-code-samples": [
           {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=authorization \\\n  -d ignore=password"
+          },
+          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/connection',\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization', ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -699,6 +703,10 @@
           }
         },
         "x-code-samples": [
+          {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"connection_test_01\",\n      \"url\": \"http://localhost/api/v2/connection_test\",\n      \"authorization\": {\n        \"_reference\": true,\n        \"namespace\": \"Test\",\n        \"name\": \"auth_basic\"\n      },\n      \"headers\":[\n        {\n          \"key\": \"Content-Type\",\n          \"value\": \"text/xml\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/connection',\n  data: {\n    namespace: \"Test\",\n    name: \"connection_test_01\",\n    url: \"http://localhost/api/v2/connection_test\",\n    authorization: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"auth_basic\"\n    },\n    headers:[\n      {\n        key: \"Content-Type\",\n        value: \"text/xml\"\n      }\n    ]\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -740,6 +748,10 @@
         },
         "x-code-samples": [
           {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"59d5502825d9852797009590\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
+          },
+          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62070ef05a5a23307d038a63'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/connection/${item_id}`,\n  params: { embedding: 'authorization', ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -765,6 +777,10 @@
         },
         "x-code-samples": [
           {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"62070ef05a5a23307d038a63\"\n\nread -r -d '' data <<- EOM\n  {\n      \"url\": \"{{domain}}/api/v2/connection_test\",\n      \"template_parameters\":[\n        {\n          key: \"domain\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+          },
+          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62070ef05a5a23307d038a63'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/connection/${item_id}`,\n  data: {\n    url: \"{{domain}}/api/v2/connection_test\",\n    template_parameters:[\n      {\n        key: \"domain\"\n      }\n    ]\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -786,6 +802,10 @@
           }
         },
         "x-code-samples": [
+          {
+            "lang": "cURL",
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"62070ef05a5a23307d038a63\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
+          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62070ef05a5a23307d038a63'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/connection/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -862,7 +882,7 @@
           },
           {
             "lang": "Import",
-            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"flow_import_test_01\",\n    notify_request: true,\n    notify_response: true,\n    translator: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'parser_test_01',\n    },\n    webhook: {\n      _reference: true,\n      namespace: 'Test',\n      name: 'webhook_test_01',\n    },\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  headers: {\n    'X-Parser-Options': JSON.stringify({\n      primary_fields: ['namespace','name'],\n      // reset: [],\n     ignore: ['translator','webhook'],\n      add_only: false\n    })\n  },\n  data: {\n    namespace: \"Test\",\n    name: \"flow_import_test_01\",\n    active: false,\n    // notify_response: true,\n    // translator: {\n    //   _reference: true,\n    //   namespace: 'Test',\n    //   name: 'parser_test_01',\n    // },\n    // webhook: {\n    //   _reference: true,\n    //   namespace: 'Test',\n    //   name: 'webhook_test_01',\n    // },\n    after_process_callbacks: [\n      { _reference: true, namespace: 'Test', name: 'alg_test_01' },\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
           }
         ]
       }
@@ -1063,7 +1083,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d embedding=snippet\n"
           },
           {
             "lang": "NodeJS",

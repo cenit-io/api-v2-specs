@@ -797,12 +797,26 @@ paths:
             let request = axios({
               method: 'POST',
               url: `setup/connection_role/${item_id}`,
+              headers: {
+                'X-Parser-Options': JSON.stringify({
+                  primary_fields: ['namespace','name'],
+                  // reset: ['webhooks','connections']
+                  add_only: false
+                })
+              },
               data: {
                 webhooks: [
                   {
                     _reference: true,
                     namespace: "Test",
-                    name: "webhook_test_02"
+                    name: "webhook_test_01"
+                  }
+                ],
+                connections: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "connection_test_01"
                   }
                 ],
               }
@@ -873,6 +887,21 @@ paths:
         '200':
           $ref: '#/components/responses/connection_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -910,6 +939,38 @@ paths:
         '200':
           $ref: '#/components/responses/connection_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+
+            read -r -d '' data <<- EOM
+              {
+                  "namespace": "Test",
+                  "name": "connection_test_01",
+                  "url": "http://localhost/api/v2/connection_test",
+                  "authorization": {
+                    "_reference": true,
+                    "namespace": "Test",
+                    "name": "auth_basic"
+                  },
+                  "headers":[
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ]
+              }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -971,6 +1032,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+            item_id="59d5502825d9852797009590"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1012,6 +1086,31 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+            item_id="62070ef05a5a23307d038a63"
+
+            read -r -d '' data <<- EOM
+              {
+                  "url": "{{domain}}/api/v2/connection_test",
+                  "template_parameters":[
+                    {
+                      key: "domain"
+                    }
+                  ]
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1059,6 +1158,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+            item_id="62070ef05a5a23307d038a63"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1257,21 +1368,32 @@ paths:
               method: 'POST',
               url: 'setup/flow',
               httpsAgent: agent,
+              headers: {
+                'X-Parser-Options': JSON.stringify({
+                  primary_fields: ['namespace','name'],
+                  // reset: [],
+                 ignore: ['translator','webhook'],
+                  add_only: false
+                })
+              },
               data: {
                 namespace: "Test",
                 name: "flow_import_test_01",
-                notify_request: true,
-                notify_response: true,
-                translator: {
-                  _reference: true,
-                  namespace: 'Test',
-                  name: 'parser_test_01',
-                },
-                webhook: {
-                  _reference: true,
-                  namespace: 'Test',
-                  name: 'webhook_test_01',
-                },
+                active: false,
+                // notify_response: true,
+                // translator: {
+                //   _reference: true,
+                //   namespace: 'Test',
+                //   name: 'parser_test_01',
+                // },
+                // webhook: {
+                //   _reference: true,
+                //   namespace: 'Test',
+                //   name: 'webhook_test_01',
+                // },
+                after_process_callbacks: [
+                  { _reference: true, namespace: 'Test', name: 'alg_test_01' },
+                ],
               }
             });
 
@@ -1591,9 +1713,10 @@ paths:
             path="setup/json_data_type"
             item_id="61e0312b5a5a2353ad004469"
 
-            curl "${base_url}/${path}/${item_id}" \
+            curl -G "${base_url}/${path}/${item_id}" \
               -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
-              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
