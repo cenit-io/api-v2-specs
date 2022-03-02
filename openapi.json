@@ -778,7 +778,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"62070ef05a5a23307d038a63\"\n\nread -r -d '' data <<- EOM\n  {\n      \"url\": \"{{domain}}/api/v2/connection_test\",\n      \"template_parameters\":[\n        {\n          key: \"domain\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"62070ef05a5a23307d038a63\"\n\nread -r -d '' data <<- EOM\n  {\n      \"url\": \"{{domain}}/api/v2/connection_test\",\n      \"template_parameters\":[\n        {\n          \"key\": \"domain\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",
