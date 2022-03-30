@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>CenitIO APIv2 Specifications</title>
   <meta name="description" content="Simple connector API for doing business and data integrations">
@@ -68,8 +69,10 @@
       top: -5px;
     }
 
-    div[data-section-id^="tag/"] h1, label[type=group] {
-      background-color: lightskyblue;
+    div[data-section-id^="tag/"] h1,
+    label[type=group] {
+      background-color: rgb(21, 21, 21);
+      color: white;
       text-transform: uppercase;
     }
 
@@ -77,7 +80,7 @@
       font-variant: small-caps;
       font-weight: bolder;
       font-size: 1.5em;
-      color: black;
+      color: white;
       padding-left: 1em;
       margin-left: -1em;
       margin-right: -1em;
@@ -101,20 +104,22 @@
   <script type="text/javascript">
     $(document).ready(function () {
       Redoc.init('./openapi.json', {
-          menuToggle: true,
-          theme: {
-            logo: {"gutter": "20px 30px 14px 30px"},
-            colors: {"text": {"primary": "#333333"}},
-            rightPanel: {"backgroundColor": "#263238"},
-            links: {"color": "#6CC496"}
-          }
-        },
+        menuToggle: true,
+        theme: {
+          logo: { "gutter": "20px 30px 14px 30px" },
+          colors: { "text": { "primary": "#212121" } },
+          rightPanel: { "backgroundColor": "#263238" },
+          links: { "color": "#6CC496" }
+        }
+      },
         document.getElementById("redoc_container"),
       );
     })
   </script>
 </head>
+
 <body>
-<div id="redoc_container"></div>
+  <div id="redoc_container"></div>
 </body>
+
 </html>

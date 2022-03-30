@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "v2",
-    "title": "CenitIO API Specifications",
+    "title": "Cenit IO - API",
     "termsOfService": "https://cenit.io/terms",
     "contact": {
       "email": "support@cenit.io",
@@ -11,9 +11,6 @@
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "x-logo": {
-      "url": "logo.png"
     },
     "description": "# Introduction\n\nCenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designe to solve\nunique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple\nformats and protocols. Ready to use in our cloud or on-premises\n\nThe CenitIO APIv2 is a simple connector API for doing business and data integrations.\n\nThis API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.\n\n* It is built over REST services on HTTPS.\n\n* It has predictable resource URLs.\n\n* It returns HTTP response codes to indicate errors.\n\n* It accepts and returns JSON in the HTTP body.\n\n* You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.\n\n  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)\n"
   },
@@ -186,6 +183,10 @@
       ]
     }
   ],
+  "externalDocs": {
+    "description": "CenitIO-Documentation",
+    "url": "https://cenit-io.github.io/docs"
+  },
   "paths": {
     "/setup/algorithm": {
       "get": {
@@ -1759,10 +1760,6 @@
         ]
       }
     }
-  },
-  "externalDocs": {
-    "description": "CenitIO-Documentation",
-    "url": "https://cenit-io.github.io/docs"
   },
   "components": {
     "schemas": {

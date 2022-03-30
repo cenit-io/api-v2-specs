@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: v2
-  title: CenitIO API Specifications
+  title: Cenit IO - API
   termsOfService: 'https://cenit.io/terms'
   contact:
     email: support@cenit.io
@@ -9,8 +9,6 @@ info:
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  x-logo:
-    url: logo.png
   description: |
     # Introduction
 
@@ -146,6 +144,9 @@ x-tagGroups:
       - Authorizations Clients
       - Authorizations Providers
       - Authorizations Basic
+externalDocs:
+  description: CenitIO-Documentation
+  url: 'https://cenit-io.github.io/docs'
 paths:
   /setup/algorithm:
     get:
@@ -2863,9 +2864,6 @@ paths:
               // Do something with the error
               console.error(JSON.stringify(error.response.data, null, 2));
             });
-externalDocs:
-  description: CenitIO-Documentation
-  url: 'https://cenit-io.github.io/docs'
 components:
   schemas:
     algorithm_parameter:
