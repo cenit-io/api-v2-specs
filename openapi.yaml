@@ -205,6 +205,8 @@ paths:
       summary: Create a algorithm
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/algorithm_data'
       responses:
@@ -307,6 +309,8 @@ paths:
       summary: Update a algorithm
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/algorithm_data'
       responses:
@@ -444,6 +448,8 @@ paths:
       summary: Create a basic-authorization
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/basic_authorization_data'
       responses:
@@ -466,10 +472,10 @@ paths:
               method: 'POST',
               url: 'setup/basic_authorization',
               data: {
-                namespace: "Test",
+                namespace: "Test2",
                 name: "auth_basic",
-                username: "test_auth_basic",
-                password: "test_auth_basic"
+                username: "test2_auth_basic",
+                password: "test2_auth_basic"
               }
             });
 
@@ -533,6 +539,8 @@ paths:
       summary: Update a basic-authorization
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/basic_authorization_data'
       responses:
@@ -665,6 +673,8 @@ paths:
       summary: Create a connection-role
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/connection_role_data'
       responses:
@@ -773,6 +783,8 @@ paths:
       summary: Update a connection-role
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/connection_role_data'
       responses:
@@ -934,6 +946,8 @@ paths:
       summary: Create a connection
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/connection_data'
       responses:
@@ -1039,7 +1053,7 @@ paths:
 
             base_url=${BASE_URL:="https://cenit.io/api/v2"}
             path="setup/connection"
-            item_id="59d5502825d9852797009590"
+            item_id="62070ef05a5a23307d038a63"
 
             curl -G "${base_url}/${path}/${item_id}" \
               -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
@@ -1079,6 +1093,8 @@ paths:
       summary: Update a connection
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/connection_data'
       responses:
@@ -1253,6 +1269,8 @@ paths:
       summary: Create a flows.
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/flow_data'
       responses:
@@ -1465,6 +1483,8 @@ paths:
       summary: Update a flow.
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/flow_data'
       responses:
@@ -1617,6 +1637,8 @@ paths:
       summary: Create a json-data-type
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/json_data_type_data'
       responses:
@@ -1751,6 +1773,8 @@ paths:
       summary: Update a json-data-type
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/json_data_type_data'
       responses:
@@ -1917,6 +1941,8 @@ paths:
       summary: Create a plain-webhook
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/plain_webhook_data'
       responses:
@@ -2019,6 +2045,8 @@ paths:
       summary: Update a plain-webhook
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/plain_webhook_data'
       responses:
@@ -2158,6 +2186,8 @@ paths:
       summary: Create a ruby converter transformations.
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/ruby_converter_data'
       responses:
@@ -2270,6 +2300,8 @@ paths:
       summary: Update a ruby converter transformation.
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/ruby_converter_data'
       responses:
@@ -2415,6 +2447,8 @@ paths:
       summary: Create a ruby parser transformations.
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/ruby_parser_data'
       responses:
@@ -2521,6 +2555,8 @@ paths:
       summary: Update a ruby parser transformation.
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/ruby_parser_data'
       responses:
@@ -2665,6 +2701,8 @@ paths:
       summary: Create a ruby template transformations.
       description: |
         Add a new item.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/ruby_template_data'
       responses:
@@ -2774,6 +2812,8 @@ paths:
       summary: Update a ruby template transformation.
       description: |
         Find and update the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/header_parser_options'
       requestBody:
         $ref: '#/components/requestBodies/ruby_template_data'
       responses:
@@ -4278,6 +4318,22 @@ components:
                       allOf:
                         - $ref: '#/components/schemas/ruby_template_response_get'
   parameters:
+    header_parser_options:
+      name: X-Parser-Options
+      in: header
+      schema:
+        type: string
+        description: |
+          JSON stringify with parser options. The available parser options are:
+          - ***primary_fields***: | array of attribute names that will be parsed to identify the register to operate.
+            > If exist a matching record it is updated, otherwise a new record is created.
+          - ***reset***: | array of attribute names that will be reset before to operate.
+            > This option is only parsed when trying to update a record.
+          - ***ignore***: | array of attribute names that will be ignored to operate.
+            > The id attribute never will be ignored.
+          - ***add_only***: | boolean value that establishes how to operate on all attributes of type array but not defined in parser option reset. When the value is true the append action is set; otherwise the overwrite action is set.
+            > If operation is create a new record the default value is true, otherwise de default value is false.
+        example: '{"primary_fields": ["namespace", "name"],"add_only": true}'
     header_query_selector:
       name: X-Query-Selector
       in: header

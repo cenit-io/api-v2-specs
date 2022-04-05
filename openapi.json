@@ -238,6 +238,11 @@
         "operationId": "create_algorithm",
         "summary": "Create a algorithm",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/algorithm_data"
         },
@@ -300,6 +305,11 @@
         "operationId": "update_algorithm",
         "summary": "Update a algorithm",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/algorithm_data"
         },
@@ -388,6 +398,11 @@
         "operationId": "create_basic_authorization",
         "summary": "Create a basic-authorization",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/basic_authorization_data"
         },
@@ -399,7 +414,7 @@
         "x-code-samples": [
           {
             "lang": "NodeJS",
-            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/basic_authorization',\n  data: {\n    namespace: \"Test\",\n    name: \"auth_basic\",\n    username: \"test_auth_basic\",\n    password: \"test_auth_basic\"\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
+            "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/basic_authorization',\n  data: {\n    namespace: \"Test2\",\n    name: \"auth_basic\",\n    username: \"test2_auth_basic\",\n    password: \"test2_auth_basic\"\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
           }
         ]
       }
@@ -447,6 +462,11 @@
         "operationId": "update_basic_authorization",
         "summary": "Update a basic-authorization",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/basic_authorization_data"
         },
@@ -538,6 +558,11 @@
         "operationId": "create_connection_role",
         "summary": "Create a connection-role",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/connection_role_data"
         },
@@ -600,6 +625,11 @@
         "operationId": "update_connection_role",
         "summary": "Update a connection-role",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/connection_role_data"
         },
@@ -695,6 +725,11 @@
         "operationId": "create_connection",
         "summary": "Create a connection",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/connection_data"
         },
@@ -750,7 +785,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"59d5502825d9852797009590\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection\"\nitem_id=\"62070ef05a5a23307d038a63\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
           },
           {
             "lang": "NodeJS",
@@ -765,6 +800,11 @@
         "operationId": "update_connection",
         "summary": "Update a connection",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/connection_data"
         },
@@ -864,6 +904,11 @@
         "operationId": "create_flow",
         "summary": "Create a flows.",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/flow_data"
         },
@@ -934,6 +979,11 @@
         "operationId": "update_flow",
         "summary": "Update a flow.",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/flow_data"
         },
@@ -1029,6 +1079,11 @@
         "operationId": "create_json_data_type",
         "summary": "Create a json-data-type",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/json_data_type_data"
         },
@@ -1099,6 +1154,11 @@
         "operationId": "update_json_data_type",
         "summary": "Update a json-data-type",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/json_data_type_data"
         },
@@ -1198,6 +1258,11 @@
         "operationId": "create_plain_webhook",
         "summary": "Create a plain-webhook",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/plain_webhook_data"
         },
@@ -1260,6 +1325,11 @@
         "operationId": "update_plain_webhook",
         "summary": "Update a plain-webhook",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/plain_webhook_data"
         },
@@ -1351,6 +1421,11 @@
         "operationId": "create_ruby_converter",
         "summary": "Create a ruby converter transformations.",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/ruby_converter_data"
         },
@@ -1413,6 +1488,11 @@
         "operationId": "update_ruby_converter",
         "summary": "Update a ruby converter transformation.",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/ruby_converter_data"
         },
@@ -1504,6 +1584,11 @@
         "operationId": "create_ruby_parser",
         "summary": "Create a ruby parser transformations.",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/ruby_parser_data"
         },
@@ -1566,6 +1651,11 @@
         "operationId": "update_ruby_parser",
         "summary": "Update a ruby parser transformation.",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/ruby_parser_data"
         },
@@ -1657,6 +1747,11 @@
         "operationId": "create_ruby_template",
         "summary": "Create a ruby template transformations.",
         "description": "Add a new item.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/ruby_template_data"
         },
@@ -1719,6 +1814,11 @@
         "operationId": "update_ruby_template",
         "summary": "Update a ruby template transformation.",
         "description": "Find and update the item with the given id.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/header_parser_options"
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/ruby_template_data"
         },
@@ -4331,6 +4431,15 @@
       }
     },
     "parameters": {
+      "header_parser_options": {
+        "name": "X-Parser-Options",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "description": "JSON stringify with parser options. The available parser options are:\n- ***primary_fields***: | array of attribute names that will be parsed to identify the register to operate.\n  > If exist a matching record it is updated, otherwise a new record is created.\n- ***reset***: | array of attribute names that will be reset before to operate.\n  > This option is only parsed when trying to update a record.\n- ***ignore***: | array of attribute names that will be ignored to operate.\n  > The id attribute never will be ignored.\n- ***add_only***: | boolean value that establishes how to operate on all attributes of type array but not defined in parser option reset. When the value is true the append action is set; otherwise the overwrite action is set.\n  > If operation is create a new record the default value is true, otherwise de default value is false.\n",
+          "example": "{\"primary_fields\": [\"namespace\", \"name\"],\"add_only\": true}"
+        }
+      },
       "header_query_selector": {
         "name": "X-Query-Selector",
         "in": "header",
