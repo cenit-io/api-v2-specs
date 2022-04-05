@@ -25,6 +25,8 @@ post:
   summary: Update a ruby template transformation.
   description: |
     Find and update the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/ruby_template_data'
   responses:

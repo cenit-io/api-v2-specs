@@ -12,4 +12,4 @@ schema:
       > The id attribute never will be ignored.
     - ***add_only***: | boolean value that establishes how to operate on all attributes of type array but not defined in parser option reset. When the value is true the append action is set; otherwise the overwrite action is set.
       > If operation is create a new record the default value is true, otherwise de default value is false.
-  example: '{"primary_fields": ["namespace", "name"],"ignore":["url"],"reset":["template_parameters"],"add_only": true}'
+  example: '{"primary_fields": ["namespace", "name"],"add_only": true}'

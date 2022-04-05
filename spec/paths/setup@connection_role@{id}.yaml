@@ -25,6 +25,8 @@ post:
   summary: Update a connection-role
   description: |
     Find and update the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/connection_role_data'
   responses:

@@ -24,6 +24,8 @@ post:
   summary: Update a basic-authorization
   description: |
     Find and update the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/basic_authorization_data'
   responses:

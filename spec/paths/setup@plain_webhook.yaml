@@ -24,6 +24,8 @@ post:
   summary: Create a plain-webhook
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/plain_webhook_data'
   responses:

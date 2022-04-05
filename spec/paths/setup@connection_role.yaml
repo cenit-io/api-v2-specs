@@ -24,6 +24,8 @@ post:
   summary: Create a connection-role
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/connection_role_data'
   responses:

@@ -24,6 +24,8 @@ post:
   summary: Create a ruby template transformations.
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/ruby_template_data'
   responses:

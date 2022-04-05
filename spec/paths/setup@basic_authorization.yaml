@@ -23,6 +23,8 @@ post:
   summary: Create a basic-authorization
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/basic_authorization_data'
   responses:

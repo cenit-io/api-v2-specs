@@ -24,6 +24,8 @@ post:
   summary: Create a ruby converter transformations.
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/ruby_converter_data'
   responses:

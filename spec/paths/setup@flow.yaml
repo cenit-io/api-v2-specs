@@ -24,6 +24,8 @@ post:
   summary: Create a flows.
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/flow_data'
   responses:

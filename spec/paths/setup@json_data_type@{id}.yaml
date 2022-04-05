@@ -25,6 +25,8 @@ post:
   summary: Update a json-data-type
   description: |
     Find and update the item with the given id.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/json_data_type_data'
   responses:

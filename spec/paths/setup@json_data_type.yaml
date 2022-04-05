@@ -24,6 +24,8 @@ post:
   summary: Create a json-data-type
   description: |
     Add a new item.
+  parameters:
+    - $ref: '#/components/parameters/header_parser_options'
   requestBody:
     $ref: '#/components/requestBodies/json_data_type_data'
   responses:
