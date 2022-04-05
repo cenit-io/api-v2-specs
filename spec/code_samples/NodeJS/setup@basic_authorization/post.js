@@ -12,10 +12,10 @@ const request = axios({
   method: 'POST',
   url: 'setup/basic_authorization',
   data: {
-    namespace: "Test",
+    namespace: "Test2",
     name: "auth_basic",
-    username: "test_auth_basic",
-    password: "test_auth_basic"
+    username: "test2_auth_basic",
+    password: "test2_auth_basic"
   }
 });
 
