@@ -1,5 +1,5 @@
 # CenitIO APIv2 Specifications
-[![Build Status](https://travis-ci.com/cenit-io/api-v2-specs.svg?branch=master)](https://travis-ci.com/cenit-io/api-v2-specs)
+[View-On-Line](https://cenit-io.github.io/api-v2-specs)
 
 ## Introduction
 
