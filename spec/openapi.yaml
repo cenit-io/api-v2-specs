@@ -2,13 +2,13 @@ openapi: 3.0.0
 info:
   version: v2
   title: Cenit IO - API
-  termsOfService: 'https://cenit.io/terms'
+  termsOfService: https://cenit.io/terms
   contact:
     email: support@cenit.io
-    url: 'https://cenitio.slack.com/messages/support'
+    url: https://cenitio.slack.com/messages/support
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: >
     # Introduction
 
@@ -50,22 +50,22 @@ tags:
   - name: Document Types
     description: >-
       Document types are the objects that are manipulated in JSON format. Each
-      method is shown below.
-  - name: File
+      method is shown below. See also [Document Types](https://docs.cenit.io/docs/data/document_types) in Cenit IO Docs.
+  - name: File Types
     description: >-
       File types are information that can not be represented in JSON format,
       such as images, PDF files and so on. Similar than document types, you can
-      create, update, delete and list file types. Each method is shown below.
+      create, update, delete and list file types. Each method is shown below. You can see more details about [File Types](https://docs.cenit.io/docs/data/file_types) in Cenit IO Docs. 
   - name: Collections
     description: >-
       A collection is a way to organize a group of elements of an integration
       that you want to save in your tenant, and later, export, import or share
       to another tenant. You can manage collections by means of the methods
-      described below.
+      described below. You can see more details about [Collections](https://docs.cenit.io/docs/integrations/collections) in Cenit IO Docs. 
   - name: Shared Collections
     description: >-
       Sharing collections is a way to publish that collection to all tenants.
-      You can manage shared collections by means of the methods described below.
+      You can manage shared collections by means of the methods described below. You can see more details about [Shared Collections](https://docs.cenit.io/docs/integrations/shared_collections) in Cenit IO Docs.
   - name: Algorithms
     description: >-
       Algorithms are pieces of code in Ruby language which can be used for
@@ -74,58 +74,56 @@ tags:
       parameters and the code itself. They returns a value, store records of
       data in Cenit or sends data to an API. Algorithms are executed by means of
       tasks or application actions which can in turn invoke other algorithms.
-      The most commonly tasks are flows to import and export data.
+      The most commonly tasks are flows to import and export data. You will learn more about [Algorithms](https://docs.cenit.io/docs/compute/algorithms) in Cenit IO Docs.
   - name: Applications
     description: >-
       An application provides a way for accessing Cenit IO from outside by
       defining a set of actions. Each action in the application associates an
       URL, usually like https://server.cenit.io/app/{app_path}/{action_path}, to
       a Cenit algorithm which will be executed when a petition to that URL is
-      done. This feature lets the user create his own applications with
-      customized interfaces and use Cenit IO in the background as well as
-      enabling the interaction with a third party application.
+      done. You will learn more about [Applications](https://docs.cenit.io/docs/compute/applications) in Cenit IO Docs.
   - name: Snippets
     description: >-
       Cenit uses the "Snippet" concept to refer pieces of code of algorithms,
       translators and data types definition. When you create a data type or any
       kind of algorithm, Cenit let you know a snippet will be implicitly created
-      to store the data type schema or the algorithm code.
+      to store the data type schema or the algorithm code. You will learn more about [Snippets](https://docs.cenit.io/docs/compute/snippets) in Cenit IO Docs.
   - name: Templates
     description: >-
       A Template is an algorithm translator that formats data type records
       stored in Cenit to data which be sent outside Cenit. It deals with only
       one data type, the type of the data to be formatted and sent, which is
-      referred in the template as source data type.
+      referred in the template as source data type. You will learn more about [Templates](https://docs.cenit.io/docs/transformations/templates) in Cenit IO Docs.
   - name: Parsers
     description: >-
       Parsers are translators that create data type records in Cenit from
       outside data. It deals with only one data type, the type of the data to be
-      created, which is referred in the parser as target data type.
+      created, which is referred in the parser as target data type. See details about [Parsers](https://docs.cenit.io/docs/transformations/parsers) in Cenit IO Docs.
   - name: Converters
     description: >-
       Converters are algorithms that map records of a data type A stored in
       Cenit to data of a data type B, to be stored in Cenit as well. So, this
       type of algorithm deals with two data types, the type A, which is referred
       in the converter as source data type, and the data type B, also known as
-      target data type.
+      target data type. See details about [Converters](https://docs.cenit.io/docs/transformations/converters) in Cenit IO Docs.
   - name: Updaters
     description: >-
       Updaters are algorithms that update records stored in Cenit according to
       the needs of flows. This type of algorithm deals with only one data type,
       the type of the data to be updated, which is referred in the updater as
-      target data type.
+      target data type. See details about [Updaters](https://docs.cenit.io/docs/transformations/updaters) in Cenit IO Docs.
   - name: System Notifications
     description: >-
       System notifications provide information about the execution of flows,
       tasks or algorithms. They don't only notify whether the execution was
       successful or not, but also contain detailed information of HTTP requests
-      and responses.
+      and responses. You will learn more about [System Notifications](https://docs.cenit.io/docs/monitors/system_notifications) in Cenit IO Docs.
   - name: Tasks
     description: >-
       Cenit uses the "Task" concept to refer particular processes which take
       place inside a tenant, for example the execution of an algorithm or a
       flow, the deletion of one or more records, the transformation of data,
-      etc.
+      etc You will learn more about [Tasks](https://docs.cenit.io/docs/monitors/tasks) in Cenit IO Docs.
   - name: Flows
     description: >-
       Flows define how data is routed between endpoints in order to automate
@@ -134,24 +132,24 @@ tags:
       translator. A Converter Flow converts the data stored in Cenit from A, to
       a datatype adecuated for an API B, storing the new data also in Cenit by
       using a converter translator. Export Flows send data stored in Cenit to an
-      external API, by using a template translator.
+      external API, by using a template translator. To know how [Flows](https://docs.cenit.io/docs/workflows/flows) work go to Cenit IO Docs.
   - name: Data Events
     description: >-
       Data Events are the conditions that can change the records of a data set
       in a certain document type. Data events can be managed around the
       attributes of the data type. For example, an action can be triggered when
       new records were added or when the value of certain attribute of a record
-      changes. Data events are associated with flows in order to make sense.
+      changes. Data events are associated with flows in order to make sense. You will learn more about [Data Events](https://docs.cenit.io/docs/workflows/data_events) in Cenit IO Docs.
   - name: Schedulers
     description: >-
       Scheduler is the type of event related to date and time to be triggered in
       order to execute a flow. A Scheduler handles time intervals which can be
-      useful if we want to repeat it periodically.
+      useful if we want to repeat it periodically. You will learn more about [Schedulers](https://docs.cenit.io/docs/workflows/schedulers) in Cenit IO Docs.
   - name: Connections
     description: >-
       A connection in Cenit is the base URL of an API. You should define
       resource paths for every method used; but a connection serves to all
-      methods. In that way we separate in Cenit the base URL and the methods.
+      methods. In that way we separate in Cenit the base URL and the methods. You will learn more about [Connections](https://docs.cenit.io/docs/gateway/connection) in Cenit IO Docs.
   - name: Connection Roles
     description: >-
       You can manage collection roles by means of the methods below.
@@ -161,19 +159,21 @@ tags:
       you should define a Resource Path for every method used; that way we
       separate in Cenit the base URL and the methods. Both, a Connection and a
       Resource Path, make up the endpoint, the whole URL where the request is
-      sent. They allow to define an HTTP Method and its parameters.
+      sent. They allow to define an HTTP Method and its parameters. You will learn more about [Resource Paths](https://docs.cenit.io/docs/gateway/resource_paths) in Cenit IO Docs.
   - name: Authorizations Clients
     description: >-
-      By defining an authorization client you can set the values of Client ID and Secret ID provided from the API with which you are going to connect.
+      By defining an authorization client you can set the values of Client ID and Secret ID provided from the API with which you are going to connect. You will learn more about [Authorization Clients](https://docs.cenit.io/docs/security/authorization_clients) in Cenit IO Docs.
   - name: Authorizations Providers
     description: >-
-      By defining an authorization provider you can set the response type which is code, the authorization endpoint, the token endpoint, the method the token is sent, the scope separator which is usually a comma (,) and the refresh token strategy.
-  - name: Authorizations Basic
+      By defining an authorization provider you can set the response type which is code, the authorization endpoint, the token endpoint, the method the token is sent, the scope separator which is usually a comma (,) and the refresh token strategy. You will learn more about [Authorization Providers](https://docs.cenit.io/docs/security/authorization_providers) in Cenit IO Docs.
+  - name: Basic Authorizations
     description: >-
       You can manage basic auhorizations by means of the methods below.
+  - name: Hooks
+    description: You can manage plain webhooks by means of the methods below.
 servers:
-  - url: 'https://cenit.io/api/v2'
-  - url: 'https://server.cenit.io/api/v2'
+  - url: https://cenit.io/api/v2
+  - url: https://server.cenit.io/api/v2
 security:
   - X-Tenant-Access-Key: []
     X-Tenant-Access-Token: []
@@ -211,13 +211,5014 @@ x-tagGroups:
       - Connections
       - Connection Roles
       - Resources
-      - Webhooks
+      - Hooks
   - name: Security
     tags:
       - Authorizations Clients
       - Authorizations Providers
-      - Authorizations Basic
+      - Basic Authorizations
 externalDocs:
   description: CenitIO-Documentation
-  url: 'https://docs.cenit.io'
-  
+  url:  https://docs.cenit.io/
+paths:
+  /setup/algorithm:
+    get:
+      tags:
+        - Algorithms
+      operationId: get_algorithms
+      summary: List all algorithms
+      description: |
+        Returns the list of your algorithms.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/algorithm',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Algorithms
+      operationId: create_algorithm
+      summary: Create a algorithm
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/algorithm_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/algorithm',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "alg_test_01",
+                type: "ruby",
+                code: "return 1 + 1",
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/algorithm/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Algorithms
+      operationId: get_algorithm
+      summary: Retrieve a algorithm
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61eeeea05a5a2353a401b2c6'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/algorithm/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Algorithms
+      operationId: update_algorithm
+      summary: Update a algorithm
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/algorithm_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/algorithm_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61eeeea05a5a2353a401b2c6'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/algorithm/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                code: `return 1 + ${Date.now()}`,
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Algorithms
+      operationId: delete_algorithm
+      summary: Delete a algorithm
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61eeeea05a5a2353a401b2c6'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/algorithm/${item_id}`,
+              httpsAgent: agent,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/basic_authorization:
+    get:
+      tags:
+        - Basic Authorizations
+      operationId: get_basic_authorizations
+      summary: List all basic-authorizations
+      description: |
+        Returns the list of your basic-authorizations.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/basic_authorization',
+              params: { limit: 5, page: 1, order: '-namespace,name', ignore: 'password'}
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Basic Authorizations 
+      operationId: create_basic_authorization
+      summary: Create a basic-authorization
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/basic_authorization_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/basic_authorization',
+              data: {
+                namespace: "Test",
+                name: "auth_basic",
+                username: "test_auth_basic",
+                password: "test_auth_basic"
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/basic_authorization/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Basic Authorizations
+      operationId: get_basic_authorization
+      summary: Retrieve a basic-authorization
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '62069b095a5a2330d0038cdc'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/basic_authorization/${item_id}`,
+              params: { ignore: 'password'}
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Basic Authorizations
+      operationId: update_basic_authorization
+      summary: Update a basic-authorization
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/basic_authorization_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/basic_authorization_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '62069b095a5a2330d0038cdc'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/basic_authorization/${item_id}`,
+              data: {
+                username: "test_auth_basic@api_v2"
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Basic Authorizations
+      operationId: delete_basic_authorization
+      summary: Delete a basic-authorization
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '62069b095a5a2330d0038cdc'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/basic_authorization/${item_id}`,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/connection_role:
+    get:
+      tags:
+        - Connection Roles
+      operationId: get_connection_roles
+      summary: List all connection-roles
+      description: |
+        Returns the list of your connection-roles.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/connection_role',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'webhooks,connections' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Connection Roles
+      operationId: create_connection_role
+      summary: Create a connection-role
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/connection_role_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/connection_role',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "connection_role_test_01",
+                webhooks: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "webhook_test_01"
+                  }
+                ],
+                connections: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "connection_test_01"
+                  }
+                ],
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/connection_role/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Connection Roles
+      operationId: get_connection_role
+      summary: Retrieve a connection-role
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '620951d95a5a233eb9043557'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/connection_role/${item_id}`,
+              params: { embedding: 'webhooks,connections' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Connection Roles
+      operationId: update_connection_role
+      summary: Update a connection-role
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/connection_role_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_role_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '620951d95a5a233eb9043557'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/connection_role/${item_id}`,
+              headers: {
+                'X-Parser-Options': JSON.stringify({
+                  primary_fields: ['namespace','name'],
+                  // reset: ['webhooks','connections']
+                  add_only: false
+                })
+              },
+              data: {
+                webhooks: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "webhook_test_01"
+                  }
+                ],
+                connections: [
+                  {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "connection_test_01"
+                  }
+                ],
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Connection Roles
+      operationId: delete_connection_role
+      summary: Delete a connection-role
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '620951d95a5a233eb9043557'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/connection_role/${item_id}`,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/connection:
+    get:
+      tags:
+        - Connections
+      operationId: get_connections
+      summary: List all connections
+      description: |
+        Returns the list of your connections.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_items'
+      x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=authorization \
+              -d ignore=password
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/connection',
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization', ignore: 'password'}
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Connections
+      operationId: create_connection
+      summary: Create a connection
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/connection_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_item_create'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+
+            read -r -d '' data <<- EOM
+              {
+                  "namespace": "Test",
+                  "name": "connection_test_01",
+                  "url": "http://localhost/api/v2/connection_test",
+                  "authorization": {
+                    "_reference": true,
+                    "namespace": "Test",
+                    "name": "auth_basic"
+                  },
+                  "headers":[
+                    {
+                      "key": "Content-Type",
+                      "value": "text/xml"
+                    }
+                  ]
+              }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/connection',
+              data: {
+                namespace: "Test",
+                name: "connection_test_01",
+                url: "http://localhost/api/v2/connection_test",
+                authorization: {
+                  _reference: true,
+                  namespace: "Test",
+                  name: "auth_basic"
+                },
+                headers:[
+                  {
+                    key: "Content-Type",
+                    value: "text/xml"
+                  }
+                ]
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/connection/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Connections
+      operationId: get_connection
+      summary: Retrieve a connection
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+            item_id="59d5502825d9852797009590"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '62070ef05a5a23307d038a63'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/connection/${item_id}`,
+              params: { embedding: 'authorization', ignore: 'password'}
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Connections
+      operationId: update_connection
+      summary: Update a connection
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/connection_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/connection_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+            item_id="62070ef05a5a23307d038a63"
+
+            read -r -d '' data <<- EOM
+              {
+                  "url": "{{domain}}/api/v2/connection_test",
+                  "template_parameters":[
+                    {
+                      "key": "domain"
+                    }
+                  ]
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '62070ef05a5a23307d038a63'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/connection/${item_id}`,
+              data: {
+                url: "{{domain}}/api/v2/connection_test",
+                template_parameters:[
+                  {
+                    key: "domain"
+                  }
+                ]
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Connections
+      operationId: delete_connection
+      summary: Delete a connection
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection"
+            item_id="62070ef05a5a23307d038a63"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '62070ef05a5a23307d038a63'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/connection/${item_id}`,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/flow:
+    get:
+      tags:
+        - Flows
+      operationId: get_flows
+      summary: List all flows
+      description: |
+        Returns the list of your flows.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/flow',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Flows
+      operationId: create_flow
+      summary: Create a flows.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/flow_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_item_create'
+      x-code-samples:
+        - lang: Convert
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/flow',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "flow_convert_test_01",
+                notify_request: true,
+                notify_response: true,
+                translator: {
+                  _reference: true,
+                  namespace: 'Test',
+                  name: 'converter_test_01',
+                },
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+        - lang: Export
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/flow',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "flow_export_test_01",
+                notify_request: true,
+                notify_response: true,
+                translator: {
+                  _reference: true,
+                  namespace: 'Test',
+                  name: 'template_test_01',
+                },
+                webhook: {
+                  _reference: true,
+                  namespace: 'Test',
+                  name: 'webhook_test_01',
+                },
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+        - lang: Import
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/flow',
+              httpsAgent: agent,
+              headers: {
+                'X-Parser-Options': JSON.stringify({
+                  primary_fields: ['namespace','name'],
+                  // reset: [],
+                 ignore: ['translator','webhook'],
+                  add_only: false
+                })
+              },
+              data: {
+                namespace: "Test",
+                name: "flow_import_test_01",
+                active: false,
+                // notify_response: true,
+                // translator: {
+                //   _reference: true,
+                //   namespace: 'Test',
+                //   name: 'parser_test_01',
+                // },
+                // webhook: {
+                //   _reference: true,
+                //   namespace: 'Test',
+                //   name: 'webhook_test_01',
+                // },
+                after_process_callbacks: [
+                  { _reference: true, namespace: 'Test', name: 'alg_test_01' },
+                ],
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/flow/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Flows
+      operationId: get_flow
+      summary: Retrieve a flow.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61e083815a5a2353c40082f3'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/flow/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Flows
+      operationId: update_flow
+      summary: Update a flow.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/flow_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/flow_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '620364d55a5a236eda02cfb0'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/flow/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                active: true,
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Flows
+      operationId: delete_flow
+      summary: Delete a flow.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61e083815a5a2353c40082f3'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/flow/${item_id}`,
+              httpsAgent: agent,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/json_data_type:
+    get:
+      tags:
+        - Document Types
+      operationId: get_json_data_types
+      summary: List all json-data-types
+      description: |
+        Returns the list of your json-data-types.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/json_data_type_items'
+      x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/json_data_type',
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Document Types
+      operationId: create_json_data_type
+      summary: Create a json-data-type
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/json_data_type_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/json_data_type_item_create'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+
+            read -r -d '' data <<- EOM
+              {
+                  "namespace": "Test",
+                  "name": "Person45",
+                  "code": "{\"type\":\"object\",\"properties\":{\"dni\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}}}"
+              }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/json_data_type',
+              data: {
+                namespace: "Test",
+                name: "Person4",
+                code: JSON.stringify(
+                  {
+                    type: "object",
+                    properties: {
+                      dni: {
+                        type: "string"
+                      },
+                      name: {
+                        type: "string"
+                      }
+                    }
+                  }
+                )
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/json_data_type/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Document Types
+      operationId: get_json_data_type
+      summary: Retrieve a json-data-type
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/json_data_type_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+            item_id="61e0312b5a5a2353ad004469"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d embedding=snippet
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61e0312b5a5a2353ad004469'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/json_data_type/${item_id}`,
+              params: { embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Document Types
+      operationId: update_json_data_type
+      summary: Update a json-data-type
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/json_data_type_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/json_data_type_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+            item_id="61e0312b5a5a2353ad004469"
+
+            read -r -d '' data <<- EOM
+              {
+                  "namespace": "Test",
+                  "name": "Person46"
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61e0312b5a5a2353ad004469'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/json_data_type/${item_id}`,
+              data: {
+                namespace: "Test",
+                name: "Person3",
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Document Types
+      operationId: delete_json_data_type
+      summary: Delete a json-data-type
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/json_data_type"
+            item_id="61e0312b5a5a2353ad004469"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61e0312b5a5a2353ad004469'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/json_data_type/${item_id}`,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/plain_webhook:
+    get:
+      tags:
+        - Hooks
+      operationId: get_plain_webhooks
+      summary: List all plain-webhooks
+      description: |
+        Returns the list of your plain-webhooks.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/plain_webhook_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/plain_webhook',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Hooks
+      operationId: create_plain_webhook
+      summary: Create a plain-webhook
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/plain_webhook_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/plain_webhook_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/plain_webhook',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "webhook_test_01",
+                method: "get",
+                path: "api/v2/test_01",
+                parameters: [
+                  {
+                    key: "limit",
+                    value: "50",
+                  }
+                ],
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/plain_webhook/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Hooks
+      operationId: get_plain_webhook
+      summary: Retrieve a plain-webhook
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/plain_webhook_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '6205b5995a5a233dd9039b8a'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/plain_webhook/${item_id}`,
+              params: { embedding: 'authorization' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Hooks
+      operationId: update_plain_webhook
+      summary: Update a plain-webhook
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/plain_webhook_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/plain_webhook_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '6205b5995a5a233dd9039b8a'
+
+            const param_id = '6205b5995a5a233dd9039b8b'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/plain_webhook/${item_id}`,
+              data: {
+                parameters: [
+                  {
+                    id: `${param_id}`,
+                    key: "limit",
+                    value: "100",
+                  }
+                ],
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Hooks
+      operationId: delete_plain_webhook
+      summary: Delete a plain-webhook
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '6205b5995a5a233dd9039b8a'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/plain_webhook/${item_id}`,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/ruby_converter:
+    get:
+      tags:
+        - Converters
+      operationId: get_ruby_converters
+      summary: List all ruby converter transformations
+      description: |
+        Returns the list of your ruby converter transformations.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_converter_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/ruby_converter',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Converters
+      operationId: create_ruby_converter
+      summary: Create a ruby converter transformations.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_converter_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_converter_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/ruby_converter',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "converter_test_01",
+                source_handler: false,
+                source_data_type: {
+                  _reference: true,
+                  namespace: "Test",
+                  name: "Person"
+                },
+                target_data_type: {
+                  _reference: true,
+                  namespace: "Test",
+                  name: "Person2"
+                },
+                code: 'target.name = source.name.downcase',
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/ruby_converter/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Converters
+      operationId: get_ruby_converter
+      summary: Retrieve a ruby converter transformation.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_converter_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '6203c5dd5a5a233de3027b96'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/ruby_converter/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Converters
+      operationId: update_ruby_converter
+      summary: Update a ruby converter transformation.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_converter_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_converter_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '6203c5dd5a5a233de3027b96'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/ruby_converter/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                source_handler: true,
+                code: 'sources.each {|s| target_data_type.create_from_json!(name: s.name.downcase, primary_field: %i[name]) }',
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Converters
+      operationId: delete_ruby_converter
+      summary: Delete a ruby converter transformation.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '6203c5dd5a5a233de3027b96'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/ruby_converter/${item_id}`,
+              httpsAgent: agent,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/ruby_parser:
+    get:
+      tags:
+        - Parsers
+      operationId: get_ruby_parsers
+      summary: List all ruby parser transformations
+      description: |
+        Returns the list of your ruby parser transformations.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/ruby_parser',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Parsers
+      operationId: create_ruby_parser
+      summary: Create a ruby parser transformations.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_parser_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/ruby_parser',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "parser_test_01",
+                target_data_type: {
+                  _reference: true,
+                  namespace: "Test",
+                  name: "Person"
+                },
+                code: '{ name: data[:name].downcase }',
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/ruby_parser/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Parsers
+      operationId: get_ruby_parser
+      summary: Retrieve a ruby parser transformation.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61eeeb7f5a5a234adc00ab2b'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/ruby_parser/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Parsers
+      operationId: update_ruby_parser
+      summary: Update a ruby parser transformation.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_parser_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_parser_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61eeeb7f5a5a234adc00ab2b'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/ruby_parser/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                code: '{ name: data[:name].upcase }',
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Parsers
+      operationId: delete_ruby_parser
+      summary: Delete a ruby parser transformation.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61eeeb7f5a5a234adc00ab2b'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/ruby_parser/${item_id}`,
+              httpsAgent: agent,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+  /setup/ruby_template:
+    get:
+      tags:
+        - Templates
+      operationId: get_ruby_templates
+      summary: List all ruby template transformations
+      description: |
+        Returns the list of your ruby template transformations.
+      parameters:
+        - $ref: '#/components/parameters/header_query_selector'
+        - $ref: '#/components/parameters/query_offset'
+        - $ref: '#/components/parameters/query_limit'
+        - $ref: '#/components/parameters/query_sort'
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_items'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'GET',
+              url: 'setup/ruby_template',
+              httpsAgent: agent,
+              params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Templates
+      operationId: create_ruby_template
+      summary: Create a ruby template transformations.
+      description: |
+        Add a new item.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_template_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_item_create'
+      x-code-samples:
+        - lang: NodeJS
+          source: >+
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const request = axios({
+              method: 'POST',
+              url: 'setup/ruby_template',
+              httpsAgent: agent,
+              data: {
+                namespace: "Test",
+                name: "template_test_01",
+                mime_type: 'application/json',
+                file_extension: 'json',
+                bulk_source: false,
+                source_data_type: {
+                  _reference: true,
+                  namespace: "Test",
+                  name: "Person"
+                },
+                code: 'source.to_json',
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+
+  /setup/ruby_template/{id}:
+    parameters:
+      - $ref: '#/components/parameters/path_item_id'
+    get:
+      tags:
+        - Templates
+      operationId: get_ruby_template
+      summary: Retrieve a ruby template transformation.
+      description: |
+        Find and return the item with the given id.
+      parameters:
+        - $ref: '#/components/parameters/query_only'
+        - $ref: '#/components/parameters/query_ignore'
+        - $ref: '#/components/parameters/query_embedding'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_item'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61f1597a5a5a2353be026f14'
+
+
+            const request = axios({
+              method: 'GET',
+              url: `setup/ruby_template/${item_id}`,
+              httpsAgent: agent,
+              params: { embedding: 'snippet' }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    post:
+      tags:
+        - Templates
+      operationId: update_ruby_template
+      summary: Update a ruby template transformation.
+      description: |
+        Find and update the item with the given id.
+      requestBody:
+        $ref: '#/components/requestBodies/ruby_template_data'
+      responses:
+        '200':
+          $ref: '#/components/responses/ruby_template_item_create'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['Content-Type'] = 'application/json'
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61f1597a5a5a2353be026f14'
+
+
+            let request = axios({
+              method: 'POST',
+              url: `setup/ruby_template/${item_id}`,
+              httpsAgent: agent,
+              data: {
+                mime_type: 'application/json',
+                file_extension: 'json',
+                bulk_source: true,
+                code: 'sources.to_json',
+              }
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+    delete:
+      tags:
+        - Templates
+      operationId: delete_ruby_template
+      summary: Delete a ruby template transformation.
+      description: |
+        Find and destroy the item with the given id.
+      responses:
+        '200':
+          $ref: '#/components/responses/item_removed_successfully'
+        '404':
+          $ref: '#/components/responses/item_not_found'
+      x-code-samples:
+        - lang: NodeJS
+          source: >-
+            const dotenv = require('dotenv')
+
+            const axios = require('axios');
+
+            const https = require('https');
+
+
+            const agent = new https.Agent({
+              rejectUnauthorized: false
+            });
+
+
+            dotenv.config();
+
+
+            axios.defaults.baseURL = process.env['BASE_URL'] ||
+            'https://cenit.io/api/v2/';
+
+            axios.defaults.headers.common['X-Tenant-Access-Key'] =
+            process.env['X_TENANT_ACCESS_KEY']
+
+            axios.defaults.headers.common['X-Tenant-Access-Token'] =
+            process.env['X_TENANT_ACCESS_TOKEN']
+
+
+            const item_id = '61f1597a5a5a2353be026f14'
+
+
+            const request = axios({
+              method: 'DELETE',
+              url: `setup/ruby_template/${item_id}`,
+              httpsAgent: agent,
+            });
+
+
+            request.then((response) => {
+              // Do something with the response
+              console.log(JSON.stringify(response.data, null, 2));
+            }).catch((error) => {
+              // Do something with the error
+              console.error(JSON.stringify(error.response.data, null, 2));
+            });
+components:
+  schemas:
+    algorithm_parameter:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        name:
+          type: string
+        many:
+          type: boolean
+          default: false
+        required:
+          type: boolean
+          default: false
+        default:
+          type: string
+    algorithm_response_get:
+      type: object
+      title: algorithm
+      allOf:
+        - $ref: '#/components/schemas/algorithm'
+        - $ref: '#/components/schemas/snippet_response'
+        - type: object
+          properties:
+            output_datatype:
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/json_data_type_response_get'
+    algorithm_response_post:
+      type: object
+      title: algorithm
+      allOf:
+        - $ref: '#/components/schemas/algorithm'
+        - type: object
+          properties:
+            snippet:
+              $ref: '#/components/schemas/reference_to_response'
+            output_datatype:
+              $ref: '#/components/schemas/reference_to_response'
+    algorithm:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        description:
+          type: string
+        language:
+          type: string
+          enum:
+            - ruby
+            - javascript
+        store_output:
+          type: boolean
+          default: false
+        validate_output:
+          type: boolean
+          default: false
+        parameters_size:
+          type: integer
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/algorithm_parameter'
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+    basic_authorization:
+      type: object
+      title: basic_authorization
+      allOf:
+        - $ref: '#/components/schemas/authorization_common'
+        - type: object
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+    authorization_common:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+    authorization_response:
+      type: object
+      title: authorization
+      oneOf:
+        - $ref: '#/components/schemas/authorization_basic'
+    connection_request:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/connection'
+        - type: object
+          properties:
+            parameters:
+              type: array
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/parameter'
+                required:
+                  - key
+            headers:
+              type: array
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/parameter'
+                required:
+                  - key
+            template_parameters:
+              type: array
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/parameter'
+                required:
+                  - key
+            authorization:
+              oneOf:
+                - $ref: '#/components/schemas/reference_by_names'
+                - $ref: '#/components/schemas/reference_by_identify'
+    connection_response_get:
+      type: object
+      title: connection
+      allOf:
+        - $ref: '#/components/schemas/connection'
+        - type: object
+          properties:
+            parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            headers:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            template_parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            authorization:
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
+    connection_response_post:
+      type: object
+      title: connection
+      allOf:
+        - $ref: '#/components/schemas/connection'
+        - type: object
+          properties:
+            parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            headers:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            template_parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+    connection_role_request:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/connection_role'
+        - type: object
+          properties:
+            webhooks:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_by_names'
+                  - $ref: '#/components/schemas/reference_by_identify'
+            connections:
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_by_names'
+                  - $ref: '#/components/schemas/reference_by_identify'
+    connection_role_response_get:
+      type: object
+      title: connection-role
+      allOf:
+        - $ref: '#/components/schemas/connection_role'
+        - type: object
+          properties:
+            webhooks:
+              type: array
+              items:
+                title: plain_webhook reference
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/plain_webhook_response_get'
+            connections:
+              type: array
+              items:
+                title: connection reference
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/connection_response_get'
+    connection_role_response_post:
+      type: object
+      title: connection-role
+      allOf:
+        - $ref: '#/components/schemas/connection_role'
+        - type: object
+          properties:
+            webhooks:
+              type: array
+              items:
+                title: plain_webhook reference
+                allOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+            connections:
+              type: array
+              items:
+                title: connection reference
+                allOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+    connection_role:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+    connection:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        url:
+          type: string
+          description: The connection url
+        authorization_handler:
+          type: boolean
+          default: false
+        number:
+          type: string
+        token:
+          type: string
+    flow_convert_request:
+      type: object
+      title: flow-convert
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - $ref: '#/components/schemas/flow_field_translator_request'
+        - $ref: '#/components/schemas/flow_field_event_request'
+        - $ref: '#/components/schemas/flow_field_after_process_callbacks_request'
+    flow_convert_response_get:
+      type: object
+      title: flow-convert
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_converter_response_get'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/algorithm_response_get'
+    flow_convert_response_post:
+      type: object
+      title: flow-convert
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+    flow_export_request:
+      type: object
+      title: flow-export
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - $ref: '#/components/schemas/flow_field_translator_request'
+        - $ref: '#/components/schemas/flow_field_event_request'
+        - $ref: '#/components/schemas/flow_field_webhook_request'
+        - $ref: '#/components/schemas/flow_field_authorization_request'
+        - $ref: '#/components/schemas/flow_field_connection_role_request'
+        - $ref: '#/components/schemas/flow_field_before_submit_request'
+        - $ref: '#/components/schemas/flow_field_after_process_callbacks_request'
+        - $ref: '#/components/schemas/flow_field_response_translator_request'
+    flow_export_response_get:
+      type: object
+      title: flow-export
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_template_response_get'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/plain_webhook_response_get'
+            authorization:
+              title: authorization reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
+            connection_role:
+              title: connection-role reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/connection_role_response_get'
+            before_submit:
+              title: algorithm reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/algorithm_response_get'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/algorithm_response_get'
+            response_translator:
+              title: response-translator reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_parser_response_get'
+    flow_export_response_post:
+      type: object
+      title: flow-export
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_data_type_scope'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            connection_role:
+              title: connection-role reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            before_submit:
+              title: algorithm reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+            response_translator:
+              title: response-translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+    flow_field_after_process_callbacks_request:
+      type: object
+      properties:
+        after_process_callbacks:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/reference_by_names'
+              - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_authorization_request:
+      type: object
+      properties:
+        authorization:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_before_submit_request:
+      type: object
+      properties:
+        before_submit:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_connection_role_request:
+      type: object
+      properties:
+        connection_role:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_data_type_scope:
+      type: object
+      properties:
+        data_type_scope:
+          type: string
+          enum:
+            - Event source
+            - Filter
+            - Evaluator
+            - All
+    flow_field_event_request:
+      type: object
+      properties:
+        event:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_response_translator_request:
+      type: object
+      properties:
+        response_translator:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_translator_request:
+      type: object
+      properties:
+        translator:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_field_webhook_request:
+      type: object
+      properties:
+        webhook:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    flow_import_request:
+      type: object
+      title: flow-import
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - $ref: '#/components/schemas/flow_field_translator_request'
+        - $ref: '#/components/schemas/flow_field_event_request'
+        - $ref: '#/components/schemas/flow_field_webhook_request'
+        - $ref: '#/components/schemas/flow_field_authorization_request'
+        - $ref: '#/components/schemas/flow_field_connection_role_request'
+        - $ref: '#/components/schemas/flow_field_before_submit_request'
+        - $ref: '#/components/schemas/flow_field_after_process_callbacks_request'
+    flow_import_response_get:
+      type: object
+      title: flow-import
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/ruby_parser_response_get'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/plain_webhook_response_get'
+            authorization:
+              title: authorization reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
+            connection_role:
+              title: connection-role reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/connection_role_response_get'
+            before_submit:
+              title: algorithm reference
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/algorithm_response_get'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                oneOf:
+                  - $ref: '#/components/schemas/reference_to_response'
+                  - $ref: '#/components/schemas/algorithm_response_get'
+    flow_import_response_post:
+      type: object
+      title: flow-import
+      allOf:
+        - $ref: '#/components/schemas/flow'
+        - type: object
+          properties:
+            translator:
+              title: translator reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            event:
+              title: event reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            webhook:
+              title: webhook reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            connection_role:
+              title: connection-role reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            before_submit:
+              title: algorithm reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+            after_process_callbacks:
+              title: algorithms reference
+              type: array
+              items:
+                $ref: '#/components/schemas/reference_to_response'
+    flow:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        description:
+          type: string
+          description: The flow description
+        active:
+          type: boolean
+          description: The flow status
+          default: false
+        notify_request:
+          type: boolean
+          default: false
+        notify_response:
+          type: boolean
+          default: false
+        discard_events:
+          type: boolean
+          default: false
+        auto_retry:
+          type: string
+          enum:
+            - manually
+            - automatic
+    json_data_type_request:
+      type: object
+      properties:
+        json_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    json_data_type_response_get:
+      type: object
+      title: json_data_type
+      allOf:
+        - $ref: '#/components/schemas/json_data_type'
+        - type: object
+          properties:
+            snippet:
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/snippet'
+    json_data_type_response_post:
+      type: object
+      title: json_data_type
+      allOf:
+        - $ref: '#/components/schemas/json_data_type'
+        - type: object
+          properties:
+            snippet:
+              $ref: '#/components/schemas/reference_to_response'
+    json_data_type:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+        title:
+          type: string
+        slug:
+          type: string
+        code:
+          type: string
+          description: JSON-Schema
+          writeOnly: true
+        discard_additional_properties:
+          type: boolean
+          default: true
+        navigation_link:
+          type: boolean
+          default: false
+    pagination:
+      type: object
+      properties:
+        total_pages:
+          description: Total number of pages
+          type: integer
+        current_page:
+          description: Number of the page obtained
+          type: integer
+        count:
+          description: Total number of items
+          type: integer
+    parameter:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        key:
+          type: string
+        value:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: string
+    plain_webhook_request:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/plain_webhook'
+        - type: object
+          properties:
+            parameters:
+              type: array
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/parameter'
+                required:
+                  - key
+            headers:
+              type: array
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/parameter'
+                required:
+                  - key
+            template_parameters:
+              type: array
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/parameter'
+                required:
+                  - key
+            authorization:
+              oneOf:
+                - $ref: '#/components/schemas/reference_by_names'
+                - $ref: '#/components/schemas/reference_by_identify'
+    plain_webhook_response_get:
+      type: object
+      title: plain-webhook
+      allOf:
+        - $ref: '#/components/schemas/plain_webhook'
+        - type: object
+          properties:
+            parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            headers:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            template_parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            authorization:
+              oneOf:
+                - $ref: '#/components/schemas/reference_to_response'
+                - $ref: '#/components/schemas/authorization_response'
+    plain_webhook_response_post:
+      type: object
+      title: plain-webhook
+      allOf:
+        - $ref: '#/components/schemas/plain_webhook'
+        - type: object
+          properties:
+            parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            headers:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            template_parameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/parameter'
+            authorization:
+              title: authorization reference
+              allOf:
+                - $ref: '#/components/schemas/reference_to_response'
+    plain_webhook:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        description:
+          type: string
+          description: The plain-webhook description
+        path:
+          type: string
+          description: The plain-webhook path
+        method:
+          type: string
+          description: The http method
+          enum:
+            - get
+            - post
+            - put
+            - delete
+        metadata:
+          type: string
+        authorization_handler:
+          type: boolean
+          default: false
+    reference_by_identify:
+      type: object
+      title: reference by id
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          description: Item identifier
+      required:
+        - _reference
+        - id
+    reference_by_names:
+      type: object
+      title: reference by names
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+      required:
+        - _reference
+        - namespace
+        - name
+    reference_to_response:
+      type: object
+      title: reference
+      properties:
+        _reference:
+          type: boolean
+          default: true
+        id:
+          type: string
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+    ruby_converter_response_get:
+      type: object
+      title: ruby_converter
+      allOf:
+        - $ref: '#/components/schemas/ruby_template'
+        - $ref: '#/components/schemas/source_data_type_response'
+        - $ref: '#/components/schemas/target_data_type_response'
+        - $ref: '#/components/schemas/snippet_response'
+    ruby_converter:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        type:
+          type: string
+          default: Conversion
+          readOnly: true
+        source_handler:
+          type: boolean
+          default: false
+          description: |
+            When the value is false:
+              * The target_data_type is required.
+              * A **target** parameter is received with a new record of the target_data_type.
+              * A single record is received in the **source** parameter to be process.
+              * At the end of the process this record will be persisted automatically.
+
+            When the value is true:
+              * The **sources** parameter is received with multiple records to be process.
+              * It is the developer's responsibility to create and persist the target record.
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+    ruby_parser_response_get:
+      type: object
+      title: ruby_parser
+      allOf:
+        - $ref: '#/components/schemas/ruby_parser'
+        - $ref: '#/components/schemas/target_data_type_response'
+        - $ref: '#/components/schemas/snippet_response'
+    ruby_parser:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        type:
+          type: string
+          default: Import
+          readOnly: true
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+    ruby_template_response_get:
+      type: object
+      title: ruby_template
+      allOf:
+        - $ref: '#/components/schemas/ruby_template'
+        - $ref: '#/components/schemas/source_data_type_response'
+        - $ref: '#/components/schemas/snippet_response'
+    ruby_template:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Lowercase name without spaces or special characters
+        type:
+          type: string
+          default: Export
+          readOnly: true
+        mime_type:
+          type: string
+          description: The output mime-type
+        file_extension:
+          type: string
+          description: The extension of the output file
+        bulk_source:
+          type: boolean
+          description: >-
+            When the value is true, the **sources** parameter is received with
+            multiple records, otherwise a single record is received in the
+            **source** parameter.
+          default: false
+        code:
+          type: string
+          description: Code snippet in the previously selected language
+          writeOnly: true
+    snippet_response:
+      type: object
+      properties:
+        snippet:
+          readOnly: true
+          oneOf:
+            - $ref: '#/components/schemas/reference_to_response'
+            - $ref: '#/components/schemas/snippet'
+    snippet:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Item identifier
+        namespace:
+          type: string
+        name:
+          type: string
+          description: Name without spaces or special characters
+        type:
+          type: string
+        code:
+          type: string
+          description: Code snippet
+        slug:
+          type: string
+        navigation_link:
+          type: boolean
+          default: false
+    sort_query_parameter:
+      description: Sort criterial
+      type: string
+      enum:
+        - ASC
+        - DESC
+    source_data_type_request:
+      type: object
+      properties:
+        source_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    source_data_type_response:
+      type: object
+      properties:
+        source_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/reference_to_response'
+            - $ref: '#/components/schemas/json_data_type_response_get'
+    target_data_type_request:
+      type: object
+      properties:
+        target_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/reference_by_names'
+            - $ref: '#/components/schemas/reference_by_identify'
+    target_data_type_response:
+      type: object
+      properties:
+        target_data_type:
+          oneOf:
+            - $ref: '#/components/schemas/reference_to_response'
+            - $ref: '#/components/schemas/json_data_type_response_get'
+  responses:
+    algorithm_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  algorithm:
+                    allOf:
+                      - $ref: '#/components/schemas/algorithm_response_post'
+    algorithm_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/algorithm_response_get'
+    algorithm_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  algorithms:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/algorithm_response_get'
+    basic_authorization_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  basic_authorization:
+                    allOf:
+                      - $ref: '#/components/schemas/authorization_basic'
+    basic_authorization_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/authorization_basic'
+    basic_authorization_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  basic_authorizations:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/authorization_basic'
+    connection_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  connection:
+                    allOf:
+                      - $ref: '#/components/schemas/connection_response_post'
+    connection_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/connection_response_get'
+    connection_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  connections:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/connection_response_get'
+    connection_role_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  connection_role:
+                    allOf:
+                      - $ref: '#/components/schemas/connection_role_response_post'
+    connection_role_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/connection_role_response_get'
+    connection_role_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  connection_roles:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/connection_role_response_get'
+    flow_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  flow:
+                    oneOf:
+                      - $ref: '#/components/schemas/flow_import_response_post'
+                      - $ref: '#/components/schemas/flow_export_response_post'
+                      - $ref: '#/components/schemas/flow_convert_response_post'
+    flow_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/flow_import_response_get'
+              - $ref: '#/components/schemas/flow_export_response_get'
+              - $ref: '#/components/schemas/flow_convert_response_get'
+    flow_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  flows:
+                    type: array
+                    items:
+                      oneOf:
+                        - $ref: '#/components/schemas/flow_import_response_get'
+                        - $ref: '#/components/schemas/flow_export_response_get'
+                        - $ref: '#/components/schemas/flow_convert_response_get'
+    item_not_found:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                default: item not found
+    item_removed_successfully:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                default: ok
+    json_data_type_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  json_data_type:
+                    allOf:
+                      - $ref: '#/components/schemas/json_data_type_response_post'
+    json_data_type_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/json_data_type_response_get'
+    json_data_type_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  json_data_types:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/json_data_type_response_get'
+    plain_webhook_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  plain_webhook:
+                    allOf:
+                      - $ref: '#/components/schemas/plain_webhook_response_post'
+    plain_webhook_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/plain_webhook_response_get'
+    plain_webhook_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  plain_webhooks:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/plain_webhook_response_get'
+    ruby_converter_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  ruby_converter:
+                    allOf:
+                      - $ref: '#/components/schemas/ruby_converter'
+                      - type: object
+                        properties:
+                          source_data_type:
+                            title: data_type reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
+                          target_data_type:
+                            title: data_type reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
+                          snippet:
+                            title: snippet reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
+    ruby_converter_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ruby_converter_response_get'
+    ruby_converter_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  ruby_converters:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ruby_converter_response_get'
+    ruby_parser_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  ruby_parser:
+                    allOf:
+                      - $ref: '#/components/schemas/ruby_parser'
+                      - type: object
+                        properties:
+                          target_data_type:
+                            $ref: '#/components/schemas/reference_to_response'
+                          snippet:
+                            $ref: '#/components/schemas/reference_to_response'
+    ruby_parser_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ruby_parser_response_get'
+    ruby_parser_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  ruby_parsers:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ruby_parser_response_get'
+    ruby_template_item_create:
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  ruby_template:
+                    allOf:
+                      - $ref: '#/components/schemas/ruby_template'
+                      - type: object
+                        properties:
+                          source_data_type:
+                            title: data_type reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
+                          snippet:
+                            title: snippet reference
+                            allOf:
+                              - $ref: '#/components/schemas/reference_to_response'
+    ruby_template_item:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ruby_template_response_get'
+    ruby_template_items:
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/pagination'
+              - type: object
+                properties:
+                  ruby_templates:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/ruby_template_response_get'
+  parameters:
+    header_query_selector:
+      name: X-Query-Selector
+      in: header
+      schema:
+        type: string
+        description: |
+          JSON stringify with the query criteria.
+        example: '{"$or":[{"namespace":"Test"},{"namespace":"Test_02"}]}'
+    path_item_id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        description: Item identifier
+        example: 5d04051125d9852c71016793
+    query_embedding:
+      name: embedding
+      in: query
+      schema:
+        type: string
+        description: >
+          Comma separated set of attributes, which refer to another entities and
+          will be included in its entirety in the response.
+
+
+          > By default in these attributes only a reference to the foreign items
+          is returned.
+    query_ignore:
+      name: ignore
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes that are excluded from the response.
+
+          > The id attribute always will be included.
+        example: namespace,name
+    query_limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        description: >
+          The maximum number of items that can be returned. The supported values
+          ​​are between 1 and 25.
+        example: 10
+    query_offset:
+      name: page
+      in: query
+      schema:
+        type: integer
+        description: |
+          Number of the page to skip at the beginning of the list.
+        example: 1
+    query_only:
+      name: only
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes that are included in the response.
+
+          > The id attribute always will be included.
+        example: namespace,name
+    query_sort:
+      name: order
+      in: query
+      schema:
+        type: string
+        description: |
+          Comma separated set of attributes to sort items list.
+
+          > To sort descendingly, the prefix sign (-) must be added.
+        example: '-namespace,name'
+  requestBodies:
+    algorithm_data:
+      description: The algorithm that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+              - language
+              - code
+            allOf:
+              - $ref: '#/components/schemas/algorithm'
+              - properties:
+                  parameters:
+                    type: array
+                    items:
+                      required:
+                        - name
+    basic_authorization_data:
+      description: The basic-authorization that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+            allOf:
+              - $ref: '#/components/schemas/authorization_basic'
+    connection_data:
+      description: The connection that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+              - url
+            allOf:
+              - $ref: '#/components/schemas/connection_request'
+    connection_role_data:
+      description: The connection-role that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+            allOf:
+              - $ref: '#/components/schemas/connection_role_request'
+    flow_data:
+      description: The flow that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/flow_import_request'
+              - $ref: '#/components/schemas/flow_export_request'
+              - $ref: '#/components/schemas/flow_convert_request'
+            required:
+              - namespace
+              - name
+              - translator
+              - webhook
+    json_data_type_data:
+      description: The json-data-type that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/json_data_type'
+            required:
+              - namespace
+              - name
+              - code
+    plain_webhook_data:
+      description: The plain-webhook that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            required:
+              - namespace
+              - name
+              - path
+            allOf:
+              - $ref: '#/components/schemas/plain_webhook_request'
+    ruby_converter_data:
+      description: The translator that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ruby_converter'
+              - $ref: '#/components/schemas/source_data_type_request'
+              - $ref: '#/components/schemas/target_data_type_request'
+            required:
+              - namespace
+              - name
+              - code
+              - source_data_type
+              - target_data_type
+    ruby_parser_data:
+      description: The translator that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ruby_parser'
+              - $ref: '#/components/schemas/target_data_type_request'
+            required:
+              - namespace
+              - name
+              - code
+              - target_data_type
+    ruby_template_data:
+      description: The translator that will be created or updated
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ruby_template'
+              - $ref: '#/components/schemas/source_data_type_request'
+            required:
+              - namespace
+              - name
+              - code
+              - source_data_type
+  securitySchemes:
+    X-Tenant-Access-Key:
+      type: apiKey
+      name: X-Tenant-Access-Key
+      in: header
+      description: >
+        Tenant authentication key.
+
+
+        > Each service request must include an **X-Tenant-Access-Key** header or
+        parameter.
+    X-Tenant-Access-Token:
+      type: apiKey
+      name: X-Tenant-Access-Token
+      in: header
+      description: >
+        Tenant authentication Token.
+
+
+        > Each service request must include an **X-Tenant-Access-Token** header
+        or parameter.
