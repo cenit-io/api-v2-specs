@@ -20,13 +20,10 @@ properties:
     type: string
     description: JSON-Schema
     writeOnly: true
-    description: The code of the JSON-schema.
   discard_additional_properties:
     type: boolean
     default: true
-    description: | 
-    Discard additional properties should be set to true to force the discard of all those properties 
-    that were not declared in the schema, when a record import occurs.
+    description: True forces the discard of all those properties that were not declared in the schema, when a record import occurs
   navigation_link:
     type: boolean
     default: false

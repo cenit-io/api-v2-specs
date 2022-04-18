@@ -38,8 +38,8 @@ info:
 
     * You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.
 
-  tags:
-  - name: Document Types
+tags:
+  - name: Json Data Types
     description: |
         Document types are the objects that are manipulated in JSON format. Each
         method is shown below. See also [Document Types](https://docs.cenit.io/docs/data/document_types) in Cenit IO Docs.
@@ -63,129 +63,129 @@ info:
         You can see more details about [Shared Collections](https://docs.cenit.io/docs/integrations/shared_collections) in Cenit IO Docs.
   - name: Algorithms
     description: |
-         Algorithms are pieces of code in Ruby language which can be used for
-         general purposes, such as translators, actions to do after callbacks, and
-         so on. Algorithms are defined with a name, a description, some optional
-         parameters and the code itself. They returns a value, store records of
-         data in Cenit or sends data to an API. Algorithms are executed by means of
-         tasks or application actions which can in turn invoke other algorithms.
-         The most commonly tasks are flows to import and export data. 
-         You will learn more about [Algorithms](https://docs.cenit.io/docs/compute/algorithms) in Cenit IO Docs.
+        Algorithms are pieces of code in Ruby language which can be used for
+        general purposes, such as translators, actions to do after callbacks, and
+        so on. Algorithms are defined with a name, a description, some optional
+        parameters and the code itself. They returns a value, store records of
+        data in Cenit or sends data to an API. Algorithms are executed by means of
+        tasks or application actions which can in turn invoke other algorithms.
+        The most commonly tasks are flows to import and export data. 
+        You will learn more about [Algorithms](https://docs.cenit.io/docs/compute/algorithms) in Cenit IO Docs.
   - name: Applications
     description: |
-         An application provides a way for accessing Cenit IO from outside by
-         defining a set of actions. Each action in the application associates an
-         URL, usually like https://server.cenit.io/app/{app_path}/{action_path}, to
-         a Cenit algorithm which will be executed when a petition to that URL is done. 
-         You will learn more about [Applications](https://docs.cenit.io/docs/compute/applications) in Cenit IO Docs.
+        An application provides a way for accessing Cenit IO from outside by
+        defining a set of actions. Each action in the application associates an
+        URL, usually like https://server.cenit.io/app/{app_path}/{action_path}, to
+        a Cenit algorithm which will be executed when a petition to that URL is done. 
+        You will learn more about [Applications](https://docs.cenit.io/docs/compute/applications) in Cenit IO Docs.
   - name: Snippets
     description: |
-         Cenit uses the "Snippet" concept to refer pieces of code of algorithms,
-         translators and data types definition. When you create a data type or any
-         kind of algorithm, Cenit let you know a snippet will be implicitly created
-         to store the data type schema or the algorithm code. 
-         You will learn more about [Snippets](https://docs.cenit.io/docs/compute/snippets) in Cenit IO Docs.
+        Cenit uses the "Snippet" concept to refer pieces of code of algorithms,
+        translators and data types definition. When you create a data type or any
+        kind of algorithm, Cenit let you know a snippet will be implicitly created
+        to store the data type schema or the algorithm code. 
+        You will learn more about [Snippets](https://docs.cenit.io/docs/compute/snippets) in Cenit IO Docs.
   - name: Templates
     description: |
-         A Template is an algorithm translator that formats data type records
-         stored in Cenit to data which be sent outside Cenit. It deals with only
-         one data type, the type of the data to be formatted and sent, which is
-         referred in the template as source data type. 
-         You will learn more about [Templates](https://docs.cenit.io/docs/transformations/templates) in Cenit IO Docs.
+        A Template is an algorithm translator that formats data type records
+        stored in Cenit to data which be sent outside Cenit. It deals with only
+        one data type, the type of the data to be formatted and sent, which is
+        referred in the template as source data type. 
+        You will learn more about [Templates](https://docs.cenit.io/docs/transformations/templates) in Cenit IO Docs.
   - name: Parsers
     description: |
-         Parsers are translators that create data type records in Cenit from
-         outside data. It deals with only one data type, the type of the data to be
-         created, which is referred in the parser as target data type. 
-         See details about [Parsers](https://docs.cenit.io/docs/transformations/parsers) in Cenit IO Docs.
+        Parsers are translators that create data type records in Cenit from
+        outside data. It deals with only one data type, the type of the data to be
+        created, which is referred in the parser as target data type. 
+        See details about [Parsers](https://docs.cenit.io/docs/transformations/parsers) in Cenit IO Docs.
   - name: Converters
     description: |
-         Converters are algorithms that map records of a data type A stored in
-         Cenit to data of a data type B, to be stored in Cenit as well. So, this
-         type of algorithm deals with two data types, the type A, which is referred
-         in the converter as source data type, and the data type B, also known as
-         target data type. 
-         See details about [Converters](https://docs.cenit.io/docs/transformations/converters) in Cenit IO Docs.
+        Converters are algorithms that map records of a data type A stored in
+        Cenit to data of a data type B, to be stored in Cenit as well. So, this
+        type of algorithm deals with two data types, the type A, which is referred
+        in the converter as source data type, and the data type B, also known as
+        target data type. 
+        See details about [Converters](https://docs.cenit.io/docs/transformations/converters) in Cenit IO Docs.
   - name: Updaters
     description: |
-         Updaters are algorithms that update records stored in Cenit according to
-         the needs of flows. This type of algorithm deals with only one data type,
-         the type of the data to be updated, which is referred in the updater as target data type. 
-         See details about [Updaters](https://docs.cenit.io/docs/transformations/updaters) in Cenit IO Docs.
+        Updaters are algorithms that update records stored in Cenit according to
+        the needs of flows. This type of algorithm deals with only one data type,
+        the type of the data to be updated, which is referred in the updater as target data type. 
+        See details about [Updaters](https://docs.cenit.io/docs/transformations/updaters) in Cenit IO Docs.
   - name: System Notifications
     description: |
-         System notifications provide information about the execution of flows,
-         tasks or algorithms. They don't only notify whether the execution was
-         successful or not, but also contain detailed information of HTTP requests and responses. 
-         You will learn more about [System Notifications](https://docs.cenit.io/docs/monitors/system_notifications) in Cenit IO Docs.
+        System notifications provide information about the execution of flows,
+        tasks or algorithms. They don't only notify whether the execution was
+        successful or not, but also contain detailed information of HTTP requests and responses. 
+        You will learn more about [System Notifications](https://docs.cenit.io/docs/monitors/system_notifications) in Cenit IO Docs.
   - name: Tasks
     description: |
-         Cenit uses the "Task" concept to refer particular processes which take
-         place inside a tenant, for example the execution of an algorithm or a
-         flow, the deletion of one or more records, the transformation of data, etc. 
-         You will learn more about [Tasks](https://docs.cenit.io/docs/monitors/tasks) in Cenit IO Docs.
+        Cenit uses the "Task" concept to refer particular processes which take
+        place inside a tenant, for example the execution of an algorithm or a
+        flow, the deletion of one or more records, the transformation of data, etc. 
+        You will learn more about [Tasks](https://docs.cenit.io/docs/monitors/tasks) in Cenit IO Docs.
   - name: Flows
     description: |
-          Flows define how data is routed between endpoints in order to automate
-          your operations. An Import Flow gets data from an API A and stores it in
-          Cenit in a proper data type for this object in A, by using a parser
-          translator. A Converter Flow converts the data stored in Cenit from A, to
-          a proper data type for an API B, storing the new data also in Cenit by
-          using a converter translator. Export Flows send data stored in Cenit to an
-          external API, by using a template translator. 
-          To know how [Flows](https://docs.cenit.io/docs/workflows/flows) work go to Cenit IO Docs.
+        Flows define how data is routed between endpoints in order to automate
+        your operations. An Import Flow gets data from an API A and stores it in
+        Cenit in a proper data type for this object in A, by using a parser
+        translator. A Converter Flow converts the data stored in Cenit from A, to
+        a proper data type for an API B, storing the new data also in Cenit by
+        using a converter translator. Export Flows send data stored in Cenit to an
+        external API, by using a template translator. 
+        To know how [Flows](https://docs.cenit.io/docs/workflows/flows) work go to Cenit IO Docs.
   - name: Observers
     description: |
-         Observers are conditions to be monitored, related to changes that may occur in the records
-         of a dataset of a certain type of document. These changes are called data events.         
-         Data events can be managed around the attributes of the data type. For example, an action 
-         can be triggered when new records were added or when the value of certain attribute of a record
-         changes. Data events are associated with flows in order to make sense. 
-         You will learn more about [Data Events](https://docs.cenit.io/docs/workflows/data_events) in Cenit IO Docs.
+        Observers are conditions to be monitored, related to changes that may occur in the records
+        of a dataset of a certain type of document. These changes are called data events.         
+        Data events can be managed around the attributes of the data type. For example, an action 
+        can be triggered when new records were added or when the value of certain attribute of a record
+        changes. Data events are associated with flows in order to make sense. 
+        You will learn more about [Data Events](https://docs.cenit.io/docs/workflows/data_events) in Cenit IO Docs.
   - name: Schedulers
     description: |
-          Scheduler is the type of event related to date and time to be triggered in
-          order to execute a flow. A Scheduler handles time intervals which can be
-          useful if we want to repeat it periodically. 
-          You will learn more about [Schedulers](https://docs.cenit.io/docs/workflows/schedulers) in Cenit IO Docs.
+        Scheduler is the type of event related to date and time to be triggered in
+        order to execute a flow. A Scheduler handles time intervals which can be
+        useful if we want to repeat it periodically. 
+        You will learn more about [Schedulers](https://docs.cenit.io/docs/workflows/schedulers) in Cenit IO Docs.
   - name: Connections
     description: |
-          A connection in Cenit is the base URL of an API. You should define
-          resource paths for every method used; but a connection serves to all
-          methods. In that way we separate in Cenit the base URL and the methods. 
-          You will learn more about [Connections](https://docs.cenit.io/docs/gateway/connection) in Cenit IO Docs.
+        A connection in Cenit is the base URL of an API. You should define
+        resource paths for every method used; but a connection serves to all
+        methods. In that way we separate in Cenit the base URL and the methods. 
+        You will learn more about [Connections](https://docs.cenit.io/docs/gateway/connection) in Cenit IO Docs.
   - name: Connection Roles
     description: |
-      It is used to relate the connection with the webhook (resource/operation) in order to make up the whole URL. 
-      In Cenit you can use more than one connection in the same namespace or even use a connection from another namespace. 
-      Those cases force you to use a connection role, that allows to associate a connection with the resources/operation to 
-      combine them for obtaining the URL. This field is optional, but you should consider using it as a way to clarify 
-      what connection and webhook are used to make up the URL.      
-      Connection roles are used in flows in these ways:
-        * When no connection role is set and the Namespace contains only one Connection, that connection is used.
-        * When no connection role is set and the Namespace contains more than one Connection, the first connection defined in the namespace is used.
-        * When the connection role is set, the connection and webhook defined in the connection role are used.
-  - name: Webhooks
+        It is used to relate the connection with the webhook (resource/operation) in order to make up the whole URL. 
+        In Cenit you can use more than one connection in the same namespace or even use a connection from another namespace. 
+        Those cases force you to use a connection role, that allows to associate a connection with the resources/operation to 
+        combine them for obtaining the URL. This field is optional, but you should consider using it as a way to clarify 
+        what connection and webhook are used to make up the URL.      
+        Connection roles are used in flows in these ways:
+          * When no connection role is set and the Namespace contains only one Connection, that connection is used.
+          * When no connection role is set and the Namespace contains more than one Connection, the first connection defined in the namespace is used.
+          * When the connection role is set, the connection and webhook defined in the connection role are used.
+  - name: Resources
     description: |
-          The base URL of an API should be defined as a Connection, only once, and
-          you should define a Resource Path for every method used; that way we
-          separate in Cenit the base URL and the methods. Both, a Connection and a
-          Resource Path, make up the endpoint, the whole URL where the request is
-          sent. They allow to define an HTTP Method and its parameters. 
-          You will learn more about [Resource Paths](https://docs.cenit.io/docs/gateway/resource_paths) in Cenit IO Docs.
+        The base URL of an API should be defined as a Connection, only once, and
+        you should define a Resource Path for every method used; that way we
+        separate in Cenit the base URL and the methods. Both, a Connection and a
+        Resource Path, make up the endpoint, the whole URL where the request is
+        sent. They allow to define an HTTP Method and its parameters. 
+        You will learn more about webhooks in section [Resource Paths](https://docs.cenit.io/docs/gateway/resource_paths) of Cenit IO Docs.
   - name: Authorizations Clients
     description: |
-          By defining an authorization client you can set the values of Client ID and Secret ID provided from the API 
-          with which you are going to connect to.
-          You will learn more about [Authorization Clients](https://docs.cenit.io/docs/security/authorization_clients) in Cenit IO Docs.
+        By defining an authorization client you can set the values of Client ID and Secret ID provided from the API 
+        with which you are going to connect to.
+        You will learn more about [Authorization Clients](https://docs.cenit.io/docs/security/authorization_clients) in Cenit IO Docs.
   - name: Authorizations Providers
     description: |
-          By defining an authorization provider you can set the response type which is code, the authorization endpoint, the token endpoint, 
-          method the token is sent, the scope separator which is usually a comma (,) and the refresh token strategy. 
-          You will learn more about [Authorization Providers](https://docs.cenit.io/docs/security/authorization_providers) in Cenit IO Docs.
+        By defining an authorization provider you can set the response type which is code, the authorization endpoint, the token endpoint, 
+        method the token is sent, the scope separator which is usually a comma (,) and the refresh token strategy. 
+        You will learn more about [Authorization Providers](https://docs.cenit.io/docs/security/authorization_providers) in Cenit IO Docs.
   - name: Authorizations Basic
     description: |
-          You can manage basic authorizations by means of the methods below.
+        You can manage basic authorizations by means of the methods below.
 servers:
   - url: 'https://cenit.io/api/v2'
   - url: 'https://server.cenit.io/api/v2'
@@ -195,7 +195,7 @@ security:
 x-tagGroups:
   - name: Data
     tags:
-      - Document Types
+      - Json Data Types
       - File Types
   - name: Integrations
     tags:
