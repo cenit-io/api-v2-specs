@@ -6,15 +6,11 @@ properties:
     description: Item identifier
   name:
     type: string
-    description: Lowercase name without spaces or special characters
   many:
     type: boolean
     default: false
-    description: Indicate if the parameter is of "many" type or not
   required:
     type: boolean
     default: false
-    description: Indicate if the parameter is required or not
   default:
     type: string
-    description: This property of the parameter indicates its default value
