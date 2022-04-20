@@ -12,9 +12,7 @@ info:
   description: |
     # Introduction
 
-    CenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designe to solve
-    unique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple
-    formats and protocols. Ready to use in our cloud or on-premises
+    CenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designed to solve unique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple formats and protocols. Ready to use in our cloud or on-premises.
 
     The CenitIO APIv2 is a simple connector API for doing business and data integrations.
 
@@ -29,75 +27,154 @@ info:
     * It accepts and returns JSON in the HTTP body.
 
     * You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.
-
-      [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)
 tags:
-  - name: Document Types
+  - name: Json Data Types
     description: |
-      ...
+      Document types are the objects that are manipulated in JSON format. Each
+      method is shown below. See also [Document Types](https://docs.cenit.io/docs/data/document_types) in Cenit IO Docs.
   - name: File Types
     description: |
-      ...
+      File types are information that can not be represented in JSON format,
+      such as images, PDF files and so on. Similar than document types, you can
+      create, update, delete and list file types. Each method is shown below. 
+      You can see more details about [File Types](https://docs.cenit.io/docs/data/file_types) in Cenit IO Docs.
   - name: Collections
     description: |
-      ...
+      A collection is a way to organize a group of elements of an integration
+      that you want to save in your tenant, and later, export, import or share
+      to another tenant. You can manage collections by means of the methods
+      described below. 
+      You can see more details about [Collections](https://docs.cenit.io/docs/integrations/collections) in Cenit IO Docs.
   - name: Shared Collections
     description: |
-      ...
+      Sharing collections is a way to publish that collection to all tenants.
+      You can manage shared collections by means of the methods described below. 
+      You can see more details about [Shared Collections](https://docs.cenit.io/docs/integrations/shared_collections) in Cenit IO Docs.
   - name: Algorithms
     description: |
-      ...
+      Algorithms are pieces of code in Ruby language which can be used for
+      general purposes, such as translators, actions to do after callbacks, and
+      so on. Algorithms are defined with a name, a description, some optional
+      parameters and the code itself. They returns a value, store records of
+      data in Cenit or sends data to an API. Algorithms are executed by means of
+      tasks or application actions which can in turn invoke other algorithms.
+      The most commonly tasks are flows to import and export data. 
+      You will learn more about [Algorithms](https://docs.cenit.io/docs/compute/algorithms) in Cenit IO Docs.
   - name: Applications
     description: |
-      ...
+      An application provides a way for accessing Cenit IO from outside by
+      defining a set of actions. Each action in the application associates an
+      URL, usually like https://server.cenit.io/app/{app_path}/{action_path}, to
+      a Cenit algorithm which will be executed when a petition to that URL is done. 
+      You will learn more about [Applications](https://docs.cenit.io/docs/compute/applications) in Cenit IO Docs.
   - name: Snippets
     description: |
-      ...
+      Cenit uses the "Snippet" concept to refer pieces of code of algorithms,
+      translators and data types definition. When you create a data type or any
+      kind of algorithm, Cenit let you know a snippet will be implicitly created
+      to store the data type schema or the algorithm code. 
+      You will learn more about [Snippets](https://docs.cenit.io/docs/compute/snippets) in Cenit IO Docs.
   - name: Templates
     description: |
-      ...
+      A Template is an algorithm translator that formats data type records
+      stored in Cenit to data which be sent outside Cenit. It deals with only
+      one data type, the type of the data to be formatted and sent, which is
+      referred in the template as source data type. 
+      You will learn more about [Templates](https://docs.cenit.io/docs/transformations/templates) in Cenit IO Docs.
   - name: Parsers
     description: |
-      ...
+      Parsers are translators that create data type records in Cenit from
+      outside data. It deals with only one data type, the type of the data to be
+      created, which is referred in the parser as target data type. 
+      See details about [Parsers](https://docs.cenit.io/docs/transformations/parsers) in Cenit IO Docs.
   - name: Converters
     description: |
-      ...
+      Converters are algorithms that map records of a data type A stored in
+      Cenit to data of a data type B, to be stored in Cenit as well. So, this
+      type of algorithm deals with two data types, the type A, which is referred
+      in the converter as source data type, and the data type B, also known as
+      target data type. 
+      See details about [Converters](https://docs.cenit.io/docs/transformations/converters) in Cenit IO Docs.
   - name: Updaters
     description: |
-      ...
+      Updaters are algorithms that update records stored in Cenit according to
+      the needs of flows. This type of algorithm deals with only one data type,
+      the type of the data to be updated, which is referred in the updater as target data type. 
+      See details about [Updaters](https://docs.cenit.io/docs/transformations/updaters) in Cenit IO Docs.
   - name: System Notifications
     description: |
-      ...
+      System notifications provide information about the execution of flows,
+      tasks or algorithms. They don't only notify whether the execution was
+      successful or not, but also contain detailed information of HTTP requests and responses. 
+      You will learn more about [System Notifications](https://docs.cenit.io/docs/monitors/system_notifications) in Cenit IO Docs.
   - name: Tasks
     description: |
-      ...
+      Cenit uses the "Task" concept to refer particular processes which take
+      place inside a tenant, for example the execution of an algorithm or a
+      flow, the deletion of one or more records, the transformation of data, etc. 
+      You will learn more about [Tasks](https://docs.cenit.io/docs/monitors/tasks) in Cenit IO Docs.
   - name: Flows
     description: |
-      ...
+      Flows define how data is routed between endpoints in order to automate
+      your operations. An Import Flow gets data from an API A and stores it in
+      Cenit in a proper data type for this object in A, by using a parser
+      translator. A Converter Flow converts the data stored in Cenit from A, to
+      a proper data type for an API B, storing the new data also in Cenit by
+      using a converter translator. Export Flows send data stored in Cenit to an
+      external API, by using a template translator. 
+      To know how [Flows](https://docs.cenit.io/docs/workflows/flows) work go to Cenit IO Docs.
   - name: Observers
     description: |
-      ...
+      Observers are conditions to be monitored, related to changes that may occur in the records
+      of a dataset of a certain type of document. These changes are called data events.         
+      Data events can be managed around the attributes of the data type. For example, an action 
+      can be triggered when new records were added or when the value of certain attribute of a record
+      changes. Data events are associated with flows in order to make sense. 
+      You will learn more about [Data Events](https://docs.cenit.io/docs/workflows/data_events) in Cenit IO Docs.
   - name: Schedulers
     description: |
-      ...
+      Scheduler is the type of event related to date and time to be triggered in
+      order to execute a flow. A Scheduler handles time intervals which can be
+      useful if we want to repeat it periodically. 
+      You will learn more about [Schedulers](https://docs.cenit.io/docs/workflows/schedulers) in Cenit IO Docs.
   - name: Connections
     description: |
-      ...
+      A connection in Cenit is the base URL of an API. You should define
+      resource paths for every method used; but a connection serves to all
+      methods. In that way we separate in Cenit the base URL and the methods. 
+      You will learn more about [Connections](https://docs.cenit.io/docs/gateway/connection) in Cenit IO Docs.
   - name: Connection Roles
     description: |
-      ...
-  - name: Resouces
+      It is used to relate the connection with the webhook (resource/operation) in order to make up the whole URL. 
+      In Cenit you can use more than one connection in the same namespace or even use a connection from another namespace. 
+      Those cases force you to use a connection role, that allows to associate a connection with the resources/operation to 
+      combine them for obtaining the URL. This field is optional, but you should consider using it as a way to clarify 
+      what connection and webhook are used to make up the URL.      
+      Connection roles are used in flows in these ways:
+        * When no connection role is set and the Namespace contains only one Connection, that connection is used.
+        * When no connection role is set and the Namespace contains more than one Connection, the first connection defined in the namespace is used.
+        * When the connection role is set, the connection and webhook defined in the connection role are used.
+  - name: Resources
     description: |
-      ...
+      The base URL of an API should be defined as a Connection, only once, and
+      you should define a Resource Path for every method used; that way we
+      separate in Cenit the base URL and the methods. Both, a Connection and a
+      Resource Path, make up the endpoint, the whole URL where the request is
+      sent. They allow to define an HTTP Method and its parameters. 
+      You will learn more about webhooks in section [Resource Paths](https://docs.cenit.io/docs/gateway/resource_paths) of Cenit IO Docs.
   - name: Authorizations Clients
     description: |
-      ...
+      By defining an authorization client you can set the values of Client ID and Secret ID provided from the API 
+      with which you are going to connect to.
+      You will learn more about [Authorization Clients](https://docs.cenit.io/docs/security/authorization_clients) in Cenit IO Docs.
   - name: Authorizations Providers
     description: |
-      ...
+      By defining an authorization provider you can set the response type which is code, the authorization endpoint, the token endpoint, 
+      method the token is sent, the scope separator which is usually a comma (,) and the refresh token strategy. 
+      You will learn more about [Authorization Providers](https://docs.cenit.io/docs/security/authorization_providers) in Cenit IO Docs.
   - name: Authorizations Basic
     description: |
-      ...
+      You can manage basic authorizations by means of the methods below.
 servers:
   - url: 'https://cenit.io/api/v2'
   - url: 'https://server.cenit.io/api/v2'
@@ -107,7 +184,7 @@ security:
 x-tagGroups:
   - name: Data
     tags:
-      - Document Types
+      - Json Data Types
       - File Types
   - name: Integrations
     tags:
@@ -168,6 +245,20 @@ paths:
         '200':
           $ref: '#/components/responses/algorithm_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/algorithm"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -213,6 +304,28 @@ paths:
         '200':
           $ref: '#/components/responses/algorithm_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/algorithm"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test",
+                  name: "alg_test_01",
+                  type: "ruby",
+                  code: "return 1 + 1",
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -257,7 +370,7 @@ paths:
       tags:
         - Algorithms
       operationId: get_algorithm
-      summary: Retrieve a algorithm
+      summary: Retrieve an algorithm
       description: |
         Find and return the item with the given id.
       parameters:
@@ -270,6 +383,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/algorithm"
+            item_id="61eeeea05a5a2353a401b2c6"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -319,6 +445,26 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/algorithm"
+            item_id="61eeeea05a5a2353a401b2c6"
+
+            read -r -d '' data <<- EOM
+              {
+                  code: `return 1 + ${Date.now()}`,
+               }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -367,6 +513,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/algorithm"
+            item_id="61eeeea05a5a2353a401b2c6"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -417,6 +575,20 @@ paths:
         '200':
           $ref: '#/components/responses/basic_authorization_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/basic_authorization"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -456,6 +628,28 @@ paths:
         '200':
           $ref: '#/components/responses/basic_authorization_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/basic_authorization"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test2",
+                  name: "auth_basic",
+                  username: "test2_auth_basic",
+                  password: "test2_auth_basic"
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -506,6 +700,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/basic_authorization"
+            item_id="62069b095a5a2330d0038cdc"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -549,6 +756,26 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/basic_authorization"
+            item_id="62069b095a5a2330d0038cdc"
+
+            read -r -d '' data <<- EOM
+              {
+                  username: "test_auth_basic@api_v2"
+                }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -591,6 +818,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/basic_authorization"
+            item_id="62069b095a5a2330d0038cdc"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -636,6 +875,20 @@ paths:
         '200':
           $ref: '#/components/responses/connection_role_items'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection_role"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding:-webhooks,connections \
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -681,6 +934,40 @@ paths:
         '200':
           $ref: '#/components/responses/connection_role_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection_role"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test",
+                  name: "connection_role_test_01",
+                  webhooks: [
+                    {
+                      _reference: true,
+                      namespace: "Test",
+                      name: "webhook_test_01"
+                    }
+                  ],
+                  connections: [
+                    {
+                      _reference: true,
+                      namespace: "Test",
+                      name: "connection_test_01"
+                    }
+                  ],
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -750,6 +1037,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection_role"
+            item_id="620951d95a5a233eb9043557"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -793,6 +1093,39 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection_role"
+            item_id="620951d95a5a233eb9043557"
+
+            read -r -d '' data <<- EOM
+              {
+                  webhooks: [
+                    {
+                      _reference: true,
+                      namespace: "Test",
+                      name: "webhook_test_01"
+                    }
+                  ],
+                  connections: [
+                    {
+                      _reference: true,
+                      namespace: "Test",
+                      name: "connection_test_01"
+                    }
+                  ],
+                }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -855,6 +1188,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/connection_role"
+            item_id="620951d95a5a233eb9043557"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1232,6 +1577,20 @@ paths:
         '200':
           $ref: '#/components/responses/flow_items'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/flow"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet \
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1444,6 +1803,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/flow"
+            item_id="61e083815a5a2353c40082f3"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1493,6 +1864,26 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/flow"
+            item_id="620364d55a5a236eda02cfb0"
+
+            read -r -d '' data <<- EOM
+              {
+                  active: true,
+                }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1541,6 +1932,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/flow"
+            item_id="61e083815a5a2353c40082f3"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1794,7 +2197,7 @@ paths:
             read -r -d '' data <<- EOM
               {
                   "namespace": "Test",
-                  "name": "Person46"
+                  "name": "Person3"
               }
             EOM
 
@@ -1904,6 +2307,20 @@ paths:
         '200':
           $ref: '#/components/responses/plain_webhook_items'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/plain_webhook"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=authorization \
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -1949,6 +2366,34 @@ paths:
         '200':
           $ref: '#/components/responses/plain_webhook_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/plain_webhook"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test",
+                  name: "webhook_test_01",
+                  method: "get",
+                  path: "api/v2/test_01",
+                  parameters: [
+                    {
+                      key: "limit",
+                      value: "50",
+                    }
+                  ],
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -2012,6 +2457,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/plain_webhook"
+            item_id="6205b5995a5a233dd9039b8a"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2055,6 +2513,33 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/plain_webhook"
+            item_id="6205b5995a5a233dd9039b8a"
+            param_id="6205b5995a5a233dd9039b8b"
+
+            read -r -d '' data <<- EOM
+              {
+                  parameters: [
+                    {
+                      id: `${param_id}`,
+                      key: "limit",
+                      value: "100",
+                    }
+                  ],
+                }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2104,6 +2589,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/plain_webhook"
+            item_id="6205b5995a5a233dd9039b8a"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2149,6 +2646,20 @@ paths:
         '200':
           $ref: '#/components/responses/ruby_converter_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_converter"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2194,6 +2705,38 @@ paths:
         '200':
           $ref: '#/components/responses/ruby_converter_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_converter"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test",
+                  name: "converter_test_01",
+                  source_handler: false,
+                  source_data_type: {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "Person"
+                  },
+                  target_data_type: {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "Person2"
+                  },
+                  code: 'target.name = source.name.downcase',
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -2261,6 +2804,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_converter"
+            item_id="6203c5dd5a5a233de3027b96"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2310,6 +2866,27 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_converter"
+            item_id="6203c5dd5a5a233de3027b96"
+
+            read -r -d '' data <<- EOM
+              {
+                   source_handler: true,
+                   code: 'sources.each {|s| target_data_type.create_from_json!(name: s.name.downcase, primary_field: %i[name]) }',
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2359,6 +2936,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_converter"
+            item_id="6203c5dd5a5a233de3027b96"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2410,6 +2999,20 @@ paths:
         '200':
           $ref: '#/components/responses/ruby_parser_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_parser"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2455,6 +3058,32 @@ paths:
         '200':
           $ref: '#/components/responses/ruby_parser_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_parser"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test",
+                  name: "parser_test_01",
+                  target_data_type: {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "Person"
+                  },
+                  code: '{ name: data[:name].downcase }',
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -2516,6 +3145,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_parser"
+            item_id="61eeeb7f5a5a234adc00ab2b"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2565,6 +3207,26 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_parser"
+            item_id="61eeeb7f5a5a234adc00ab2b"
+
+            read -r -d '' data <<- EOM
+              {
+                  code: '{ name: data[:name].upcase }',
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2613,6 +3275,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_parser"
+            item_id="61eeeb7f5a5a234adc00ab2b"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2664,6 +3338,20 @@ paths:
         '200':
           $ref: '#/components/responses/ruby_template_items'
       x-code-samples:
+        - lang: cURL
+          source: |-
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_template"
+
+            curl -G "${base_url}/${path}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -d limit=5 \
+              -d page=1 \
+              -d order=-namespace,name \
+              -d embedding=snippet
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2709,6 +3397,35 @@ paths:
         '200':
           $ref: '#/components/responses/ruby_template_item_create'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_template"
+
+            read -r -d '' data <<- EOM
+              {
+                  namespace: "Test",
+                  name: "template_test_01",
+                  mime_type: 'application/json',
+                  file_extension: 'json',
+                  bulk_source: false,
+                  source_data_type: {
+                    _reference: true,
+                    namespace: "Test",
+                    name: "Person"
+                  },
+                  code: 'source.to_json',
+                }
+            EOM
+
+            curl "${base_url}/${path}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |+
             const dotenv = require('dotenv')
@@ -2773,6 +3490,19 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_template"
+            item_id="61f1597a5a5a2353be026f14"
+
+            curl -G "${base_url}/${path}/${item_id}" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"\
+              -d embedding=authorization \
+              -d ignore=password
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2822,6 +3552,29 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_template"
+            item_id="61f1597a5a5a2353be026f14"
+
+            read -r -d '' data <<- EOM
+              {
+                  mime_type: 'application/json',
+                  file_extension: 'json',
+                  bulk_source: true,
+                  code: 'sources.to_json',
+              }
+            EOM
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "POST" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "${data}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2873,6 +3626,18 @@ paths:
         '404':
           $ref: '#/components/responses/item_not_found'
       x-code-samples:
+        - lang: cURL
+          source: |
+            #!/bin/bash
+
+            base_url=${BASE_URL:="https://cenit.io/api/v2"}
+            path="setup/ruby_template"
+            item_id="61f1597a5a5a2353be026f14"
+
+            curl "${base_url}/${path}/${item_id}" \
+              -X "DELETE" \
+              -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
+              -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}"
         - lang: NodeJS
           source: |-
             const dotenv = require('dotenv')
@@ -2915,14 +3680,18 @@ components:
           description: Item identifier
         name:
           type: string
+          description: Lowercase name without spaces or special characters
         many:
           type: boolean
           default: false
+          description: Indicate if the parameter is of "many" type or not
         required:
           type: boolean
           default: false
+          description: Indicate if the parameter is required or not
         default:
           type: string
+          description: This property of the parameter indicates its default value
     algorithm_response_get:
       type: object
       title: algorithm
@@ -2955,28 +3724,35 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the algorithm is to be created
         name:
           type: string
           description: Lowercase name without spaces or special characters
         description:
           type: string
+          description: A brief description of what the algorithm means
         language:
           type: string
           enum:
             - ruby
             - javascript
+          description: The language for the algorithm specification
         store_output:
           type: boolean
           default: false
+          description: Indicate whether the output of the algorithm will be stored or not
         validate_output:
           type: boolean
           default: false
+          description: Indicate whether the output of the algorithm will be validated or not
         parameters_size:
           type: integer
+          description: The number of parameters of the algorithm
         parameters:
           type: array
           items:
             $ref: '#/components/schemas/algorithm_parameter'
+          description: Algorithm parameter list
         code:
           type: string
           description: Code snippet in the previously selected language
@@ -2990,8 +3766,10 @@ components:
           properties:
             username:
               type: string
+              description: The name of the user in lowercase
             password:
               type: string
+              description: The password to access
     authorization_common:
       type: object
       properties:
@@ -3001,6 +3779,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the authorization is to be created
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3153,6 +3932,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the connection role is to be created
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3165,6 +3945,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the connection is to be created
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3174,10 +3955,13 @@ components:
         authorization_handler:
           type: boolean
           default: false
+          description: Indicate if the authorization is to be handled or not in this connection. It is a good practice to consider it true
         number:
           type: string
+          description: The number of the connection
         token:
           type: string
+          description: The access token returned by the authorization
     flow_convert_request:
       type: object
       title: flow-convert
@@ -3504,6 +4288,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the flow is to be created
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3564,13 +4349,16 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the data type is to be created
         name:
           type: string
           description: Name without spaces or special characters
         title:
           type: string
+          description: This property is optional. It takes the name of the data type as a default value.
         slug:
           type: string
+          description: This property is optional. It takes the name of the data type as a default value.
         code:
           type: string
           description: JSON-Schema
@@ -3578,9 +4366,11 @@ components:
         discard_additional_properties:
           type: boolean
           default: true
+          description: 'True forces the discard of all those properties that were not declared in the schema, when a record import occurs'
         navigation_link:
           type: boolean
           default: false
+          description: Indicates if exists a navigation link to this json data type
     pagination:
       type: object
       properties:
@@ -3602,12 +4392,16 @@ components:
           description: Item identifier
         key:
           type: string
+          description: The name of the parameter variable
         value:
           type: string
+          description: The value of the parameter variable
         description:
           type: string
+          description: A brief explanation about the meaning of the parameter
         metadata:
           type: string
+          description: The data type of the parameter variable
     plain_webhook_request:
       type: object
       allOf:
@@ -3694,6 +4488,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space the webhook is to be created
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3713,9 +4508,11 @@ components:
             - delete
         metadata:
           type: string
+          description: The data type of the resource involved in the webhook
         authorization_handler:
           type: boolean
           default: false
+          description: This property indicates whether or not the authorization will be handled in the webhook request
     reference_by_identify:
       type: object
       title: reference by id
@@ -3738,6 +4535,7 @@ components:
           default: true
         namespace:
           type: string
+          description: The name of the space where the name being referenced resides
         name:
           type: string
           description: Name without spaces or special characters
@@ -3757,6 +4555,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space where the reference resides
         name:
           type: string
           description: Name without spaces or special characters
@@ -3777,6 +4576,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space where the converter is to be created or resides
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3784,6 +4584,7 @@ components:
           type: string
           default: Conversion
           readOnly: true
+          description: The type of transformation
         source_handler:
           type: boolean
           default: false
@@ -3817,6 +4618,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space where the parser is to be created or resides
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3824,6 +4626,7 @@ components:
           type: string
           default: Import
           readOnly: true
+          description: The type of transformation
         code:
           type: string
           description: Code snippet in the previously selected language
@@ -3844,6 +4647,7 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space where the template is to be created or resides
         name:
           type: string
           description: Lowercase name without spaces or special characters
@@ -3851,6 +4655,7 @@ components:
           type: string
           default: Export
           readOnly: true
+          description: The type of transformation
         mime_type:
           type: string
           description: The output mime-type
@@ -3882,19 +4687,23 @@ components:
           description: Item identifier
         namespace:
           type: string
+          description: The name of the space where the snippet is to be created or resides
         name:
           type: string
           description: Name without spaces or special characters
         type:
           type: string
+          description: The type of snippet
         code:
           type: string
           description: Code snippet
         slug:
           type: string
+          description: The URL slug that identifies the snippet
         navigation_link:
           type: boolean
           default: false
+          description: Indicates if exists a navigation link to this snippet
     sort_query_parameter:
       description: Sort criterial
       type: string
