@@ -6,16 +6,20 @@ properties:
     description: Item identifier
   namespace:
     type: string
+    description: The name of the space where the snippet is to be created or resides
   name:
     type: string
     description: Name without spaces or special characters
   type:
     type: string
+    description: The type of snippet
   code:
     type: string
     description: Code snippet
   slug:
     type: string
+    description: The URL slug that identifies the snippet
   navigation_link:
     type: boolean
     default: false
+    description: Indicates if exists a navigation link to this snippet

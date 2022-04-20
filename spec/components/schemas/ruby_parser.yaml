@@ -6,6 +6,7 @@ properties:
     description: Item identifier
   namespace:
     type: string
+    description: The name of the space where the parser is to be created or resides
   name:
     type: string
     description: Lowercase name without spaces or special characters
@@ -13,6 +14,7 @@ properties:
     type: string
     default: 'Import'
     readOnly: true
+    description: The type of transformation
   code:
     type: string
     description: Code snippet in the previously selected language
