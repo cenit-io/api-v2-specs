@@ -16,8 +16,8 @@ let request = axios({
   headers: {
     'X-Parser-Options': JSON.stringify({
       primary_fields: ['namespace','name'],
-      // reset: ['webhooks','connections']
-      add_only: false
+      reset: ['webhooks'],
+      add_only: true
     })
   },
   data: {
@@ -25,14 +25,14 @@ let request = axios({
       {
         _reference: true,
         namespace: "Test",
-        name: "webhook_test_01"
+        name: "webhook_test_02"
       }
     ],
     connections: [
       {
         _reference: true,
         namespace: "Test",
-        name: "connection_test_01"
+        name: "connection_test_02"
       }
     ],
   }
