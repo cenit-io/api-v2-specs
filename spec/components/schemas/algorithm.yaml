@@ -6,28 +6,35 @@ properties:
     description: Item identifier
   namespace:
     type: string
+    description: The name of the space the algorithm is to be created
   name:
     type: string
     description: Lowercase name without spaces or special characters
   description:
     type: string
+    description: A brief description of what the algorithm means
   language:
     type: string
     enum:
       - ruby
       - javascript
+    description: The language for the algorithm specification
   store_output:
     type: boolean
     default: false
+    description: Indicate whether the output of the algorithm will be stored or not
   validate_output:
     type: boolean
     default: false
+    description: Indicate whether the output of the algorithm will be validated or not
   parameters_size:
     type: integer
+    description: The number of parameters of the algorithm
   parameters:
     type: array
     items:
       $ref: "#/components/schemas/algorithm_parameter"
+    description: Algorithm parameter list
   code:
     type: string
     description: Code snippet in the previously selected language
