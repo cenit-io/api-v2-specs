@@ -20,6 +20,7 @@ properties:
   discard_additional_properties:
     type: boolean
     default: true
+    description: True forces the discard of all those properties that were not declared in the schema, when a record import occurs
   navigation_link:
     type: boolean
     default: false

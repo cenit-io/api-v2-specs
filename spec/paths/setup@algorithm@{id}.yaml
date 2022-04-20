@@ -5,7 +5,7 @@ get:
   tags:
     - Algorithms
   operationId: get_algorithm
-  summary: Retrieve a algorithm
+  summary: Retrieve an algorithm
   description: |
     Find and return the item with the given id.
   parameters:
