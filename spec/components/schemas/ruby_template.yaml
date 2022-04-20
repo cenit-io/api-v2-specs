@@ -6,7 +6,6 @@ properties:
     description: Item identifier
   namespace:
     type: string
-    description: The name of the space where the template is to be created or resides
   name:
     type: string
     description: Lowercase name without spaces or special characters
@@ -14,7 +13,6 @@ properties:
     type: string
     default: 'Export'
     readOnly: true
-    description: The type of transformation
   mime_type:
     type: string
     description: The output mime-type

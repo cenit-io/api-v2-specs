@@ -6,7 +6,6 @@ properties:
     description: Item identifier
   namespace:
     type: string
-    description: The name of the space the webhook is to be created
   name:
     type: string
     description: Lowercase name without spaces or special characters
@@ -26,8 +25,6 @@ properties:
       - delete
   metadata:
     type: string
-    description: The data type of the resource involved in the webhook
   authorization_handler:
     type: boolean
     default: false
-    description: This property indicates whether or not the authorization will be handled in the webhook request

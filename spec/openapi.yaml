@@ -14,14 +14,20 @@ info:
 
 
     CenitIO is an opensource integration platform (iPaaS) for data and business
-    integrations. It is designed to solve unique integrations needs, with a robust engine that is able to receive,
-    transform and deliver data in multiple formats and protocols. Ready to use in our cloud or on-premises.
+    integrations. It is designe to solve
+
+    unique integrations needs, with a robust engine that is able to receive,
+    transform and deliver data in multiple
+
+    formats and protocols. Ready to use in our cloud or on-premises
 
 
-    The CenitIO APIv2 is a simple connector API for doing business and data integrations.
+    The CenitIO APIv2 is a simple connector API for doing business and data
+    integrations.
 
 
-    This API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.
+    This API is for individual retailers, SaaS services, or any business that
+    needs to handle multiple integrations.
 
 
     * It is built over REST services on HTTPS.
@@ -36,8 +42,9 @@ info:
     * It accepts and returns JSON in the HTTP body.
 
 
-    * You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.
-
+    * You can use your favorite HTTP/REST library for your programming language
+    to use CenitIO APIv2.
+    
 tags:
   - name: Json Data Types
     description: |
