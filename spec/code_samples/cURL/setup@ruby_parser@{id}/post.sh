@@ -1,13 +1,12 @@
 #!/bin/bash
 
 base_url=${BASE_URL:="https://cenit.io/api/v2"}
-path="setup/json_data_type"
-item_id="61e0312b5a5a2353ad004469"
+path="setup/ruby_parser"
+item_id="61eeeb7f5a5a234adc00ab2b"
 
 read -r -d '' data <<- EOM
   {
-      "namespace": "Test",
-      "name": "Person3"
+      code: '{ name: data[:name].upcase }',
   }
 EOM
 

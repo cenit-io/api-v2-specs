@@ -1,13 +1,15 @@
 #!/bin/bash
 
 base_url=${BASE_URL:="https://cenit.io/api/v2"}
-path="setup/json_data_type"
-item_id="61e0312b5a5a2353ad004469"
+path="setup/ruby_template"
+item_id="61f1597a5a5a2353be026f14"
 
 read -r -d '' data <<- EOM
   {
-      "namespace": "Test",
-      "name": "Person3"
+      mime_type: 'application/json',
+      file_extension: 'json',
+      bulk_source: true,
+      code: 'sources.to_json',
   }
 EOM
 

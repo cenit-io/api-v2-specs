@@ -1,14 +1,13 @@
 #!/bin/bash
 
 base_url=${BASE_URL:="https://cenit.io/api/v2"}
-path="setup/json_data_type"
-item_id="61e0312b5a5a2353ad004469"
+path="setup/basic_authorization"
+item_id="62069b095a5a2330d0038cdc"
 
 read -r -d '' data <<- EOM
   {
-      "namespace": "Test",
-      "name": "Person3"
-  }
+      username: "test_auth_basic@api_v2"
+    }
 EOM
 
 curl "${base_url}/${path}/${item_id}" \

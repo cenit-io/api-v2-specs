@@ -1,17 +1,18 @@
 #!/bin/bash
 
 base_url=${BASE_URL:="https://cenit.io/api/v2"}
-path="setup/json_data_type"
-item_id="61e0312b5a5a2353ad004469"
+path="setup/algorithm"
 
 read -r -d '' data <<- EOM
   {
-      "namespace": "Test",
-      "name": "Person3"
-  }
+      namespace: "Test",
+      name: "alg_test_01",
+      type: "ruby",
+      code: "return 1 + 1",
+    }
 EOM
 
-curl "${base_url}/${path}/${item_id}" \
+curl "${base_url}/${path}" \
   -X "POST" \
   -H "X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}" \
   -H "X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}" \
