@@ -12,96 +12,96 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "description": "# Introduction\n\nCenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designed to solve unique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple formats and protocols. Ready to use in our cloud or on-premises.\n\nThe CenitIO APIv2 is a simple connector API for doing business and data integrations.\n\nThis API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.\n\n* It is built over REST services on HTTPS.\n\n* It has predictable resource URLs.\n\n* It returns HTTP response codes to indicate errors.\n\n* It accepts and returns JSON in the HTTP body.\n\n* You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.\n"
+    "description": "# Introduction\n\nCenitIO is an opensource integration platform (iPaaS) for data and business integrations. It is designe to solve\nunique integrations needs, with a robust engine that is able to receive, transform and deliver data in multiple\nformats and protocols. Ready to use in our cloud or on-premises\n\nThe CenitIO APIv2 is a simple connector API for doing business and data integrations.\n\nThis API is for individual retailers, SaaS services, or any business that needs to handle multiple integrations.\n\n* It is built over REST services on HTTPS.\n\n* It has predictable resource URLs.\n\n* It returns HTTP response codes to indicate errors.\n\n* It accepts and returns JSON in the HTTP body.\n\n* You can use your favorite HTTP/REST library for your programming language to use CenitIO APIv2.\n\n  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)\n"
   },
   "tags": [
     {
-      "name": "Json Data Types",
-      "description": "Document types are the objects that are manipulated in JSON format. Each\nmethod is shown below. See also [Document Types](https://docs.cenit.io/docs/data/document_types) in Cenit IO Docs.\n"
+      "name": "Document Types",
+      "description": "...\n"
     },
     {
       "name": "File Types",
-      "description": "File types are information that can not be represented in JSON format,\nsuch as images, PDF files and so on. Similar than document types, you can\ncreate, update, delete and list file types. Each method is shown below. \nYou can see more details about [File Types](https://docs.cenit.io/docs/data/file_types) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Collections",
-      "description": "A collection is a way to organize a group of elements of an integration\nthat you want to save in your tenant, and later, export, import or share\nto another tenant. You can manage collections by means of the methods\ndescribed below. \nYou can see more details about [Collections](https://docs.cenit.io/docs/integrations/collections) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Shared Collections",
-      "description": "Sharing collections is a way to publish that collection to all tenants.\nYou can manage shared collections by means of the methods described below. \nYou can see more details about [Shared Collections](https://docs.cenit.io/docs/integrations/shared_collections) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Algorithms",
-      "description": "Algorithms are pieces of code in Ruby language which can be used for\ngeneral purposes, such as translators, actions to do after callbacks, and\nso on. Algorithms are defined with a name, a description, some optional\nparameters and the code itself. They returns a value, store records of\ndata in Cenit or sends data to an API. Algorithms are executed by means of\ntasks or application actions which can in turn invoke other algorithms.\nThe most commonly tasks are flows to import and export data. \nYou will learn more about [Algorithms](https://docs.cenit.io/docs/compute/algorithms) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Applications",
-      "description": "An application provides a way for accessing Cenit IO from outside by\ndefining a set of actions. Each action in the application associates an\nURL, usually like https://server.cenit.io/app/{app_path}/{action_path}, to\na Cenit algorithm which will be executed when a petition to that URL is done. \nYou will learn more about [Applications](https://docs.cenit.io/docs/compute/applications) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Snippets",
-      "description": "Cenit uses the \"Snippet\" concept to refer pieces of code of algorithms,\ntranslators and data types definition. When you create a data type or any\nkind of algorithm, Cenit let you know a snippet will be implicitly created\nto store the data type schema or the algorithm code. \nYou will learn more about [Snippets](https://docs.cenit.io/docs/compute/snippets) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Templates",
-      "description": "A Template is an algorithm translator that formats data type records\nstored in Cenit to data which be sent outside Cenit. It deals with only\none data type, the type of the data to be formatted and sent, which is\nreferred in the template as source data type. \nYou will learn more about [Templates](https://docs.cenit.io/docs/transformations/templates) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Parsers",
-      "description": "Parsers are translators that create data type records in Cenit from\noutside data. It deals with only one data type, the type of the data to be\ncreated, which is referred in the parser as target data type. \nSee details about [Parsers](https://docs.cenit.io/docs/transformations/parsers) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Converters",
-      "description": "Converters are algorithms that map records of a data type A stored in\nCenit to data of a data type B, to be stored in Cenit as well. So, this\ntype of algorithm deals with two data types, the type A, which is referred\nin the converter as source data type, and the data type B, also known as\ntarget data type. \nSee details about [Converters](https://docs.cenit.io/docs/transformations/converters) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Updaters",
-      "description": "Updaters are algorithms that update records stored in Cenit according to\nthe needs of flows. This type of algorithm deals with only one data type,\nthe type of the data to be updated, which is referred in the updater as target data type. \nSee details about [Updaters](https://docs.cenit.io/docs/transformations/updaters) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "System Notifications",
-      "description": "System notifications provide information about the execution of flows,\ntasks or algorithms. They don't only notify whether the execution was\nsuccessful or not, but also contain detailed information of HTTP requests and responses. \nYou will learn more about [System Notifications](https://docs.cenit.io/docs/monitors/system_notifications) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Tasks",
-      "description": "Cenit uses the \"Task\" concept to refer particular processes which take\nplace inside a tenant, for example the execution of an algorithm or a\nflow, the deletion of one or more records, the transformation of data, etc. \nYou will learn more about [Tasks](https://docs.cenit.io/docs/monitors/tasks) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Flows",
-      "description": "Flows define how data is routed between endpoints in order to automate\nyour operations. An Import Flow gets data from an API A and stores it in\nCenit in a proper data type for this object in A, by using a parser\ntranslator. A Converter Flow converts the data stored in Cenit from A, to\na proper data type for an API B, storing the new data also in Cenit by\nusing a converter translator. Export Flows send data stored in Cenit to an\nexternal API, by using a template translator. \nTo know how [Flows](https://docs.cenit.io/docs/workflows/flows) work go to Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Observers",
-      "description": "Observers are conditions to be monitored, related to changes that may occur in the records\nof a dataset of a certain type of document. These changes are called data events.         \nData events can be managed around the attributes of the data type. For example, an action \ncan be triggered when new records were added or when the value of certain attribute of a record\nchanges. Data events are associated with flows in order to make sense. \nYou will learn more about [Data Events](https://docs.cenit.io/docs/workflows/data_events) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Schedulers",
-      "description": "Scheduler is the type of event related to date and time to be triggered in\norder to execute a flow. A Scheduler handles time intervals which can be\nuseful if we want to repeat it periodically. \nYou will learn more about [Schedulers](https://docs.cenit.io/docs/workflows/schedulers) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Connections",
-      "description": "A connection in Cenit is the base URL of an API. You should define\nresource paths for every method used; but a connection serves to all\nmethods. In that way we separate in Cenit the base URL and the methods. \nYou will learn more about [Connections](https://docs.cenit.io/docs/gateway/connection) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Connection Roles",
-      "description": "It is used to relate the connection with the webhook (resource/operation) in order to make up the whole URL. \nIn Cenit you can use more than one connection in the same namespace or even use a connection from another namespace. \nThose cases force you to use a connection role, that allows to associate a connection with the resources/operation to \ncombine them for obtaining the URL. This field is optional, but you should consider using it as a way to clarify \nwhat connection and webhook are used to make up the URL.      \nConnection roles are used in flows in these ways:\n  * When no connection role is set and the Namespace contains only one Connection, that connection is used.\n  * When no connection role is set and the Namespace contains more than one Connection, the first connection defined in the namespace is used.\n  * When the connection role is set, the connection and webhook defined in the connection role are used.\n"
+      "description": "...\n"
     },
     {
-      "name": "Resources",
-      "description": "The base URL of an API should be defined as a Connection, only once, and\nyou should define a Resource Path for every method used; that way we\nseparate in Cenit the base URL and the methods. Both, a Connection and a\nResource Path, make up the endpoint, the whole URL where the request is\nsent. They allow to define an HTTP Method and its parameters. \nYou will learn more about webhooks in section [Resource Paths](https://docs.cenit.io/docs/gateway/resource_paths) of Cenit IO Docs.\n"
+      "name": "Resouces",
+      "description": "...\n"
     },
     {
       "name": "Authorizations Clients",
-      "description": "By defining an authorization client you can set the values of Client ID and Secret ID provided from the API \nwith which you are going to connect to.\nYou will learn more about [Authorization Clients](https://docs.cenit.io/docs/security/authorization_clients) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Authorizations Providers",
-      "description": "By defining an authorization provider you can set the response type which is code, the authorization endpoint, the token endpoint, \nmethod the token is sent, the scope separator which is usually a comma (,) and the refresh token strategy. \nYou will learn more about [Authorization Providers](https://docs.cenit.io/docs/security/authorization_providers) in Cenit IO Docs.\n"
+      "description": "...\n"
     },
     {
       "name": "Authorizations Basic",
-      "description": "You can manage basic authorizations by means of the methods below.\n"
+      "description": "...\n"
     }
   ],
   "servers": [
@@ -122,7 +122,7 @@
     {
       "name": "Data",
       "tags": [
-        "Json Data Types",
+        "Document Types",
         "File Types"
       ]
     },
@@ -226,10 +226,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=snippet"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/algorithm',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -257,10 +253,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test\",\n      name: \"alg_test_01\",\n      type: \"ruby\",\n      code: \"return 1 + 1\",\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/algorithm',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"alg_test_01\",\n    type: \"ruby\",\n    code: \"return 1 + 1\",\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
           }
@@ -278,7 +270,7 @@
           "Algorithms"
         ],
         "operationId": "get_algorithm",
-        "summary": "Retrieve an algorithm",
+        "summary": "Retrieve a algorithm",
         "description": "Find and return the item with the given id.\n",
         "parameters": [
           {
@@ -300,10 +292,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\nitem_id=\"61eeeea05a5a2353a401b2c6\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeea05a5a2353a401b2c6'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/algorithm/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -335,10 +323,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\nitem_id=\"61eeeea05a5a2353a401b2c6\"\n\nread -r -d '' data <<- EOM\n  {\n      code: `return 1 + ${Date.now()}`,\n   }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeea05a5a2353a401b2c6'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/algorithm/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    code: `return 1 + ${Date.now()}`,\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -360,10 +344,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\nitem_id=\"61eeeea05a5a2353a401b2c6\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeea05a5a2353a401b2c6'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/algorithm/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -406,10 +386,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/basic_authorization\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d ignore=password"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/basic_authorization',\n  params: { limit: 5, page: 1, order: '-namespace,name', ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -436,10 +412,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/basic_authorization\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test2\",\n      name: \"auth_basic\",\n      username: \"test2_auth_basic\",\n      password: \"test2_auth_basic\"\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/basic_authorization',\n  data: {\n    namespace: \"Test2\",\n    name: \"auth_basic\",\n    username: \"test2_auth_basic\",\n    password: \"test2_auth_basic\"\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -478,10 +450,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/basic_authorization\"\nitem_id=\"62069b095a5a2330d0038cdc\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62069b095a5a2330d0038cdc'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/basic_authorization/${item_id}`,\n  params: { ignore: 'password'}\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -512,10 +480,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/basic_authorization\"\nitem_id=\"62069b095a5a2330d0038cdc\"\n\nread -r -d '' data <<- EOM\n  {\n      username: \"test_auth_basic@api_v2\"\n    }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62069b095a5a2330d0038cdc'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/basic_authorization/${item_id}`,\n  data: {\n    username: \"test_auth_basic@api_v2\"\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -537,10 +501,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/basic_authorization\"\nitem_id=\"62069b095a5a2330d0038cdc\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '62069b095a5a2330d0038cdc'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/basic_authorization/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -586,10 +546,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding:-webhooks,connections \\\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/connection_role',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'webhooks,connections' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -616,10 +572,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test\",\n      name: \"connection_role_test_01\",\n      webhooks: [\n        {\n          _reference: true,\n          namespace: \"Test\",\n          name: \"webhook_test_01\"\n        }\n      ],\n      connections: [\n        {\n          _reference: true,\n          namespace: \"Test\",\n          name: \"connection_test_01\"\n        }\n      ],\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/connection_role',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"connection_role_test_01\",\n    webhooks: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"webhook_test_01\"\n      }\n    ],\n    connections: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"connection_test_01\"\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -661,10 +613,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\nitem_id=\"620951d95a5a233eb9043557\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620951d95a5a233eb9043557'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/connection_role/${item_id}`,\n  params: { embedding: 'webhooks,connections' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -695,10 +643,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\nitem_id=\"620951d95a5a233eb9043557\"\n\nread -r -d '' data <<- EOM\n  {\n      webhooks: [\n        {\n          _reference: true,\n          namespace: \"Test\",\n          name: \"webhook_test_01\"\n        }\n      ],\n      connections: [\n        {\n          _reference: true,\n          namespace: \"Test\",\n          name: \"connection_test_01\"\n        }\n      ],\n    }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620951d95a5a233eb9043557'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/connection_role/${item_id}`,\n  headers: {\n    'X-Parser-Options': JSON.stringify({\n      primary_fields: ['namespace','name'],\n      // reset: ['webhooks','connections']\n      add_only: false\n    })\n  },\n  data: {\n    webhooks: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"webhook_test_01\"\n      }\n    ],\n    connections: [\n      {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"connection_test_01\"\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -720,10 +664,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\nitem_id=\"620951d95a5a233eb9043557\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620951d95a5a233eb9043557'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/connection_role/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -952,10 +892,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/flow\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=snippet \\\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/flow',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1031,10 +967,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/flow\"\nitem_id=\"61e083815a5a2353c40082f3\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d embedding=snippet\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e083815a5a2353c40082f3'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/flow/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1065,10 +997,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/flow\"\nitem_id=\"620364d55a5a236eda02cfb0\"\n\nread -r -d '' data <<- EOM\n  {\n      active: true,\n    }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '620364d55a5a236eda02cfb0'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/flow/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    active: true,\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1090,10 +1018,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/flow\"\nitem_id=\"61e083815a5a2353c40082f3\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61e083815a5a2353c40082f3'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/flow/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -1249,7 +1173,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"Person3\"\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/json_data_type\"\nitem_id=\"61e0312b5a5a2353ad004469\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"Person46\"\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",
@@ -1322,10 +1246,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=authorization \\\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: '-namespace,name', embedding: 'authorization' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1352,10 +1272,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test\",\n      name: \"webhook_test_01\",\n      method: \"get\",\n      path: \"api/v2/test_01\",\n      parameters: [\n        {\n          key: \"limit\",\n          value: \"50\",\n        }\n      ],\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/plain_webhook',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"webhook_test_01\",\n    method: \"get\",\n    path: \"api/v2/test_01\",\n    parameters: [\n      {\n        key: \"limit\",\n        value: \"50\",\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -1397,10 +1313,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\nitem_id=\"6205b5995a5a233dd9039b8a\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6205b5995a5a233dd9039b8a'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/plain_webhook/${item_id}`,\n  params: { embedding: 'authorization' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1431,10 +1343,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\nitem_id=\"6205b5995a5a233dd9039b8a\"\nparam_id=\"6205b5995a5a233dd9039b8b\"\n\nread -r -d '' data <<- EOM\n  {\n      parameters: [\n        {\n          id: `${param_id}`,\n          key: \"limit\",\n          value: \"100\",\n        }\n      ],\n    }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6205b5995a5a233dd9039b8a'\nconst param_id = '6205b5995a5a233dd9039b8b'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/plain_webhook/${item_id}`,\n  data: {\n    parameters: [\n      {\n        id: `${param_id}`,\n        key: \"limit\",\n        value: \"100\",\n      }\n    ],\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1456,10 +1364,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\nitem_id=\"6205b5995a5a233dd9039b8a\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6205b5995a5a233dd9039b8a'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/plain_webhook/${item_id}`,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -1505,10 +1409,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_converter\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=snippet"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/ruby_converter',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1535,10 +1435,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_converter\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test\",\n      name: \"converter_test_01\",\n      source_handler: false,\n      source_data_type: {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"Person\"\n      },\n      target_data_type: {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"Person2\"\n      },\n      code: 'target.name = source.name.downcase',\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/ruby_converter',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"converter_test_01\",\n    source_handler: false,\n    source_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person\"\n    },\n    target_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person2\"\n    },\n    code: 'target.name = source.name.downcase',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -1580,10 +1476,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_converter\"\nitem_id=\"6203c5dd5a5a233de3027b96\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6203c5dd5a5a233de3027b96'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/ruby_converter/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1614,10 +1506,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_converter\"\nitem_id=\"6203c5dd5a5a233de3027b96\"\n\nread -r -d '' data <<- EOM\n  {\n       source_handler: true,\n       code: 'sources.each {|s| target_data_type.create_from_json!(name: s.name.downcase, primary_field: %i[name]) }',\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6203c5dd5a5a233de3027b96'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/ruby_converter/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    source_handler: true,\n    code: 'sources.each {|s| target_data_type.create_from_json!(name: s.name.downcase, primary_field: %i[name]) }',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1639,10 +1527,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_converter\"\nitem_id=\"6203c5dd5a5a233de3027b96\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '6203c5dd5a5a233de3027b96'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_converter/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -1688,10 +1572,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_parser\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=snippet"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/ruby_parser',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1718,10 +1598,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_parser\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test\",\n      name: \"parser_test_01\",\n      target_data_type: {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"Person\"\n      },\n      code: '{ name: data[:name].downcase }',\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/ruby_parser',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"parser_test_01\",\n    target_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person\"\n    },\n    code: '{ name: data[:name].downcase }',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -1763,10 +1639,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_parser\"\nitem_id=\"61eeeb7f5a5a234adc00ab2b\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeb7f5a5a234adc00ab2b'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/ruby_parser/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1797,10 +1669,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_parser\"\nitem_id=\"61eeeb7f5a5a234adc00ab2b\"\n\nread -r -d '' data <<- EOM\n  {\n      code: '{ name: data[:name].upcase }',\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeb7f5a5a234adc00ab2b'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/ruby_parser/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    code: '{ name: data[:name].upcase }',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1822,10 +1690,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_parser\"\nitem_id=\"61eeeb7f5a5a234adc00ab2b\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61eeeb7f5a5a234adc00ab2b'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_parser/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
@@ -1871,10 +1735,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_template\"\n\ncurl -G \"${base_url}/${path}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -d limit=5 \\\n  -d page=1 \\\n  -d order=-namespace,name \\\n  -d embedding=snippet"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'GET',\n  url: 'setup/ruby_template',\n  httpsAgent: agent,\n  params: { limit: 5, page: 1, order: 'namespace,name', embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1901,10 +1761,6 @@
           }
         },
         "x-code-samples": [
-          {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_template\"\n\nread -r -d '' data <<- EOM\n  {\n      namespace: \"Test\",\n      name: \"template_test_01\",\n      mime_type: 'application/json',\n      file_extension: 'json',\n      bulk_source: false,\n      source_data_type: {\n        _reference: true,\n        namespace: \"Test\",\n        name: \"Person\"\n      },\n      code: 'source.to_json',\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
           {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst request = axios({\n  method: 'POST',\n  url: 'setup/ruby_template',\n  httpsAgent: agent,\n  data: {\n    namespace: \"Test\",\n    name: \"template_test_01\",\n    mime_type: 'application/json',\n    file_extension: 'json',\n    bulk_source: false,\n    source_data_type: {\n      _reference: true,\n      namespace: \"Test\",\n      name: \"Person\"\n    },\n    code: 'source.to_json',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});\n\n"
@@ -1946,10 +1802,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_template\"\nitem_id=\"61f1597a5a5a2353be026f14\"\n\ncurl -G \"${base_url}/${path}/${item_id}\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\\\n  -d embedding=authorization \\\n  -d ignore=password\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nconst request = axios({\n  method: 'GET',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n  params: { embedding: 'snippet' }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -1980,10 +1832,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_template\"\nitem_id=\"61f1597a5a5a2353be026f14\"\n\nread -r -d '' data <<- EOM\n  {\n      mime_type: 'application/json',\n      file_extension: 'json',\n      bulk_source: true,\n      code: 'sources.to_json',\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['Content-Type'] = 'application/json'\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nlet request = axios({\n  method: 'POST',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n  data: {\n    mime_type: 'application/json',\n    file_extension: 'json',\n    bulk_source: true,\n    code: 'sources.to_json',\n  }\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -2006,10 +1854,6 @@
         },
         "x-code-samples": [
           {
-            "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/ruby_template\"\nitem_id=\"61f1597a5a5a2353be026f14\"\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"DELETE\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\"\n"
-          },
-          {
             "lang": "NodeJS",
             "source": "const dotenv = require('dotenv')\nconst axios = require('axios');\nconst https = require('https');\n\nconst agent = new https.Agent({\n  rejectUnauthorized: false\n});\n\ndotenv.config();\n\naxios.defaults.baseURL = process.env['BASE_URL'] || 'https://cenit.io/api/v2/';\naxios.defaults.headers.common['X-Tenant-Access-Key'] = process.env['X_TENANT_ACCESS_KEY']\naxios.defaults.headers.common['X-Tenant-Access-Token'] = process.env['X_TENANT_ACCESS_TOKEN']\n\nconst item_id = '61f1597a5a5a2353be026f14'\n\nconst request = axios({\n  method: 'DELETE',\n  url: `setup/ruby_template/${item_id}`,\n  httpsAgent: agent,\n});\n\nrequest.then((response) => {\n  // Do something with the response\n  console.log(JSON.stringify(response.data, null, 2));\n}).catch((error) => {\n  // Do something with the error\n  console.error(JSON.stringify(error.response.data, null, 2));\n});"
           }
@@ -2028,22 +1872,18 @@
             "description": "Item identifier"
           },
           "name": {
-            "type": "string",
-            "description": "Lowercase name without spaces or special characters"
+            "type": "string"
           },
           "many": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicate if the parameter is of \"many\" type or not"
+            "default": false
           },
           "required": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicate if the parameter is required or not"
+            "default": false
           },
           "default": {
-            "type": "string",
-            "description": "This property of the parameter indicates its default value"
+            "type": "string"
           }
         }
       },
@@ -2103,45 +1943,38 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the algorithm is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
             "description": "Lowercase name without spaces or special characters"
           },
           "description": {
-            "type": "string",
-            "description": "A brief description of what the algorithm means"
+            "type": "string"
           },
           "language": {
             "type": "string",
             "enum": [
               "ruby",
               "javascript"
-            ],
-            "description": "The language for the algorithm specification"
+            ]
           },
           "store_output": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicate whether the output of the algorithm will be stored or not"
+            "default": false
           },
           "validate_output": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicate whether the output of the algorithm will be validated or not"
+            "default": false
           },
           "parameters_size": {
-            "type": "integer",
-            "description": "The number of parameters of the algorithm"
+            "type": "integer"
           },
           "parameters": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/algorithm_parameter"
-            },
-            "description": "Algorithm parameter list"
+            }
           },
           "code": {
             "type": "string",
@@ -2161,12 +1994,10 @@
             "type": "object",
             "properties": {
               "username": {
-                "type": "string",
-                "description": "The name of the user in lowercase"
+                "type": "string"
               },
               "password": {
-                "type": "string",
-                "description": "The password to access"
+                "type": "string"
               }
             }
           }
@@ -2181,8 +2012,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the authorization is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -2469,8 +2299,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the connection role is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -2487,8 +2316,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the connection is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -2500,16 +2328,13 @@
           },
           "authorization_handler": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicate if the authorization is to be handled or not in this connection. It is a good practice to consider it true"
+            "default": false
           },
           "number": {
-            "type": "string",
-            "description": "The number of the connection"
+            "type": "string"
           },
           "token": {
-            "type": "string",
-            "description": "The access token returned by the authorization"
+            "type": "string"
           }
         }
       },
@@ -3181,8 +3006,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the flow is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3283,20 +3107,17 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the data type is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
             "description": "Name without spaces or special characters"
           },
           "title": {
-            "type": "string",
-            "description": "This property is optional. It takes the name of the data type as a default value."
+            "type": "string"
           },
           "slug": {
-            "type": "string",
-            "description": "This property is optional. It takes the name of the data type as a default value."
+            "type": "string"
           },
           "code": {
             "type": "string",
@@ -3305,13 +3126,11 @@
           },
           "discard_additional_properties": {
             "type": "boolean",
-            "default": true,
-            "description": "True forces the discard of all those properties that were not declared in the schema, when a record import occurs"
+            "default": true
           },
           "navigation_link": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicates if exists a navigation link to this json data type"
+            "default": false
           }
         }
       },
@@ -3341,20 +3160,16 @@
             "description": "Item identifier"
           },
           "key": {
-            "type": "string",
-            "description": "The name of the parameter variable"
+            "type": "string"
           },
           "value": {
-            "type": "string",
-            "description": "The value of the parameter variable"
+            "type": "string"
           },
           "description": {
-            "type": "string",
-            "description": "A brief explanation about the meaning of the parameter"
+            "type": "string"
           },
           "metadata": {
-            "type": "string",
-            "description": "The data type of the parameter variable"
+            "type": "string"
           }
         }
       },
@@ -3511,8 +3326,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space the webhook is to be created"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3537,13 +3351,11 @@
             ]
           },
           "metadata": {
-            "type": "string",
-            "description": "The data type of the resource involved in the webhook"
+            "type": "string"
           },
           "authorization_handler": {
             "type": "boolean",
-            "default": false,
-            "description": "This property indicates whether or not the authorization will be handled in the webhook request"
+            "default": false
           }
         }
       },
@@ -3574,8 +3386,7 @@
             "default": true
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space where the name being referenced resides"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3601,8 +3412,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space where the reference resides"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3637,8 +3447,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space where the converter is to be created or resides"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3647,8 +3456,7 @@
           "type": {
             "type": "string",
             "default": "Conversion",
-            "readOnly": true,
-            "description": "The type of transformation"
+            "readOnly": true
           },
           "source_handler": {
             "type": "boolean",
@@ -3686,8 +3494,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space where the parser is to be created or resides"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3696,8 +3503,7 @@
           "type": {
             "type": "string",
             "default": "Import",
-            "readOnly": true,
-            "description": "The type of transformation"
+            "readOnly": true
           },
           "code": {
             "type": "string",
@@ -3730,8 +3536,7 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space where the template is to be created or resides"
+            "type": "string"
           },
           "name": {
             "type": "string",
@@ -3740,8 +3545,7 @@
           "type": {
             "type": "string",
             "default": "Export",
-            "readOnly": true,
-            "description": "The type of transformation"
+            "readOnly": true
           },
           "mime_type": {
             "type": "string",
@@ -3788,29 +3592,25 @@
             "description": "Item identifier"
           },
           "namespace": {
-            "type": "string",
-            "description": "The name of the space where the snippet is to be created or resides"
+            "type": "string"
           },
           "name": {
             "type": "string",
             "description": "Name without spaces or special characters"
           },
           "type": {
-            "type": "string",
-            "description": "The type of snippet"
+            "type": "string"
           },
           "code": {
             "type": "string",
             "description": "Code snippet"
           },
           "slug": {
-            "type": "string",
-            "description": "The URL slug that identifies the snippet"
+            "type": "string"
           },
           "navigation_link": {
             "type": "boolean",
-            "default": false,
-            "description": "Indicates if exists a navigation link to this snippet"
+            "default": false
           }
         }
       },
