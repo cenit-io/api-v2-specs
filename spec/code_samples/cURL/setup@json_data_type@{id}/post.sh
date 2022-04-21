@@ -7,7 +7,7 @@ item_id="61e0312b5a5a2353ad004469"
 read -r -d '' data <<- EOM
   {
       "namespace": "Test",
-      "name": "Person3"
+      "name": "Person46"
   }
 EOM
 

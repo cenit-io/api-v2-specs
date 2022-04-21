@@ -6,16 +6,13 @@ properties:
     description: Item identifier
   namespace:
     type: string
-    description: The name of the space the data type is to be created
   name:
     type: string
     description: Name without spaces or special characters
   title:
     type: string
-    description: This property is optional. It takes the name of the data type as a default value.
   slug:
     type: string
-    description: This property is optional. It takes the name of the data type as a default value.
   code:
     type: string
     description: JSON-Schema
@@ -23,8 +20,6 @@ properties:
   discard_additional_properties:
     type: boolean
     default: true
-    description: True forces the discard of all those properties that were not declared in the schema, when a record import occurs
   navigation_link:
     type: boolean
     default: false
-    description: Indicates if exists a navigation link to this json data type

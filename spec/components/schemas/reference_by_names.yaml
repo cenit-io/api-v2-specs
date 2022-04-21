@@ -6,7 +6,6 @@ properties:
     default: true
   namespace:
     type: string
-    description: The name of the space where the name being referenced resides
   name:
     type: string
     description: Name without spaces or special characters
