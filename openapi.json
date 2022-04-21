@@ -262,7 +262,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"alg_test_01\",\n      \"type\": \"ruby\",\n      \"code\": \"return 1 + 1\",\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"alg_test_01\",\n      \"type\": \"ruby\",\n      \"code\": \"return 1 + 1\"\n    }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",
@@ -340,7 +340,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\nitem_id=\"61eeeea05a5a2353a401b2c6\"\n\nread -r -d '' data <<- EOM\n  {\n      \"code\": \"return 1 + $(($(date +%s%N)/1000000))\",\n   }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/algorithm\"\nitem_id=\"61eeeea05a5a2353a401b2c6\"\n\nread -r -d '' data <<- EOM\n  {\n      \"code\": \"return 1 + $(($(date +%s%N)/1000000))\"\n   }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",
@@ -622,7 +622,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"connection_role_test_01\",\n      \"webhooks\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"webhook_test_01\"\n        }\n      ],\n      \"connections\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"connection_test_01\"\n        }\n      ],\n  }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"connection_role_test_01\",\n      \"webhooks\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"webhook_test_01\"\n        }\n      ],\n      \"connections\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"connection_test_01\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",
@@ -700,7 +700,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\nitem_id=\"620951d95a5a233eb9043557\"\n\nread -r -d '' data <<- EOM\n  {\n      \"webhooks\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"webhook_test_02\"\n        }\n      ],\n      \"connections\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"connection_test_02\"\n        }\n      ],\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"X-Parser-Options: {'primary_fields':['namespace','name'],'reset':['webhooks'],'add_only':true}\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/connection_role\"\nitem_id=\"620951d95a5a233eb9043557\"\n\nread -r -d '' data <<- EOM\n  {\n      \"webhooks\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"webhook_test_02\"\n        }\n      ],\n      \"connections\": [\n        {\n          \"_reference\": true,\n          \"namespace\": \"Test\",\n          \"name\": \"connection_test_02\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}/${item_id}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"X-Parser-Options: {'primary_fields':['namespace','name'],'reset':['webhooks'],'add_only':true}\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",
@@ -1358,7 +1358,7 @@
         "x-code-samples": [
           {
             "lang": "cURL",
-            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"webhook_test_01\",\n      \"method\": \"get\",\n      \"path\": \"api/v2/test_01\",\n      \"parameters\": [\n        {\n          \"key\": \"limit\",\n          \"value\": \"50\",\n        }\n      ],\n  }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
+            "source": "#!/bin/bash\n\nbase_url=${BASE_URL:=\"https://cenit.io/api/v2\"}\npath=\"setup/plain_webhook\"\n\nread -r -d '' data <<- EOM\n  {\n      \"namespace\": \"Test\",\n      \"name\": \"webhook_test_01\",\n      \"method\": \"get\",\n      \"path\": \"api/v2/test_01\",\n      \"parameters\": [\n        {\n          \"key\": \"limit\",\n          \"value\": \"50\"\n        }\n      ]\n  }\nEOM\n\ncurl \"${base_url}/${path}\" \\\n  -X \"POST\" \\\n  -H \"X-Tenant-Access-Key: ${X_TENANT_ACCESS_KEY}\" \\\n  -H \"X-Tenant-Access-Token: ${X_TENANT_ACCESS_TOKEN}\" \\\n  -H \"Content-Type: application/json\" \\\n  -d \"${data}\"\n"
           },
           {
             "lang": "NodeJS",

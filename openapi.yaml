@@ -319,7 +319,7 @@ paths:
                   "namespace": "Test",
                   "name": "alg_test_01",
                   "type": "ruby",
-                  "code": "return 1 + 1",
+                  "code": "return 1 + 1"
                 }
             EOM
 
@@ -457,7 +457,7 @@ paths:
 
             read -r -d '' data <<- EOM
               {
-                  "code": "return 1 + $(($(date +%s%N)/1000000))",
+                  "code": "return 1 + $(($(date +%s%N)/1000000))"
                }
             EOM
 
@@ -959,7 +959,7 @@ paths:
                       "namespace": "Test",
                       "name": "connection_test_01"
                     }
-                  ],
+                  ]
               }
             EOM
 
@@ -1116,7 +1116,7 @@ paths:
                       "namespace": "Test",
                       "name": "connection_test_02"
                     }
-                  ],
+                  ]
               }
             EOM
 
@@ -2383,9 +2383,9 @@ paths:
                   "parameters": [
                     {
                       "key": "limit",
-                      "value": "50",
+                      "value": "50"
                     }
-                  ],
+                  ]
               }
             EOM
 
