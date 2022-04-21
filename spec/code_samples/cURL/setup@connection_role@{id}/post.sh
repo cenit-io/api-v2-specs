@@ -19,7 +19,7 @@ read -r -d '' data <<- EOM
           "namespace": "Test",
           "name": "connection_test_02"
         }
-      ],
+      ]
   }
 EOM
 

@@ -6,7 +6,7 @@ item_id="61eeeea05a5a2353a401b2c6"
 
 read -r -d '' data <<- EOM
   {
-      "code": "return 1 + $(($(date +%s%N)/1000000))",
+      "code": "return 1 + $(($(date +%s%N)/1000000))"
    }
 EOM
 

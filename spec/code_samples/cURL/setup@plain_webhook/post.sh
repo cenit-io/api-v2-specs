@@ -12,9 +12,9 @@ read -r -d '' data <<- EOM
       "parameters": [
         {
           "key": "limit",
-          "value": "50",
+          "value": "50"
         }
-      ],
+      ]
   }
 EOM
 

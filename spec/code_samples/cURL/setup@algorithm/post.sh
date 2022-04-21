@@ -8,7 +8,7 @@ read -r -d '' data <<- EOM
       "namespace": "Test",
       "name": "alg_test_01",
       "type": "ruby",
-      "code": "return 1 + 1",
+      "code": "return 1 + 1"
     }
 EOM
 
