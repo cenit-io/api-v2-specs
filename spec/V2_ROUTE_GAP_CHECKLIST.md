@@ -2,7 +2,7 @@
 
 Source of truth compared:
 - Backend routes: `/Users/sanchojaf/Documents/cenit-io/cenit/config/routes.rb` (`namespace :api -> :v2`)
-- Current split spec paths: `/Users/sanchojaf/Documents/cenit-io/api-v2-specs/spec/paths/*.yaml`
+- Current split spec paths: `/Users/sanchojaf/Documents/cenit-io/api-specs/spec/paths/*.yaml`
 
 Status legend:
 - `Covered`: route pattern is documented in current spec.

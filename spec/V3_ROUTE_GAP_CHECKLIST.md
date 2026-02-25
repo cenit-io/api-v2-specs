@@ -2,7 +2,7 @@
 
 Source of truth:
 - Backend routes: `/Users/sanchojaf/Documents/cenit-io/cenit/config/routes.rb` (`namespace :api -> :v3`)
-- Draft v3 spec: `/Users/sanchojaf/Documents/cenit-io/api-v2-specs/spec/v3/openapi.yaml`
+- Draft v3 spec: `/Users/sanchojaf/Documents/cenit-io/api-specs/spec/v3/openapi.yaml`
 
 ## Route Coverage
 

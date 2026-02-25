@@ -1,5 +1,5 @@
 # CenitIO APIv2 Specifications
-[View-On-Line](https://cenit-io.github.io/api-v2-specs)
+[View-On-Line](https://cenit-io.github.io/api-specs)
 
 ## Introduction
 
@@ -13,9 +13,9 @@ Current documentation target is organized in three layers:
 
 ## Links
 
-- [Reference Documentation (ReDoc)](https://cenit-io.github.io/api-v2-specs)
-- OpenAPI Raw Files: [JSON](https://cenit-io.github.io/api-v2-specs/openapi.json) [YAML](https://cenit-io.github.io/api-v2-specs/openapi.yaml)
-- API v3 Raw Files (draft): [JSON](https://cenit-io.github.io/api-v2-specs/openapi-v3.json) [YAML](https://cenit-io.github.io/api-v2-specs/openapi-v3.yaml)
+- [Reference Documentation (ReDoc)](https://cenit-io.github.io/api-specs)
+- OpenAPI Raw Files: [JSON](https://cenit-io.github.io/api-specs/openapi.json) [YAML](https://cenit-io.github.io/api-specs/openapi.yaml)
+- API v3 Raw Files (draft): [JSON](https://cenit-io.github.io/api-specs/openapi-v3.json) [YAML](https://cenit-io.github.io/api-specs/openapi-v3.yaml)
 - [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb5947e10923dee87507)
 
 **Warning:** All above links are updated only after Travis CI finishes deployment
@@ -61,7 +61,7 @@ Add the remaining built-in `Setup::*` models explicitly called by UI API code:
 - `Setup::User`
 - `Setup::Account`
 
-These paths live under `/Users/sanchojaf/Documents/cenit-io/api-v2-specs/spec/paths`, with progress tracked in the gap checklist.
+These paths live under `/Users/sanchojaf/Documents/cenit-io/api-specs/spec/paths`, with progress tracked in the gap checklist.
 
 ### 3) Custom Data Type examples
 
@@ -77,7 +77,7 @@ Examples should demonstrate payload shape, auth headers, and common query parame
 ## Current completeness status
 
 - Route-by-route coverage tracking is maintained in:
-  - `/Users/sanchojaf/Documents/cenit-io/api-v2-specs/spec/V2_ROUTE_GAP_CHECKLIST.md`
+  - `/Users/sanchojaf/Documents/cenit-io/api-specs/spec/V2_ROUTE_GAP_CHECKLIST.md`
 - Current OpenAPI files represent a strong built-in setup-model baseline, with generic/custom API layers still being expanded.
 
 ## Working on specification
