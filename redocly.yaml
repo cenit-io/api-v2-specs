@@ -1,1 +1,8 @@
-swaggerUI: true
+apis:
+  cenit-v2:
+    root: ./spec/openapi.generated.yaml
+  cenit-v3:
+    root: ./spec/v3/openapi.yaml
+
+extends:
+  - recommended
