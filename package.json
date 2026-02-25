@@ -1,18 +1,23 @@
 {
   "name": "cenit-api-v2-specs",
   "version": "1.0.0",
-  "dependencies": {
-    "swagger-repo": "^2.0.0-rc.15"
-  },
   "private": true,
   "scripts": {
-    "start": "swagger-repo serve",
-    "build": "swagger-repo build",
-    "gh-pages": "swagger-repo gh-pages",
-    "test": "swagger-repo validate"
+    "start": "node scripts/start-docs.mjs",
+    "build:web": "rm -rf web_deploy && mkdir -p web_deploy && cp -R web/. web_deploy/",
+    "build": "npm run build:web && npm run bundle:openapi && npm run bundle:openapi:v3",
+    "test": "npm run lint:openapi",
+    "test:v3": "npm run lint:openapi:v3",
+    "generate:openapi": "node scripts/generate-openapi-root.mjs",
+    "lint:openapi": "npm run generate:openapi && redocly lint spec/openapi.generated.yaml",
+    "bundle:openapi": "npm run generate:openapi && mkdir -p web_deploy && redocly bundle spec/openapi.generated.yaml -o web_deploy/openapi.yaml && redocly bundle spec/openapi.generated.yaml -o web_deploy/openapi.json --ext json",
+    "lint:openapi:v3": "redocly lint spec/v3/openapi.yaml",
+    "bundle:openapi:v3": "mkdir -p web_deploy && redocly bundle spec/v3/openapi.yaml -o web_deploy/openapi-v3.yaml && redocly bundle spec/v3/openapi.yaml -o web_deploy/openapi-v3.json --ext json"
   },
   "devDependencies": {
+    "@redocly/cli": "^2.19.2",
     "axios": "^0.24.0",
-    "dotenv": "^14.1.0"
+    "dotenv": "^14.1.0",
+    "yaml": "^2.8.1"
   }
 }

@@ -1,0 +1,685 @@
+openapi: 3.1.0
+info:
+  title: Cenit API v3
+  version: 0.1.0
+  description: |
+    Initial OpenAPI baseline for API v3 based on backend routes in `cenit/config/routes.rb`.
+    This spec documents the generic API contract and route shapes for v3.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: /api/v3
+tags:
+  - name: User bootstrap
+    description: Tenant/user bootstrap endpoints.
+  - name: Generic records
+    description: Generic CRUD-style endpoints by namespace and model.
+  - name: Digest
+    description: Digest endpoints for record-scoped operations.
+  - name: CORS
+    description: CORS preflight handling endpoints.
+security:
+  - TenantAccessKey: []
+    TenantAccessToken: []
+paths:
+  /setup/user:
+    post:
+      tags: [User bootstrap]
+      operationId: v3_setup_user_create
+      summary: Create a tenant user
+      description: Bootstrap endpoint for creating a user/tenant context.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRecordPayload'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /{ns}/{model}:
+    parameters:
+      - $ref: '#/components/parameters/ns'
+      - $ref: '#/components/parameters/model'
+    get:
+      tags: [Generic records]
+      operationId: v3_model_index
+      summary: List records
+      description: |
+        Generic list endpoint. Common UI model examples:
+        - `GET /api/v3/setup/data_type`
+        - `GET /api/v3/setup/flow`
+        - `GET /api/v3/setup/collection`
+        - `GET /api/v3/setup/application`
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: Generic record list response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecordList'
+              examples:
+                setup_data_type:
+                  summary: Setup::DataType list
+                  value:
+                    items:
+                      - id: "66f103f6a65f0f6c8a5a0011"
+                        namespace: "Setup"
+                        name: "Contact"
+                        _type: "Setup::JsonDataType"
+                    count: 1
+                setup_flow:
+                  summary: Setup::Flow list
+                  value:
+                    items:
+                      - id: "66f1049fa65f0f6c8a5a0101"
+                        namespace: "Setup"
+                        name: "SyncContactsFlow"
+                        active: true
+                        _type: "Setup::Flow"
+                    count: 1
+                setup_collection:
+                  summary: Setup::Collection list
+                  value:
+                    items:
+                      - id: "66f1060ba65f0f6c8a5a0201"
+                        namespace: "Setup"
+                        name: "CRM Collection"
+                        _type: "Setup::Collection"
+                    count: 1
+                setup_application:
+                  summary: Setup::Application list
+                  value:
+                    items:
+                      - id: "66f10724a65f0f6c8a5a0301"
+                        namespace: "Setup"
+                        name: "HubSpot Connector"
+                        _type: "Setup::Application"
+                    count: 1
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      tags: [Generic records]
+      operationId: v3_model_create
+      summary: Create record
+      description: |
+        Generic create endpoint. Common UI model examples:
+        - `POST /api/v3/setup/data_type`
+        - `POST /api/v3/setup/flow`
+        - `POST /api/v3/setup/collection`
+        - `POST /api/v3/setup/application`
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRecordPayload'
+            examples:
+              setup_data_type:
+                summary: Create Setup::DataType
+                value:
+                  namespace: "Setup"
+                  name: "Contact"
+                  title: "Contact"
+                  schema:
+                    type: object
+                    properties:
+                      first_name: { type: string }
+                      email: { type: string, format: email }
+              setup_flow:
+                summary: Create Setup::Flow
+                value:
+                  namespace: "Setup"
+                  name: "SyncContactsFlow"
+                  event:
+                    namespace: "Setup"
+                    name: "Submission"
+                  translator:
+                    namespace: "Setup"
+                    name: "MyTranslator"
+              setup_collection:
+                summary: Create Setup::Collection
+                value:
+                  namespace: "Setup"
+                  name: "CRM Collection"
+              setup_application:
+                summary: Create Setup::Application
+                value:
+                  namespace: "Setup"
+                  name: "HubSpot Connector"
+                  slug: "hubspot-connector"
+      responses:
+        '201':
+          description: Record created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecord'
+              examples:
+                created_data_type:
+                  summary: Created Setup::DataType
+                  value:
+                    id: "66f103f6a65f0f6c8a5a0011"
+                    namespace: "Setup"
+                    name: "Contact"
+                    _type: "Setup::JsonDataType"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /{ns}/{model}/{id}:
+    parameters:
+      - $ref: '#/components/parameters/ns'
+      - $ref: '#/components/parameters/model'
+      - $ref: '#/components/parameters/id'
+    get:
+      tags: [Generic records]
+      operationId: v3_model_show
+      summary: Fetch record by id
+      description: |
+        Generic item endpoint. Example concrete calls:
+        - `GET /api/v3/setup/data_type/{id}`
+        - `GET /api/v3/setup/flow/{id}`
+        - `GET /api/v3/setup/collection/{id}`
+        - `GET /api/v3/setup/application/{id}`
+      responses:
+        '200':
+          description: Generic record response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecord'
+              examples:
+                setup_data_type:
+                  summary: Setup::DataType item
+                  value:
+                    id: "66f103f6a65f0f6c8a5a0011"
+                    namespace: "Setup"
+                    name: "Contact"
+                    title: "Contact"
+                    _type: "Setup::JsonDataType"
+                setup_flow:
+                  summary: Setup::Flow item
+                  value:
+                    id: "66f1049fa65f0f6c8a5a0101"
+                    namespace: "Setup"
+                    name: "SyncContactsFlow"
+                    active: true
+                    _type: "Setup::Flow"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags: [Generic records]
+      operationId: v3_model_update
+      summary: Update record
+      description: |
+        Generic update endpoint. Example concrete calls:
+        - `POST /api/v3/setup/data_type/{id}`
+        - `POST /api/v3/setup/flow/{id}`
+        - `POST /api/v3/setup/collection/{id}`
+        - `POST /api/v3/setup/application/{id}`
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRecordPayload'
+            examples:
+              setup_data_type:
+                summary: Update Setup::DataType title
+                value:
+                  title: "Contact v2"
+              setup_flow:
+                summary: Enable Setup::Flow
+                value:
+                  active: true
+              setup_collection:
+                summary: Update Setup::Collection name
+                value:
+                  name: "CRM Collection v2"
+              setup_application:
+                summary: Update Setup::Application slug
+                value:
+                  slug: "hubspot-connector-v2"
+      responses:
+        '200':
+          description: Generic record response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecord'
+              examples:
+                updated_flow:
+                  summary: Updated Setup::Flow
+                  value:
+                    id: "66f1049fa65f0f6c8a5a0101"
+                    namespace: "Setup"
+                    name: "SyncContactsFlow"
+                    active: true
+                    _type: "Setup::Flow"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      tags: [Generic records]
+      operationId: v3_model_delete
+      summary: Delete record
+      responses:
+        '200':
+          $ref: '#/components/responses/Deleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /{ns}/{model}/{id}/digest:
+    parameters:
+      - $ref: '#/components/parameters/ns'
+      - $ref: '#/components/parameters/model'
+      - $ref: '#/components/parameters/id'
+    get:
+      tags: [Digest]
+      operationId: v3_digest_get
+      summary: Read digest endpoint
+      responses:
+        '200':
+          $ref: '#/components/responses/RecordItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags: [Digest]
+      operationId: v3_digest_post
+      summary: Execute digest action
+      description: |
+        Execute model-specific digest behavior without nested digest path.
+        Example concrete call:
+        - `POST /api/v3/setup/flow/{id}/digest` (run/process flow in current context)
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRecordPayload'
+            examples:
+              setup_flow_run:
+                summary: Process flow digest with selector/options
+                value:
+                  selector:
+                    _id:
+                      "$in":
+                        - "66f103f6a65f0f6c8a5a0011"
+                  options:
+                    async: false
+      responses:
+        '200':
+          description: Digest execution result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecord'
+              examples:
+                flow_digest_result:
+                  summary: Setup::Flow digest execution result
+                  value:
+                    id: "66f1049fa65f0f6c8a5a0101"
+                    _type: "Setup::FlowExecution"
+                    status: "completed"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      tags: [Digest]
+      operationId: v3_digest_delete
+      summary: Delete via digest endpoint
+      responses:
+        '200':
+          $ref: '#/components/responses/Deleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /{ns}/{model}/{id}/digest/{digest_path}:
+    parameters:
+      - $ref: '#/components/parameters/ns'
+      - $ref: '#/components/parameters/model'
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/digest_path'
+    get:
+      tags: [Digest]
+      operationId: v3_digest_get_path
+      summary: Read nested digest endpoint
+      description: |
+        Read nested digest resources by path.
+        Example concrete calls:
+        - `GET /api/v3/setup/data_type/{id}/digest/schema`
+        - `GET /api/v3/setup/application/{id}/digest/access`
+      responses:
+        '200':
+          description: Nested digest response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecord'
+              examples:
+                data_type_schema:
+                  summary: Setup::DataType schema digest
+                  value:
+                    schema:
+                      type: object
+                      properties:
+                        first_name: { type: string }
+                        email: { type: string, format: email }
+                application_access:
+                  summary: Setup::Application access digest
+                  value:
+                    id: "66f10724a65f0f6c8a5a0301"
+                    scope: "read"
+                    _type: "Cenit::OauthAccessGrant"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags: [Digest]
+      operationId: v3_digest_post_path
+      summary: Execute nested digest action
+      description: |
+        Execute nested digest actions.
+        Example concrete calls:
+        - `POST /api/v3/setup/data_type/{id}/digest/config`
+        - `POST /api/v3/setup/application/{id}/digest/access`
+        - `POST /api/v3/setup/collection/{id}/digest/share`
+        - `POST /api/v3/setup/collection/{id}/digest/push`
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericRecordPayload'
+            examples:
+              data_type_config:
+                summary: Update Setup::DataType config digest
+                value:
+                  title: "MY CUSTOM TITLE"
+              application_access:
+                summary: Grant Setup::Application access digest
+                value:
+                  scope: "read"
+              collection_share:
+                summary: Share Setup::Collection digest
+                value:
+                  account: "partner@cenit.io"
+                  mode: "pull"
+              collection_push:
+                summary: Push Setup::Collection digest
+                value:
+                  target_tenant: "sandbox-tenant"
+      responses:
+        '200':
+          description: Nested digest execution result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericRecord'
+              examples:
+                data_type_config_result:
+                  summary: Setup::DataType config result
+                  value:
+                    id: "66f103f6a65f0f6c8a5a0011"
+                    title: "MY CUSTOM TITLE"
+                    _type: "Setup::JsonDataType"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      tags: [Digest]
+      operationId: v3_digest_delete_path
+      summary: Delete through nested digest endpoint
+      description: |
+        Delete using nested digest path.
+        Example concrete call:
+        - `DELETE /api/v3/setup/application/{id}/digest/access`
+      responses:
+        '200':
+          $ref: '#/components/responses/Deleted'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /{path}:
+    options:
+      tags: [CORS]
+      operationId: v3_cors_preflight
+      summary: Handle CORS preflight
+      description: Catch-all `OPTIONS /api/v3/*path` route.
+      parameters:
+        - $ref: '#/components/parameters/path'
+      responses:
+        '204':
+          description: Preflight accepted
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+components:
+  securitySchemes:
+    TenantAccessKey:
+      type: apiKey
+      in: header
+      name: X-Tenant-Access-Key
+    TenantAccessToken:
+      type: apiKey
+      in: header
+      name: X-Tenant-Access-Token
+  parameters:
+    ns:
+      name: ns
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Namespace slug (maps to backend `:__ns_`).
+    model:
+      name: model
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Model slug (maps to backend `:__model_`).
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Record identifier (maps to backend `:__id_`).
+    digest_path:
+      name: digest_path
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |
+        Nested digest route path.
+        Common UI-oriented values include:
+        - `schema`, `config` for `Setup::DataType`
+        - `access` for `Setup::Application`
+        - `share`, `push` for `Setup::Collection`
+      examples:
+        data_type_schema:
+          summary: Setup::DataType schema
+          value: schema
+        data_type_config:
+          summary: Setup::DataType config
+          value: config
+        application_access:
+          summary: Setup::Application access
+          value: access
+        collection_share:
+          summary: Setup::Collection share
+          value: share
+    path:
+      name: path
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Catch-all path for CORS preflight.
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        minimum: 0
+    sort:
+      name: sort
+      in: query
+      schema:
+        type: string
+  schemas:
+    GenericRecordPayload:
+      type: object
+      description: Generic record payload. Actual schema depends on `{ns}/{model}`.
+      additionalProperties: true
+    GenericRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        _id:
+          type: string
+        _type:
+          type: string
+      additionalProperties: true
+    GenericRecordList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericRecord'
+        count:
+          type: integer
+      additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        errors:
+          oneOf:
+            - type: object
+              additionalProperties: true
+            - type: array
+              items:
+                type: string
+      additionalProperties: true
+  responses:
+    RecordItem:
+      description: Generic record response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericRecord'
+    Created:
+      description: Record created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericRecord'
+    Deleted:
+      description: Record deleted
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Record not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnprocessableEntity:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'

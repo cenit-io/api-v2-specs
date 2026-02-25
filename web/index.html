@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>CenitIO APIv2 Specifications</title>
+  <title>CenitIO API Specifications</title>
   <meta name="description" content="Simple connector API for doing business and data integrations">
   <meta name="keywords" content="CenitIO,integration,iPaaS">
   <!-- needed for adaptive design -->
@@ -103,7 +103,9 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
-      Redoc.init('./openapi.json', {
+      const spec = new URLSearchParams(window.location.search).get('spec');
+      const specUrl = spec === 'v3' ? './openapi-v3.json' : './openapi.json';
+      Redoc.init(specUrl, {
         menuToggle: true,
         theme: {
           logo: { "gutter": "20px 30px 14px 30px" },

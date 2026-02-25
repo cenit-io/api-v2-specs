@@ -5,3 +5,4 @@ tmp
 web_deploy
 node_modules
 .DS_Store
+spec/openapi.generated.yaml
